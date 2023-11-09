@@ -3,6 +3,7 @@
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\CheckAdmin;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
