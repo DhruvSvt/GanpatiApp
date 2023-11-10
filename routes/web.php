@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\CheckAdmin;
 use Illuminate\Support\Facades\Auth;
@@ -21,14 +22,15 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 
 Route::get('/', function () {
-    // return view('welcome');
     return view('admin.layouts.app');
-});
-Route::resource('members', UsersController::class);
-
-Route::middleware([CheckAdmin::class])->group(function () {
-});
+})->middleware('auth');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
+
+    Route::resource('members', UsersController::class);
+
+});
+
+Route::get('/home', [HomeController::class, 'index'])->name('home');
