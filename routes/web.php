@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\CheckAdmin;
 use Illuminate\Support\Facades\Auth;
@@ -20,8 +21,11 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 
 Route::get('/', function () {
+    // return view('welcome');
     return view('admin.layouts.app');
 });
+Route::resource('members', UsersController::class);
+
 Route::middleware([CheckAdmin::class])->group(function () {
 });
 
