@@ -419,7 +419,7 @@
     -webkit-box-shadow: var(--vz-page-title-box-shadow);
     box-shadow: var(--vz-page-title-box-shadow);
     border-bottom: 1px solid var(--vz-page-title-border);
-    margin: -23px -1.5rem 1.5rem -1.5rem
+    margin: -23px -1.5rem 1.2rem -1.5rem
 }
 
 .page-title-box .breadcrumb {
@@ -5838,7 +5838,7 @@ button {
 }
 
 .card-title {
-    font-size: 16px;
+    font-size: 22px;
     margin: 0 0 7px 0
 }
 
