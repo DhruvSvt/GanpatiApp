@@ -22,7 +22,7 @@ class CheckAdmin
                 return $next($request);
             }
         }
-        abort(403,'Access denied');
+        return abort(403,'Access denied');
         // if (!session()->has('IsAdmin')) {
         //     return redirect('/login');
         // }
