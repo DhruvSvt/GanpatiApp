@@ -25,6 +25,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
+
+// ***************************** Admin Routes *****************************
 Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::get('/', function () {
         // return view('welcome');
@@ -33,7 +35,16 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
 
     Route::resource('members', UsersController::class);
 
-    Route::resource('society',SocietyController::class);
+    Route::resource('society', SocietyController::class);
+});
+
+
+// ***************************** Secretary Routes *****************************
+Route::middleware(['auth', 'secretary'])->prefix('secretary')->group(function () {
+    Route::get('/', function () {
+        // return view('welcome');
+        return view('admin.layouts.app');
+    })->name('admin.layouts.app');
 });
 
 
