@@ -39,7 +39,7 @@
                                 <div class="mb-3">
                                     <label for="phonenumberInput" class="form-label">City</label><span
                                         class="text-danger">*</span>
-                                    <input type="tel" class="form-control" placeholder="Enter the City" name="city">
+                                    <input type="text" class="form-control" placeholder="Enter the City" name="city">
                                 </div>
                                 @error('city')
                                 <p class="text-danger">{{ $message }}</p>
@@ -50,7 +50,7 @@
                                 <div class="mb-3">
                                     <label for="emailidInput" class="form-label">Address</label><span
                                         class="text-danger">*</span>
-                                    <input type="email" class="form-control" placeholder="Enter the Address"
+                                    <input type="text" class="form-control" placeholder="Enter the Address"
                                         name="address">
                                 </div>
                                 @error('address')

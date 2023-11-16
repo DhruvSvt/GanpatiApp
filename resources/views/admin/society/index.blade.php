@@ -14,29 +14,23 @@
                     <div class="table-responsive">
                         <table class="table align-middle table-nowrap mb-0">
                             <thead class="table-light">
-                                <tr>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Phone</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">Society</th>
-                                    <th scope="col">Appartment No</th>
-                                    <th scope="col">User ID</th>
-                                    <th scope="col">Role</th>
+                                <tr class="col-8">
+                                    <th scope="col" class="col-2">Society Name</th>
+                                    <th scope="col" class="col-2">No of Appartment</th>
+                                    <th scope="col" class="col-2">City</th>
+                                    <th scope="col" class="col-2">Address</th>
                                 </tr>
                             </thead>
-                            {{-- <tbody>
-                                @foreach ($members as $member)
+                            <tbody>
+                                @foreach ($societies as $society)
                                 <tr>
-                                    <td>{{ $member->name }}</td>
-                                    <td>{{ $member->phone }}</td>
-                                    <td>{{ $member->email }}</td>
-                                    <td>{{ $member->society }}</td>
-                                    <td>{{ $member->appartment_no }}</td>
-                                    <td>{{ $member->user_id }}</td>
-                                    <td>{{ $member->role->display_name }}</td>
+                                    <td>{{ $society->name }}</td>
+                                    <td>{{ $society->total_appartments }}</td>
+                                    <td>{{ $society->city }}</td>
+                                    <td>{{ $society->address }}</td>
                                 </tr>
                                 @endforeach
-                            </tbody> --}}
+                            </tbody>
                         </table>
                         <!-- end table -->
                     </div>

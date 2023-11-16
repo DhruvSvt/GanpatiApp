@@ -21,3 +21,4 @@
 
   <!-- App js -->
   <script src="{{ config('app.url') }}/assets/js/app.js"></script>
+  <script src="{{ config('app.url') }}/assets/js/tata.js"></script>

@@ -44,9 +44,7 @@ class UsersController extends Controller
             'role_id' => 'required',
         ]);
 
-// return $request->post();
-        $user = User::create($request->post());
-        // dd($user);
+        User::create($request->post());
 
         return redirect()->route('members.index')->with('message','Data added Successfully');
     }
