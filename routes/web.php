@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\SocietyController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\CheckAdmin;
@@ -29,7 +30,10 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
         // return view('welcome');
         return view('admin.layouts.app');
     })->name('admin.layouts.app');
+
     Route::resource('members', UsersController::class);
+
+    Route::resource('society',SocietyController::class);
 });
 
 

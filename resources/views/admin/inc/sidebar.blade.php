@@ -70,7 +70,7 @@
                         </ul>
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="dashboard-analytics.html" class="nav-link" data-key="t-analytics"
+                                <a href="{{ route('society.index') }}" class="nav-link" data-key="t-analytics"
                                     style="font-size: 15px;">
                                     Society </a>
                             </li>
