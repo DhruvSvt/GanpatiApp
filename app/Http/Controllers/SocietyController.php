@@ -20,7 +20,7 @@ class SocietyController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.society.create');
     }
 
     /**
