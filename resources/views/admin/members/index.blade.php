@@ -1,4 +1,4 @@
-@extends('admin.layouts.app',['title' => 'Members Create'])
+@extends('admin.layouts.app',['title' => 'Members Details'])
 @section('content')
 <div class="row">
     <div class="col-xl-12">
