@@ -12,7 +12,8 @@ class SocietyController extends Controller
      */
     public function index()
     {
-        return view('admin.society.index');
+        $societies = Society::all();
+        return view('admin.society.index',compact('societies'));
     }
 
     /**
@@ -28,7 +29,16 @@ class SocietyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'total_appartments' => 'required',
+            'city' => 'required',
+            'address' => 'required'
+        ]);
+
+        Society::create($request->post());
+
+        return redirect()->route('society.index')->with('message','Data Added Successfully');
     }
 
     /**
