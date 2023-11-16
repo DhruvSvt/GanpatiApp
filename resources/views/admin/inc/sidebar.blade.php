@@ -53,7 +53,7 @@
                 <!-- End Dashboard Menu -->
 
                 <!-- Admin Menu -->
-
+                @if (Auth()->user()->hasRole('admin'))
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="#sidebarAdmins" data-bs-toggle="collapse" role="button"
                         aria-expanded="false" aria-controls="sidebarAdmins">
@@ -77,6 +77,7 @@
                         </ul>
                     </div>
                 </li>
+                @endif
                 <!-- End Admin Menu -->
 
             </ul>
