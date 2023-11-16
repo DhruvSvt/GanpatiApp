@@ -78,6 +78,32 @@
                     </div>
                 </li>
                 @endif
+
+                @if (Auth()->user()->hasRole('secretary'))
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="#sidebarAdmins" data-bs-toggle="collapse" role="button"
+                        aria-expanded="false" aria-controls="sidebarAdmins">
+                        <i class="ri-user-settings-fill"></i> <span data-key="t-dashboards"
+                            style="font-size: 18px">Secretary</span>
+                    </a>
+                    <div class="collapse menu-dropdown" id="sidebarAdmins">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="" class="nav-link" data-key="t-analytics"
+                                    style="font-size: 15px;">
+                                    Guard </a>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="" class="nav-link" data-key="t-analytics"
+                                    style="font-size: 15px;">
+                                    Resident </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                @endif
                 <!-- End Admin Menu -->
 
             </ul>

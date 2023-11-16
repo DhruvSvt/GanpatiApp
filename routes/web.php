@@ -33,8 +33,10 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
         return view('admin.layouts.app');
     })->name('admin.layouts.app');
 
+    // -------------------------Members Routes-------------------------
     Route::resource('members', UsersController::class);
-
+    
+    // -------------------------Society Routes-------------------------
     Route::resource('society', SocietyController::class);
 });
 
