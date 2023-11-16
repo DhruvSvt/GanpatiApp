@@ -19,7 +19,6 @@
                                     <th scope="col">Phone</th>
                                     <th scope="col">Email</th>
                                     <th scope="col">Society</th>
-                                    <th scope="col">Appartment No</th>
                                     <th scope="col">User ID</th>
                                     <th scope="col">Role</th>
                                 </tr>
@@ -31,7 +30,6 @@
                                     <td>{{ $member->phone }}</td>
                                     <td>{{ $member->email }}</td>
                                     <td>{{ $member->society }}</td>
-                                    <td>{{ $member->appartment_no }}</td>
                                     <td>{{ $member->user_id }}</td>
                                     <td>{{ $member->role->display_name }}</td>
                                 </tr>

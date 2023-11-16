@@ -23,7 +23,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        $roles = Roles::all();
+        $roles = Roles::limit(3)->get();
         return view('admin.members.create', compact('roles'));
     }
 
@@ -40,7 +40,6 @@ class UsersController extends Controller
             'password' => 'required',
             'user_id' => 'unique:users,user_id',
             'society' => 'required',
-            'appartment_no' => 'required',
             'role_id' => 'required',
         ]);
 

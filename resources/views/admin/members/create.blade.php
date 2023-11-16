@@ -83,18 +83,6 @@
                             <!--end col-->
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="" class="form-label">Appartment No.</label><span
-                                        class="text-danger">*</span>
-                                    <input type="text" class="form-control" placeholder="Enter the Appartment Number"
-                                        name="appartment_no">
-                                </div>
-                                @error('appartment')
-                                <p class="text-danger">{{ $message }}</p>
-                                @enderror
-                            </div>
-                            <!--end col-->
-                            <div class="col-md-6">
-                                <div class="mb-3">
                                     <label for="ForminputState" class="form-label">Role</label><span
                                         class="text-danger">*</span>
                                     <select id="ForminputState" class="form-select" data-choices=""
