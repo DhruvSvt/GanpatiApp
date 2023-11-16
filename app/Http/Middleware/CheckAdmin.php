@@ -23,9 +23,5 @@ class CheckAdmin
             }
         }
         abort(403,'Access denied');
-        // if (!session()->has('IsAdmin')) {
-        //     return redirect('/login');
-        // }
-        // return $next($request);
     }
 }

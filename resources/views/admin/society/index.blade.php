@@ -16,7 +16,7 @@
                             <thead class="table-light">
                                 <tr class="col-8">
                                     <th scope="col" class="col-2">Society Name</th>
-                                    <th scope="col" class="col-2">No of Appartment</th>
+                                    <th scope="col" class="col-2">No of Appartments</th>
                                     <th scope="col" class="col-2">City</th>
                                     <th scope="col" class="col-2">Address</th>
                                 </tr>
