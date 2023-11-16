@@ -18,17 +18,19 @@ use Illuminate\Support\Facades\Auth;
 */
 
 
-Route::get('/login', [LoginController::class, 'index'])->name('login');
-
 Route::get('/', function () {
-    // return view('welcome');
-    return view('admin.layouts.app');
-});
-Route::resource('members', UsersController::class);
-
-Route::middleware([CheckAdmin::class])->group(function () {
-});
+    return redirect(route('admin.layouts.app'));
+})->middleware('auth');
 
 Auth::routes();
+
+Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
+    Route::get('/', function () {
+        // return view('welcome');
+        return view('admin.layouts.app');
+    })->name('admin.layouts.app');
+    Route::resource('members', UsersController::class);
+});
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
