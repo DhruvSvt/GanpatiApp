@@ -41,6 +41,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
 
     // -------------------------Society Routes-------------------------
     Route::resource('society', SocietyController::class);
+    Route::post('society/status', [SocietyController::class, 'status'])->name('society.status');
 });
 
 

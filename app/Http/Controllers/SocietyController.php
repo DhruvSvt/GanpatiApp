@@ -13,7 +13,7 @@ class SocietyController extends Controller
     public function index()
     {
         $societies = Society::all();
-        return view('admin.society.index',compact('societies'));
+        return view('admin.society.index', compact('societies'));
     }
 
     /**
@@ -38,7 +38,7 @@ class SocietyController extends Controller
 
         Society::create($request->post());
 
-        return redirect()->route('society.index')->with('message','Data Added Successfully');
+        return redirect()->route('society.index')->with('message', 'Data Added Successfully');
     }
 
     /**
@@ -71,5 +71,14 @@ class SocietyController extends Controller
     public function destroy(Society $society)
     {
         //
+    }
+
+    public function status(Request $request)
+    {
+        $society = Society::findOrFail($request->societyId);
+        $society->status = $request->status;
+        $society->save();
+
+        return redirect()->back();
     }
 }

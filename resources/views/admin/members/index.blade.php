@@ -38,7 +38,6 @@
                                             <input type="checkbox" class="form-check-input"
                                                 id="customSwitchsizemd" data-id="{{ $member->id }}" name="status" {{
                                                 $member->status == 1 ? 'checked' : '' }}>
-                                            {{-- <label class="form-check-label" for="customSwitchsizemd"></label> --}}
                                         </div>
                                     </td>
                                 </tr>

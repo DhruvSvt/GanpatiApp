@@ -19,6 +19,7 @@
                                     <th scope="col" class="col-2">No of Appartments</th>
                                     <th scope="col" class="col-2">City</th>
                                     <th scope="col" class="col-2">Address</th>
+                                    <th scope="col" class="col-2">Status</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -28,6 +29,13 @@
                                     <td>{{ $society->total_appartments }}</td>
                                     <td>{{ $society->city }}</td>
                                     <td>{{ $society->address }}</td>
+                                    <td>
+                                        <div class="form-check form-switch form-switch-md mb-3" dir="ltr">
+                                            <input type="checkbox" class="form-check-input" id="customSwitchsizemd"
+                                                data-id="{{ $society->id }}" name="status" {{ $society->status == 1 ?
+                                            'checked' : '' }}>
+                                        </div>
+                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -60,5 +68,27 @@
     }
             toastr.error("{{ session('error') }}");
     @endif
+</script>
+<script>
+    // Ajax Request
+    $(document).ready(function() {
+        $('.form-check-input').change(function() {
+            let status = $(this).prop('checked') === true ? 1 : 0;
+            let societyId = $(this).data('id');
+            $.ajax({
+                type: "POST", // Change this to POST
+                dataType: "json",
+                url: '{{ route('society.status') }}',
+                data: {
+                    '_token': '{{ csrf_token() }}', // Add the CSRF token
+                    'status': status,
+                    'societyId': societyId
+                },
+                success: function(data) {
+                    console.log(data.message);
+                }
+            });
+        });
+    });
 </script>
 @endsection
