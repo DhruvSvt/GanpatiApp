@@ -24,7 +24,6 @@ class GuardController extends Controller
     public function create()
     {
         $role = Roles::findOrFail(3);
-        // dd($roles);
         $societies = Society::all();
         return view('admin.societyGuard.create', compact('role', 'societies'));
     }
