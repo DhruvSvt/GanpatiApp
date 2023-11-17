@@ -83,7 +83,7 @@
             $.ajax({
                 type: "POST", // Change this to POST
                 dataType: "json",
-                url: '{{ route('status') }}',
+                url: '{{ route('members.status') }}',
                 data: {
                     '_token': '{{ csrf_token() }}', // Add the CSRF token
                     'status': status,
