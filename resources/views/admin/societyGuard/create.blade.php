@@ -9,7 +9,7 @@
 
             <div class="card-body">
                 <div class="live-preview">
-                    <form action="{{ route('members.store') }}" method="POST">
+                    <form action="{{ route('guard.store') }}" method="POST">
                         @csrf
                         <div class="row">
                             <div class="col-md-6">
@@ -96,22 +96,6 @@
                                 <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
-                            {{-- <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label for="ForminputState" class="form-label">Role</label><span
-                                        class="text-danger">*</span>
-                                    <select id="ForminputState" class="form-select" data-choices=""
-                                        data-choices-sorting="true" name="role_id">
-                                        <option selected="">Choose Role</option>
-                                        @foreach ($roles as $role )
-                                        <option value="{{ $role->id }}">{{ $role->display_name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                @error('role')
-                                <p class="text-danger">{{ $message }}</p>
-                                @enderror
-                            </div> --}}
                             <!--end col-->
                             <div class="col-lg-12">
                                 <div class="text-end">

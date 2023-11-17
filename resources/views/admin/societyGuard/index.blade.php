@@ -23,19 +23,18 @@
                                     <th scope="col">Role</th>
                                 </tr>
                             </thead>
-                            {{-- <tbody>
+                            <tbody>
                                 @foreach ($members as $member)
                                 <tr>
                                     <td>{{ $member->name }}</td>
                                     <td>{{ $member->phone }}</td>
                                     <td>{{ $member->email }}</td>
-                                    <td>{{ $member->society }}</td>
-                                    <td>{{ $member->appartment_no }}</td>
+                                    <td>{{ $member->society_name->name }}</td>
                                     <td>{{ $member->user_id }}</td>
                                     <td>{{ $member->role->display_name }}</td>
                                 </tr>
                                 @endforeach
-                            </tbody> --}}
+                            </tbody>
                         </table>
                         <!-- end table -->
                     </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Roles;
 use App\Models\Society;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class GuardController extends Controller
@@ -13,7 +14,8 @@ class GuardController extends Controller
      */
     public function index()
     {
-        return view('admin.societyGuard.index');
+        $members = User::where('role_id',3)->get();
+        return view('admin.societyGuard.index',compact('members'));
     }
 
     /**
@@ -24,7 +26,7 @@ class GuardController extends Controller
         $role = Roles::findOrFail(3);
         // dd($roles);
         $societies = Society::all();
-        return view('admin.societyGuard.create',compact('role','societies'));
+        return view('admin.societyGuard.create', compact('role', 'societies'));
     }
 
     /**
@@ -32,7 +34,20 @@ class GuardController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $request->validate([
+            'name' => 'required',
+            'phone' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+            'user_id' => 'unique:users,user_id',
+            'society' => 'required',
+        ]);
+        $request['role_id'] = 3;
+
+        User::create($request->post());
+
+        return redirect()->route('guard.index')->with('message', 'Data added Successfully');
     }
 
     /**
