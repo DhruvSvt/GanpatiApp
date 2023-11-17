@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GuardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SocietyController;
 use App\Http\Controllers\UsersController;
@@ -35,7 +36,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
 
     // -------------------------Members Routes-------------------------
     Route::resource('members', UsersController::class);
-    
+
     // -------------------------Society Routes-------------------------
     Route::resource('society', SocietyController::class);
 });
@@ -47,6 +48,9 @@ Route::middleware(['auth', 'secretary'])->prefix('secretary')->group(function ()
         // return view('welcome');
         return view('admin.layouts.app');
     })->name('admin.layouts.app');
+
+    // -------------------------Guard Routes-------------------------
+    Route::resource('guard', GuardController::class);
 });
 
 
