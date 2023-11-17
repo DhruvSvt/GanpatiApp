@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Resident;
+use App\Models\Roles;
+use App\Models\Society;
 use Illuminate\Http\Request;
 
 class ResidentController extends Controller
@@ -20,7 +22,8 @@ class ResidentController extends Controller
      */
     public function create()
     {
-        //
+        $societies = Society::all();
+        return view('admin.resident.create', compact('societies'));
     }
 
     /**
@@ -28,7 +31,7 @@ class ResidentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
