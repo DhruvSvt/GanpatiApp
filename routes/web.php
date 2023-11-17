@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\GuardController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ResidentController;
 use App\Http\Controllers\SocietyController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
@@ -51,6 +52,9 @@ Route::middleware(['auth', 'secretary'])->prefix('secretary')->group(function ()
 
     // -------------------------Guard Routes-------------------------
     Route::resource('guard', GuardController::class);
+
+    // -------------------------Resident Routes-------------------------
+    Route::resource('resident', ResidentController::class);
 });
 
 
