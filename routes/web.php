@@ -37,6 +37,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
 
     // -------------------------Members Routes-------------------------
     Route::resource('members', UsersController::class);
+    Route::post('/status', [UsersController::class, 'status'])->name('status');
 
     // -------------------------Society Routes-------------------------
     Route::resource('society', SocietyController::class);

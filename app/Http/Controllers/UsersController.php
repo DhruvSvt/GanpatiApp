@@ -81,4 +81,13 @@ class UsersController extends Controller
     {
         //
     }
+
+    public function status(Request $request)
+    {
+        $user = User::findOrFail($request->user_id);
+        $user->status = $request->status;
+        $user->save();
+
+        return redirect()->back();
+    }
 }
