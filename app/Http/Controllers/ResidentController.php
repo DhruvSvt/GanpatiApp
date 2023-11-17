@@ -45,7 +45,7 @@ class ResidentController extends Controller
 
         $request['role_id'] = 4;
 
-        Resident::create($request->post());
+        Resident::create($request->all());
 
         return redirect()->route('resident.index')->with('message', 'Data added Successfully');
 

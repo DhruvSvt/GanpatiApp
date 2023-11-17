@@ -18,6 +18,7 @@ class Resident extends Model
         'society',
         'appartment_no',
         'resident_type',
+        'role_id',
     ];
 
     public function society_name()

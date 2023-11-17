@@ -95,7 +95,8 @@
                             <!--end col-->
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label class="form-label">Residentinal Type</label><span class="text-danger">*</span>
+                                    <label class="form-label">Residentinal Type</label><span
+                                        class="text-danger">*</span>
                                     <select id="ForminputState" class="form-select" data-choices=""
                                         data-choices-sorting="true" name="resident_type">
                                         <option selected="">Choose Residentinal Type</option>
