@@ -53,6 +53,11 @@ class User extends Authenticatable
         return $this->belongsTo(Roles::class, 'role_id');
     }
 
+    public function society_name()
+    {
+        return $this->belongsTo(Society::class,'society');
+    }
+
     public function hasRole($role)
     {
         if ($this->role_id === Roles::where('name', $role)->first()->id) {
