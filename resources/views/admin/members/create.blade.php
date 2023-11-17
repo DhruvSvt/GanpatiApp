@@ -68,13 +68,18 @@
                                 <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
-
                             <!--end col-->
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="" class="form-label">Society</label><span class="text-danger">*</span>
-                                    <input type="text" class="form-control" placeholder="Enter the Society Name"
-                                        name="society">
+                                    <label for="ForminputState" class="form-label">Society</label><span
+                                        class="text-danger">*</span>
+                                    <select id="ForminputState" class="form-select" data-choices=""
+                                        data-choices-sorting="true" name="society">
+                                        <option selected="">Choose Society</option>
+                                        @foreach ($societies as $society )
+                                        <option value="{{ $society->id }}">{{ $society->name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 @error('society')
                                 <p class="text-danger">{{ $message }}</p>

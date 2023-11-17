@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Roles;
+use App\Models\Society;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -24,7 +25,8 @@ class UsersController extends Controller
     public function create()
     {
         $roles = Roles::limit(3)->get();
-        return view('admin.members.create', compact('roles'));
+        $societies = Society::all();
+        return view('admin.members.create', compact('roles','societies'));
     }
 
     /**
