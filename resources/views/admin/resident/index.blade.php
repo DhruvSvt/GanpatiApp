@@ -19,22 +19,24 @@
                                     <th scope="col">Phone</th>
                                     <th scope="col">Email</th>
                                     <th scope="col">Society</th>
-                                    <th scope="col">User ID</th>
-                                    <th scope="col">Role</th>
+                                    <th scope="col">Appartment No.</th>
+                                    <th scope="col">Resident ID</th>
+                                    <th scope="col">Resident Type</th>
                                 </tr>
                             </thead>
-                            {{-- <tbody>
-                                @foreach ($members as $member)
+                            <tbody>
+                                @foreach ($residents as $resident)
                                 <tr>
-                                    <td>{{ $member->name }}</td>
-                                    <td>{{ $member->phone }}</td>
-                                    <td>{{ $member->email }}</td>
-                                    <td>{{ $member->society_name->name ?? '' }}</td>
-                                    <td>{{ $member->user_id }}</td>
-                                    <td>{{ $member->role->display_name }}</td>
+                                    <td>{{ $resident->name }}</td>
+                                    <td>{{ $resident->phone }}</td>
+                                    <td>{{ $resident->email }}</td>
+                                    <td>{{ $resident->society_name->name ?? '' }}</td>
+                                    <td>{{ $resident->appartment_no }}</td>
+                                    <td>{{ $resident->resident_id }}</td>
+                                    <td>{{ $resident->resident_type }}</td>
                                 </tr>
                                 @endforeach
-                            </tbody> --}}
+                            </tbody>
                         </table>
                         <!-- end table -->
                     </div>

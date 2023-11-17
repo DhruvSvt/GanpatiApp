@@ -14,7 +14,8 @@ class ResidentController extends Controller
      */
     public function index()
     {
-        return view('admin.resident.index');
+        $residents = Resident::all();
+        return view('admin.resident.index',compact('residents'));
     }
 
     /**
@@ -31,6 +32,22 @@ class ResidentController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+            'phone' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+            'resident_id' => 'unique:residents,resident_id',
+            'society' => 'required',
+            'appartment_no' => 'required',
+            'resident_type' => 'required',
+        ]);
+
+        $request['role_id'] = 4;
+
+        Resident::create($request->post());
+
+        return redirect()->route('resident.index')->with('message', 'Data added Successfully');
 
     }
 
