@@ -54,6 +54,7 @@ Route::middleware(['auth', 'secretary'])->prefix('secretary')->group(function ()
 
     // -------------------------Guard Routes-------------------------
     Route::resource('guard', GuardController::class);
+    Route::post('guard/status', [GuardController::class, 'status'])->name('guard.status');
 
     // -------------------------Resident Routes-------------------------
     Route::resource('resident', ResidentController::class);

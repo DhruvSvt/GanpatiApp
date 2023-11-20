@@ -21,6 +21,7 @@
                                     <th scope="col">Society</th>
                                     <th scope="col">User ID</th>
                                     <th scope="col">Role</th>
+                                    <th scope="col">Status</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -32,6 +33,13 @@
                                     <td>{{ $member->society_name->name }}</td>
                                     <td>{{ $member->user_id }}</td>
                                     <td>{{ $member->role->display_name }}</td>
+                                    <td>
+                                        <div class="form-check form-switch form-switch-md mb-3" dir="ltr">
+                                            <input type="checkbox" class="form-check-input" id="customSwitchsizemd"
+                                                data-id="{{ $member->id }}" name="status" {{ $member->status == 1 ?
+                                            'checked' : '' }}>
+                                        </div>
+                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -64,5 +72,28 @@
     }
             toastr.error("{{ session('error') }}");
     @endif
+</script>
+
+<script>
+    // Ajax Request
+    $(document).ready(function() {
+        $('.form-check-input').change(function() {
+            let status = $(this).prop('checked') === true ? 1 : 0;
+            let userId = $(this).data('id');
+            $.ajax({
+                type: "POST", // Change this to POST
+                dataType: "json",
+                url: '{{ route('guard.status') }}',
+                data: {
+                    '_token': '{{ csrf_token() }}', // Add the CSRF token
+                    'status': status,
+                    'user_id': userId
+                },
+                success: function(data) {
+                    console.log(data.message);
+                }
+            });
+        });
+    });
 </script>
 @endsection

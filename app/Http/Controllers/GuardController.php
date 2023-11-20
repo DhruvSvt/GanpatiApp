@@ -14,8 +14,8 @@ class GuardController extends Controller
      */
     public function index()
     {
-        $members = User::where('role_id',3)->get();
-        return view('admin.societyGuard.index',compact('members'));
+        $members = User::where('role_id', 3)->get();
+        return view('admin.societyGuard.index', compact('members'));
     }
 
     /**
@@ -79,5 +79,14 @@ class GuardController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function status(Request $request)
+    {
+        $user = User::findOrFail($request->user_id);
+        $user->status = $request->status;
+        $user->save();
+
+        return redirect()->back();
     }
 }
