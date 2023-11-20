@@ -4,10 +4,10 @@
         <!-- Dark Logo-->
         <a href="index.html" class="logo logo-dark">
             <span class="logo-sm">
-                <img src="assets/images/logo-sm.png" alt="" height="22">
+                <img src="{{ config('app.url') }}/assets/images/ganpati-logo.png" alt="" height="22">
             </span>
             <span class="logo-lg">
-                <img src="assets/images/logo-dark.png" alt="" height="17">
+                <img src="{{ config('app.url') }}/assets/images/ganpati-logo.png" alt="" height="17">
             </span>
         </a>
         <!-- Light Logo-->
@@ -43,7 +43,7 @@
                     <div class="collapse menu-dropdown" id="sidebarDashboards">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="dashboard-analytics.html" class="nav-link" data-key="t-analytics"
+                                <a href="{{ route('admin.index') }}" class="nav-link" data-key="t-analytics"
                                     style="font-size: 15px;">
                                     Analytics </a>
                             </li>

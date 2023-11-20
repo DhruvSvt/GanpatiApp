@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Auth;
 
 
 Route::get('/', function () {
-    return redirect(route('admin.layouts.app'));
+    return redirect(route('admin.index'));
 })->middleware('auth');
 
 Auth::routes();
@@ -32,8 +32,8 @@ Auth::routes();
 Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::get('/', function () {
         // return view('welcome');
-        return view('admin.layouts.app');
-    })->name('admin.layouts.app');
+        return view('admin.index');
+    })->name('admin.index');
 
     // -------------------------Members Routes-------------------------
     Route::resource('members', UsersController::class);
@@ -49,8 +49,8 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
 Route::middleware(['auth', 'secretary'])->prefix('secretary')->group(function () {
     Route::get('/', function () {
         // return view('welcome');
-        return view('admin.layouts.app');
-    })->name('admin.layouts.app');
+        return view('admin.index');
+    })->name('admin.index');
 
     // -------------------------Guard Routes-------------------------
     Route::resource('guard', GuardController::class);
