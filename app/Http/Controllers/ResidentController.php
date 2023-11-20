@@ -82,4 +82,13 @@ class ResidentController extends Controller
     {
         //
     }
+
+    public function status(Request $request)
+    {
+        $resident = Resident::findOrFail($request->resident_id);
+        $resident->status = $request->status;
+        $resident->save();
+
+        return redirect()->back();
+    }
 }

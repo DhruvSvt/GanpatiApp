@@ -22,6 +22,7 @@
                                     <th scope="col">Appartment No.</th>
                                     <th scope="col">Resident ID</th>
                                     <th scope="col">Resident Type</th>
+                                    <th scope="col">Status</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -34,6 +35,13 @@
                                     <td>{{ $resident->appartment_no }}</td>
                                     <td>{{ $resident->resident_id }}</td>
                                     <td>{{ $resident->resident_type }}</td>
+                                    <td>
+                                        <div class="form-check form-switch form-switch-md mb-3" dir="ltr">
+                                            <input type="checkbox" class="form-check-input" id="customSwitchsizemd"
+                                                data-id="{{ $resident->id }}" name="status" {{ $resident->status == 1 ?
+                                            'checked' : '' }}>
+                                        </div>
+                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -66,5 +74,28 @@
     }
             toastr.error("{{ session('error') }}");
     @endif
+</script>
+
+<script>
+    // Ajax Request
+    $(document).ready(function() {
+        $('.form-check-input').change(function() {
+            let status = $(this).prop('checked') === true ? 1 : 0;
+            let residentId = $(this).data('id');
+            $.ajax({
+                type: "POST", // Change this to POST
+                dataType: "json",
+                url: '{{ route('resident.status') }}',
+                data: {
+                    '_token': '{{ csrf_token() }}', // Add the CSRF token
+                    'status': status,
+                    'resident_id': residentId
+                },
+                success: function(data) {
+                    console.log(data.message);
+                }
+            });
+        });
+    });
 </script>
 @endsection

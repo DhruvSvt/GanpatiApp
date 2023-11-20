@@ -58,6 +58,7 @@ Route::middleware(['auth', 'secretary'])->prefix('secretary')->group(function ()
 
     // -------------------------Resident Routes-------------------------
     Route::resource('resident', ResidentController::class);
+    Route::post('resident/status', [ResidentController::class, 'status'])->name('resident.status');
 });
 
 
