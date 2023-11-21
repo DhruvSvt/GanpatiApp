@@ -20,6 +20,7 @@
                                     <th scope="col" class="col-2">City</th>
                                     <th scope="col" class="col-2">Address</th>
                                     <th scope="col" class="col-2">Status</th>
+                                    <th scope="col" class="col-2">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -34,6 +35,22 @@
                                             <input type="checkbox" class="form-check-input" id="customSwitchsizemd"
                                                 data-id="{{ $society->id }}" name="status" {{ $society->status == 1 ?
                                             'checked' : '' }}>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex">
+                                            <a href="{{ route('society.edit',$society->id) }}" class="action-icon">
+                                                <i class="ri-edit-box-line" style="font-size: 20px"></i>
+                                            </a>
+                                            {{-- <form action="{{ route('society.destroy', $society->id) }}" method="post">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit"
+                                                    onclick="return confirm('Are You Sure You Want to Delete !!')"
+                                                    class="action-icon">
+                                                    <i class="ri-delete-bin-line" style="font-size: 20px"></i>
+                                                </button>
+                                            </form> --}}
                                         </div>
                                     </td>
                                 </tr>

@@ -21,7 +21,9 @@ class SocietyController extends Controller
      */
     public function create()
     {
-        return view('admin.society.create');
+        $isCreate = true;
+        $title = 'Society Create';
+        return view('admin.society.create', compact('isCreate', 'title'));
     }
 
     /**
@@ -52,17 +54,31 @@ class SocietyController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Society $society)
+    public function edit($id)
     {
-        //
+
+        $society = Society::findOrFail($id);
+        $title = 'Society Edit';
+        $isEdit = true;
+        return view('admin.society.create', compact('isEdit', 'title', 'society'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Society $society)
+    public function update(Request $request,$id)
     {
-        //
+        $society = Society::findOrFail($id);
+        $request->validate([
+            'name' => 'required',
+            'total_appartments' => 'required',
+            'city' => 'required',
+            'address' => 'required'
+        ]);
+
+        $society->update($request->post());
+        
+        return redirect()->route('society.index')->with('message', 'Data Updated Successfully');
     }
 
     /**
