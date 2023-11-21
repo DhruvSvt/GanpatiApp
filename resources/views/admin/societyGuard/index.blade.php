@@ -46,7 +46,7 @@
                                             <a href="{{ route('guard.edit',$member->id) }}" class="action-icon">
                                                 <i class="ri-edit-box-line" style="font-size: 20px"></i>
                                             </a>
-                                            {{-- <form action="{{ route('guard.destroy', $member->id) }}" method="post">
+                                            <form action="{{ route('guard.destroy', $member->id) }}" method="post">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit"
@@ -54,7 +54,7 @@
                                                     class="action-icon">
                                                     <i class="ri-delete-bin-line" style="font-size: 20px"></i>
                                                 </button>
-                                            </form> --}}
+                                            </form>
                                         </div>
                                     </td>
                                 </tr>

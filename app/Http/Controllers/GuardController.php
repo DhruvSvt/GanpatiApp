@@ -96,7 +96,9 @@ class GuardController extends Controller
      */
     public function destroy(string $id)
     {
-       
+        $user = User::findOrFail($id);
+        $user->delete();
+        return redirect()->route('guard.index')->with('message', 'Data Deleted Successfully');
     }
 
     public function status(Request $request)
