@@ -22,6 +22,7 @@
                                     <th scope="col">User ID</th>
                                     <th scope="col">Role</th>
                                     <th scope="col">Status</th>
+                                    <th scope="col">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -38,6 +39,22 @@
                                             <input type="checkbox" class="form-check-input" id="customSwitchsizemd"
                                                 data-id="{{ $member->id }}" name="status" {{ $member->status == 1 ?
                                             'checked' : '' }}>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex">
+                                            <a href="{{ route('guard.edit',$member->id) }}" class="action-icon">
+                                                <i class="ri-edit-box-line" style="font-size: 20px"></i>
+                                            </a>
+                                            {{-- <form action="{{ route('guard.destroy', $member->id) }}" method="post">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit"
+                                                    onclick="return confirm('Are You Sure You Want to Delete !!')"
+                                                    class="action-icon">
+                                                    <i class="ri-delete-bin-line" style="font-size: 20px"></i>
+                                                </button>
+                                            </form> --}}
                                         </div>
                                     </td>
                                 </tr>

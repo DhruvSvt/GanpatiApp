@@ -25,7 +25,9 @@ class GuardController extends Controller
     {
         $role = Roles::findOrFail(3);
         $societies = Society::all();
-        return view('admin.societyGuard.create', compact('role', 'societies'));
+        $title = 'Guard Create';
+        $create = true;
+        return view('admin.societyGuard.create', compact('role', 'societies', 'title', 'create'));
     }
 
     /**
@@ -62,7 +64,12 @@ class GuardController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $member = User::findOrFail($id);
+        $role = Roles::findOrFail(3);
+        $societies = Society::whereStatus(true)->get();
+        $title = 'Guard Edit';
+        $edit = true;
+        return view('admin.societyGuard.create', compact('role', 'member', 'edit', 'title', 'societies'));
     }
 
     /**
@@ -70,7 +77,18 @@ class GuardController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $user = User::findOrFail($id);
+        $request->validate([
+            'name' => 'required',
+            'phone' => 'required',
+            'email' => 'required',
+            'user_id' => 'required',
+            'society' => 'required',
+        ]);
+        $request['role_id'] = 3;
+
+        $user->update($request->post());
+        return redirect()->route('guard.index')->with('message', 'Data Updated Successfully');
     }
 
     /**
@@ -78,7 +96,7 @@ class GuardController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+       
     }
 
     public function status(Request $request)
