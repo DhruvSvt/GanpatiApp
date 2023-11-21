@@ -77,16 +77,18 @@ class SocietyController extends Controller
         ]);
 
         $society->update($request->post());
-        
+
         return redirect()->route('society.index')->with('message', 'Data Updated Successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Society $society)
+    public function destroy($id)
     {
-        //
+        $society = Society::findOrFail($id);
+        $society->delete();
+        return redirect()->route('society.index')->with('message', 'Data Deleted Successfully');
     }
 
     public function status(Request $request)

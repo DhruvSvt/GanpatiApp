@@ -42,7 +42,7 @@
                                             <a href="{{ route('society.edit',$society->id) }}" class="action-icon">
                                                 <i class="ri-edit-box-line" style="font-size: 20px"></i>
                                             </a>
-                                            {{-- <form action="{{ route('society.destroy', $society->id) }}" method="post">
+                                            <form action="{{ route('society.destroy', $society->id) }}" method="post">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit"
@@ -50,7 +50,7 @@
                                                     class="action-icon">
                                                     <i class="ri-delete-bin-line" style="font-size: 20px"></i>
                                                 </button>
-                                            </form> --}}
+                                            </form>
                                         </div>
                                     </td>
                                 </tr>
