@@ -42,10 +42,18 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <a href="{{ route('members.edit',$member->id) }}" class="edit-icon">
-                                            <i class="ri-edit-box-line" style="font-size: 20px"></i>
-                                        </a>
-                                        <i class="ri-delete-bin-line" style="font-size: 20px"></i>
+                                        <div class="d-flex">
+                                            <a href="{{ route('members.edit',$member->id) }}" class="action-icon">
+                                                <i class="ri-edit-box-line" style="font-size: 20px"></i>
+                                            </a>
+                                            <form action="{{ route('members.destroy', $member->id) }}" method="post">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" onclick="return confirm('Are You Sure You Want to Delete !!')" class="action-icon">
+                                                    <i class="ri-delete-bin-line" style="font-size: 20px"></i>
+                                                </button>
+                                            </form>
+                                        </div>
                                     </td>
                                 </tr>
                                 @endforeach
