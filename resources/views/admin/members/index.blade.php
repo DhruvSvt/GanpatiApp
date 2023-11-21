@@ -22,6 +22,7 @@
                                     <th scope="col">User ID</th>
                                     <th scope="col">Role</th>
                                     <th scope="col">Status</th>
+                                    <th scope="col">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -35,10 +36,16 @@
                                     <td>{{ $member->role->display_name }}</td>
                                     <td>
                                         <div class="form-check form-switch form-switch-md mb-3" dir="ltr">
-                                            <input type="checkbox" class="form-check-input"
-                                                id="customSwitchsizemd" data-id="{{ $member->id }}" name="status" {{
-                                                $member->status == 1 ? 'checked' : '' }}>
+                                            <input type="checkbox" class="form-check-input" id="customSwitchsizemd"
+                                                data-id="{{ $member->id }}" name="status" {{ $member->status == 1 ?
+                                            'checked' : '' }}>
                                         </div>
+                                    </td>
+                                    <td>
+                                        <a href="{{ route('members.edit',$member->id) }}" class="edit-icon">
+                                            <i class="ri-edit-box-line" style="font-size: 20px"></i>
+                                        </a>
+                                        <i class="ri-delete-bin-line" style="font-size: 20px"></i>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -74,7 +81,6 @@
     @endif
 </script>
 <script>
-
     // Ajax Request
     $(document).ready(function() {
         $('.form-check-input').change(function() {

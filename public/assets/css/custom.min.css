@@ -1,2 +1,6 @@
-
-/*# sourceMappingURL=custom.min.css.map */
+.edit-icon {
+    color: black;
+}
+.edit-icon :hover {
+    color: #405189;
+}

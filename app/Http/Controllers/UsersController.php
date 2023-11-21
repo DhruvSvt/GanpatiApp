@@ -16,7 +16,7 @@ class UsersController extends Controller
     public function index()
     {
         $members = User::all();
-        return view('admin.members.index',compact('members'));
+        return view('admin.members.index', compact('members'));
     }
 
     /**
@@ -26,7 +26,9 @@ class UsersController extends Controller
     {
         $roles = Roles::limit(3)->get();
         $societies = Society::all();
-        return view('admin.members.create', compact('roles','societies'));
+        $isCreate = true;
+        $title = 'Members Create';
+        return view('admin.members.create', compact('roles', 'societies', 'isCreate', 'title'));
     }
 
     /**
@@ -47,7 +49,7 @@ class UsersController extends Controller
 
         User::create($request->post());
 
-        return redirect()->route('members.index')->with('message','Data added Successfully');
+        return redirect()->route('members.index')->with('message', 'Data added Successfully');
     }
 
     /**
@@ -63,7 +65,12 @@ class UsersController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $member = User::findOrFail($id);
+        $roles = Roles::limit(3)->get();
+        $societies = Society::all();
+        $isEdit = true;
+        $title = 'Members Edit';
+        return view('admin.members.create', compact('member', 'roles', 'societies', 'isEdit', 'title'));
     }
 
     /**
@@ -71,7 +78,18 @@ class UsersController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $user = User::findOrFail($id);
+        $request->validate([
+            'name' => 'required',
+            'phone' => 'required',
+            'email' => 'required',
+            'user_id' => 'required',
+            'society' => 'required',
+            'role_id' => 'required',
+        ]);
+
+        $user->update($request->post());
+        return redirect()->route('members.index')->with('message', 'Data updated Successfully');
     }
 
     /**
