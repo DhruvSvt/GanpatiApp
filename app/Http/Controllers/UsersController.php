@@ -26,9 +26,9 @@ class UsersController extends Controller
     {
         $roles = Roles::limit(3)->get();
         $societies = Society::all();
-        $isCreate = true;
+        $create = true;
         $title = 'Members Create';
-        return view('admin.members.create', compact('roles', 'societies', 'isCreate', 'title'));
+        return view('admin.members.create', compact('roles', 'societies', 'create', 'title'));
     }
 
     /**
@@ -68,9 +68,9 @@ class UsersController extends Controller
         $member = User::findOrFail($id);
         $roles = Roles::limit(3)->get();
         $societies = Society::all();
-        $isEdit = true;
+        $edit = true;
         $title = 'Members Edit';
-        return view('admin.members.create', compact('member', 'roles', 'societies', 'isEdit', 'title'));
+        return view('admin.members.create', compact('member', 'roles', 'societies', 'edit', 'title'));
     }
 
     /**
@@ -89,7 +89,7 @@ class UsersController extends Controller
         ]);
 
         $user->update($request->post());
-        return redirect()->route('members.index')->with('message', 'Data updated Successfully');
+        return redirect()->route('members.index')->with('message', 'Data Updated Successfully');
     }
 
     /**

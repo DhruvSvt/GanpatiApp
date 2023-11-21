@@ -21,9 +21,9 @@ class SocietyController extends Controller
      */
     public function create()
     {
-        $isCreate = true;
+        $create = true;
         $title = 'Society Create';
-        return view('admin.society.create', compact('isCreate', 'title'));
+        return view('admin.society.create', compact('create', 'title'));
     }
 
     /**
@@ -59,8 +59,8 @@ class SocietyController extends Controller
 
         $society = Society::findOrFail($id);
         $title = 'Society Edit';
-        $isEdit = true;
-        return view('admin.society.create', compact('isEdit', 'title', 'society'));
+        $edit = true;
+        return view('admin.society.create', compact('edit', 'title', 'society'));
     }
 
     /**

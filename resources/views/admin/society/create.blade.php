@@ -3,7 +3,7 @@
 <div class="row">
     <div class="col">
         <!-- **************************************************  Create Form ************************************************** -->
-        @isset($isCreate)
+        @isset($create)
         <div class="card">
             <div class="card-header align-items-center d-flex">
                 <h4 class="card-title mb-0 flex-grow-1">Create Society</h4>
@@ -75,7 +75,7 @@
         @endisset
 
         <!-- **************************************************  Edit Form ************************************************** -->
-        @isset($isEdit)
+        @isset($edit)
         <div class="card">
             <div class="card-header align-items-center d-flex">
                 <h4 class="card-title mb-0 flex-grow-1">Edit Society</h4>
