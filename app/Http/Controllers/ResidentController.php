@@ -15,7 +15,7 @@ class ResidentController extends Controller
     public function index()
     {
         $residents = Resident::all();
-        return view('admin.resident.index',compact('residents'));
+        return view('admin.resident.index', compact('residents'));
     }
 
     /**
@@ -48,7 +48,6 @@ class ResidentController extends Controller
         Resident::create($request->all());
 
         return redirect()->route('resident.index')->with('message', 'Data added Successfully');
-
     }
 
     /**
@@ -62,17 +61,36 @@ class ResidentController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Resident $resident)
+    public function edit($id)
     {
-        //
+        $resident = Resident::findOrFail($id);
+        $societies = Society::whereStatus(true)->get();
+        $title = 'Resident Edit';
+        $edit = true;
+        return view('admin.resident.create', compact('societies', 'title', 'edit', 'resident'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Resident $resident)
+    public function update(Request $request, $id)
     {
-        //
+        $resident = Resident::findOrFail($id);
+        $request->validate([
+            'name' => 'required',
+            'phone' => 'required',
+            'email' => 'required',
+            'resident_id' => 'required',
+            'society' => 'required',
+            'appartment_no' => 'required',
+            'resident_type' => 'required',
+        ]);
+
+        $request['role_id'] = 4;
+
+        $resident->update($request->all());
+
+        return redirect()->route('resident.index')->with('message', 'Data Updated Successfully');
     }
 
     /**
