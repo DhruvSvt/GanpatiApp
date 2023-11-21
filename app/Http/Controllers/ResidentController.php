@@ -96,9 +96,11 @@ class ResidentController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Resident $resident)
+    public function destroy($id)
     {
-        //
+        $resident = Resident::findOrFail($id);
+        $resident->delete();
+        return redirect()->route('resident.index')->with('message','Data Deleted Successfully');
     }
 
     public function status(Request $request)
