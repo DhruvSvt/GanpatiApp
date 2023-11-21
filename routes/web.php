@@ -1,12 +1,10 @@
 <?php
 
 use App\Http\Controllers\GuardController;
-use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ResidentController;
 use App\Http\Controllers\SocietyController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Middleware\CheckAdmin;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -31,7 +29,6 @@ Auth::routes();
 // ***************************** Admin Routes *****************************
 Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::get('/', function () {
-        // return view('welcome');
         return view('admin.index');
     })->name('admin.index');
 
@@ -48,9 +45,8 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
 // ***************************** Secretary Routes *****************************
 Route::middleware(['auth', 'secretary'])->prefix('secretary')->group(function () {
     Route::get('/', function () {
-        // return view('welcome');
         return view('admin.index');
-    })->name('admin.index');
+    })->name('secretary.index');
 
     // -------------------------Guard Routes-------------------------
     Route::resource('guard', GuardController::class);
@@ -60,6 +56,3 @@ Route::middleware(['auth', 'secretary'])->prefix('secretary')->group(function ()
     Route::resource('resident', ResidentController::class);
     Route::post('resident/status', [ResidentController::class, 'status'])->name('resident.status');
 });
-
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
