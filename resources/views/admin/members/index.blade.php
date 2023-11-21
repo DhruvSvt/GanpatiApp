@@ -49,7 +49,7 @@
                                             <form action="{{ route('members.destroy', $member->id) }}" method="post">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" onclick="return confirm('Are You Sure You Want to Delete !!')" class="action-icon">
+                                                <button type="submit" onclick="return confirm('Are You Sure You Want to Delete !!')" class="action-icon px-2">
                                                     <i class="ri-delete-bin-line" style="font-size: 20px"></i>
                                                 </button>
                                             </form>

@@ -51,7 +51,7 @@
                                                 @method('DELETE')
                                                 <button type="submit"
                                                     onclick="return confirm('Are You Sure You Want to Delete !!')"
-                                                    class="action-icon">
+                                                    class="action-icon px-2">
                                                     <i class="ri-delete-bin-line" style="font-size: 20px"></i>
                                                 </button>
                                             </form>
