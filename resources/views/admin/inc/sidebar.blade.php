@@ -128,22 +128,23 @@
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="#resident" data-bs-toggle="collapse" role="button"
                         aria-expanded="false" aria-controls="resident">
-                        <i class="ri-group-fill"></i> <span data-key="t-dashboards"
-                            style="font-size: 18px">Resident</span>
+                        <i class="ri-file-3-fill"></i> <span data-key="t-dashboards"
+                            style="font-size: 18px">Policy</span>
                     </a>
                     <div class="collapse menu-dropdown" id="resident">
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                                <a href="{{ route('resident.index') }}" class="nav-link" data-key="t-analytics"
-                                    style="font-size: 15px;">
-                                    View </a>
-                            </li>
-                        </ul>
+
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
                                 <a href="{{ route('resident.create') }}" class="nav-link" data-key="t-analytics"
                                     style="font-size: 15px;">
                                     Create </a>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="{{ route('resident.index') }}" class="nav-link" data-key="t-analytics"
+                                    style="font-size: 15px;">
+                                    View </a>
                             </li>
                         </ul>
                     </div>
