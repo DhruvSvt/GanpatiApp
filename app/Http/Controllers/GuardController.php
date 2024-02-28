@@ -24,8 +24,8 @@ class GuardController extends Controller
     public function create()
     {
         $role = Roles::findOrFail(3);
-        $societies = Society::all();
-        $title = 'Guard Create';
+        $societies = User::where('role_id', 2)->get();
+        $title = 'Agent Create';
         $create = true;
         return view('admin.societyGuard.create', compact('role', 'societies', 'title', 'create'));
     }
@@ -39,16 +39,27 @@ class GuardController extends Controller
         $request->validate([
             'name' => 'required',
             'phone' => 'required',
-            'email' => 'required',
+            'email' => 'required|unique:users,email',
             'password' => 'required',
             'user_id' => 'unique:users,user_id',
             'society' => 'required',
+            'commission' => 'required',
         ]);
-        $request['role_id'] = 3;
 
-        User::create($request->post());
+        $user = new User();
+        $user->name = $request->name;
+        $user->phone = $request->phone;
+        $user->email = $request->email;
+        $user->password = $request->password;
+        $user->society = $request->society;
+        $user->user_id = $request->user_id;
+        $user->commission = $request->commission;
+        $user->role_id = 3;
 
-        return redirect()->route('guard.index')->with('message', 'Data added Successfully');
+
+        $user->save();
+
+        return redirect()->route('guard.index')->with('message', 'Agent Created Successfully');
     }
 
     /**
@@ -66,7 +77,7 @@ class GuardController extends Controller
     {
         $member = User::findOrFail($id);
         $role = Roles::findOrFail(3);
-        $societies = Society::whereStatus(true)->get();
+        $societies = User::where('role_id', 2)->get();
         $title = 'Guard Edit';
         $edit = true;
         return view('admin.societyGuard.create', compact('role', 'member', 'edit', 'title', 'societies'));
@@ -81,14 +92,22 @@ class GuardController extends Controller
         $request->validate([
             'name' => 'required',
             'phone' => 'required',
-            'email' => 'required',
-            'user_id' => 'required',
+            'email' => 'required|unique:users,email,' . $id,
+            'user_id' => 'unique:users,user_id,' . $id,
             'society' => 'required',
+            'commission' => 'required',
         ]);
-        $request['role_id'] = 3;
 
-        $user->update($request->post());
-        return redirect()->route('guard.index')->with('message', 'Data Updated Successfully');
+        $user->name = $request->name;
+        $user->phone = $request->phone;
+        $user->email = $request->email;
+        $user->password = $request->password;
+        $user->society = $request->society;
+        $user->user_id = $request->user_id;
+        $user->commission = $request->commission;
+
+        $user->save();
+        return redirect()->route('guard.index')->with('message', 'Agent Updated Successfully');
     }
 
     /**
@@ -98,7 +117,7 @@ class GuardController extends Controller
     {
         $user = User::findOrFail($id);
         $user->delete();
-        return redirect()->route('guard.index')->with('message', 'Data Deleted Successfully');
+        return redirect()->route('guard.index')->with('message', 'Agent Deleted Successfully');
     }
 
     public function status(Request $request)

@@ -6,7 +6,7 @@
         @isset($create)
         <div class="card">
             <div class="card-header align-items-center d-flex">
-                <h4 class="card-title mb-0 flex-grow-1">Create Guard</h4>
+                <h4 class="card-title mb-0 flex-grow-1">Create Agent</h4>
             </div><!-- end card header -->
 
             <div class="card-body">
@@ -61,8 +61,8 @@
                             <!--end col-->
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="firstNameinput" class="form-label">User's ID</label>
-                                    <input type="text" class="form-control" placeholder="Enter User's ID"
+                                    <label for="firstNameinput" class="form-label">Agent Code</label>
+                                    <input type="text" class="form-control" placeholder="Enter Agent's Code"
                                         name="user_id">
                                 </div>
                                 @error('user_id')
@@ -72,11 +72,11 @@
                             <!--end col-->
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="ForminputState" class="form-label">Society</label><span
+                                    <label for="ForminputState" class="form-label">TL</label><span
                                         class="text-danger">*</span>
                                     <select id="ForminputState" class="form-select" data-choices=""
                                         data-choices-sorting="true" name="society">
-                                        <option selected="">Choose Society</option>
+                                        <option selected="">Choose TL</option>
                                         @foreach ($societies as $society )
                                         <option value="{{ $society->id }}">{{ $society->name }}</option>
                                         @endforeach
@@ -89,15 +89,16 @@
                             <!--end col-->
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="firstNameinput" class="form-label">Role</label>
-                                    <input type="text" class="form-control" value="{{ $role->display_name }}" disabled
-                                        name="role_id">
+                                    <label for="phonenumberInput" class="form-label">Commission (%)</label><span
+                                        class="text-danger">*</span>
+                                    <input type="num" class="form-control" placeholder="Enter the commission"
+                                        name="commission" required>
                                 </div>
-                                @error('role_id')
+                                @error('commission')
                                 <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
-                            <!--end col-->
+
                             <div class="col-lg-12">
                                 <div class="text-end">
                                     <button type="submit" class="btn btn-primary">Submit</button>
@@ -116,7 +117,7 @@
         @isset($edit)
         <div class="card">
             <div class="card-header align-items-center d-flex">
-                <h4 class="card-title mb-0 flex-grow-1">Edit Guard</h4>
+                <h4 class="card-title mb-0 flex-grow-1">Edit Agent</h4>
             </div><!-- end card header -->
 
             <div class="card-body">
@@ -151,8 +152,7 @@
                                 <div class="mb-3">
                                     <label for="emailidInput" class="form-label">Email Address</label><span
                                         class="text-danger">*</span>
-                                    <input type="email" class="form-control" value="{{ $member->email }}"
-                                        name="email">
+                                    <input type="email" class="form-control" value="{{ $member->email }}" name="email">
                                 </div>
                                 @error('email')
                                 <p class="text-danger">{{ $message }}</p>
@@ -172,7 +172,7 @@
                             <!--end col-->
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="firstNameinput" class="form-label">User's ID</label>
+                                    <label for="firstNameinput" class="form-label">Agent's Code</label>
                                     <input type="text" class="form-control" value="{{ $member->user_id }}"
                                         name="user_id">
                                 </div>
@@ -183,13 +183,14 @@
                             <!--end col-->
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="ForminputState" class="form-label">Society</label><span
+                                    <label for="ForminputState" class="form-label">Select TL</label><span
                                         class="text-danger">*</span>
                                     <select id="ForminputState" class="form-select" data-choices=""
                                         data-choices-sorting="true" name="society">
-                                        <option  value="{{ $member->society }}" selected="">{{ $member->society_name->name }}</option>
                                         @foreach ($societies as $society )
-                                        <option value="{{ $society->id }}">{{ $society->name }}</option>
+
+                                        <option value="{{ $society->id }}" @if($society->id==$member->society)selected
+                                            @endif >{{ $society->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -197,18 +198,15 @@
                                 <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
-                            <!--end col-->
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="firstNameinput" class="form-label">Role</label>
-                                    <input type="text" class="form-control" value="{{ $role->display_name }}" disabled
-                                        name="role_id">
+                                    <label for="phonenumberInput" class="form-label">Commission (%)</label><span class="text-danger">*</span>
+                                    <input type="num" class="form-control" placeholder="Enter the commission" name="commission" value="{{ $member->commission }}" required>
                                 </div>
-                                @error('role_id')
+                                @error('commission')
                                 <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
-                            <!--end col-->
                             <div class="col-lg-12">
                                 <div class="text-end">
                                     <button type="submit" class="btn btn-primary">Submit</button>

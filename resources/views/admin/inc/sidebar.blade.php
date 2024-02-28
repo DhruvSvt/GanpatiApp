@@ -76,7 +76,7 @@
                         </ul>
                     </div>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link menu-link" href="#society" data-bs-toggle="collapse" role="button"
                         aria-expanded="false" aria-controls="society">
                         <i class="ri-building-2-fill"></i> <span data-key="t-dashboards"
@@ -98,15 +98,15 @@
                             </li>
                         </ul>
                     </div>
-                </li>
-                @endif
+                </li> --}}
+                {{-- @endif --}}
 
                 {{-- @if (Auth()->user()->hasRole('secretary')) --}}
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="#guard" data-bs-toggle="collapse" role="button"
                         aria-expanded="false" aria-controls="guard">
                         <i class="ri-shield-user-fill"></i> <span data-key="t-dashboards"
-                            style="font-size: 18px">Guard</span>
+                            style="font-size: 18px">Agent</span>
                     </a>
                     <div class="collapse menu-dropdown" id="guard">
                         <ul class="nav nav-sm flex-column">
@@ -148,6 +148,7 @@
                         </ul>
                     </div>
                 </li>
+                @endif
                 {{-- @endif --}}
                 <!-- End Admin Menu -->
 

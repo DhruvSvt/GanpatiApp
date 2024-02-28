@@ -18,7 +18,7 @@ class CheckSecretary
     public function handle(Request $request, Closure $next): Response
     {
         if (Auth::check()) {
-            if (Auth::user()->role_id === Roles::where('name', 'secretary')->first()->id) {
+            if (Auth::user()->role_id === Roles::where('name', 'admin')->first()->id) {
                 return $next($request);
             }
         }

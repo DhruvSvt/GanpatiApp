@@ -53,9 +53,9 @@ class User extends Authenticatable
         return $this->belongsTo(Roles::class, 'role_id');
     }
 
-    public function society_name()
+    public function tl_name()
     {
-        return $this->belongsTo(Society::class,'society');
+        return $this->belongsTo(User::class,'society');
     }
 
     public function hasRole($role)

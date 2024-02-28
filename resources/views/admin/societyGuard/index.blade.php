@@ -3,7 +3,7 @@
 <div class="row">
     <div class="col-xl-12">
         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-            <h4 class="mb-sm-0">Guard Details</h4>
+            <h4 class="mb-sm-0">Agent Details</h4>
         </div>
         {{-- <a href="{{ route('guard.create') }}">
             <button type="button" class="btn btn-primary bg-gradient waves-effect waves-light mb-3">Create</button>
@@ -18,9 +18,8 @@
                                     <th scope="col">Name</th>
                                     <th scope="col">Phone</th>
                                     <th scope="col">Email</th>
-                                    <th scope="col">Society</th>
-                                    <th scope="col">User ID</th>
-                                    <th scope="col">Role</th>
+                                    <th scope="col">TL Name</th>
+                                    <th scope="col">Agent Code</th>
                                     <th scope="col">Status</th>
                                     <th scope="col">Actions</th>
                                 </tr>
@@ -31,9 +30,8 @@
                                     <td>{{ $member->name }}</td>
                                     <td>{{ $member->phone }}</td>
                                     <td>{{ $member->email }}</td>
-                                    <td>{{ $member->society_name->name }}</td>
+                                    <td>{{ $member->tl_name->name }}</td>
                                     <td>{{ $member->user_id }}</td>
-                                    <td>{{ $member->role->display_name }}</td>
                                     <td>
                                         <div class="form-check form-switch form-switch-md mb-3" dir="ltr">
                                             <input type="checkbox" class="form-check-input" id="customSwitchsizemd"
