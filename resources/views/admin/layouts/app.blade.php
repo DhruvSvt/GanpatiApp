@@ -4,9 +4,9 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>{{ $title ?? 'Ganpati Society Admin' }}</title>
+    <title>{{ $title ?? 'IIMF Insurance Provider' }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="Ganpati Society Admin" name="description" /> <!-- App favicon -->
+    <meta content="IIMF Insurance Provider" name="description" /> <!-- App favicon -->
     <link rel="shortcut icon" href="{{ config('app.url') }}/assets/images/cropped-favicon1-32x32.png">
 
     <!-- Layout config Js -->

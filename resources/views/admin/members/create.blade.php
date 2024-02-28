@@ -6,7 +6,7 @@
         @isset($create)
         <div class="card">
             <div class="card-header align-items-center d-flex">
-                <h4 class="card-title mb-0 flex-grow-1">Create Member</h4>
+                <h4 class="card-title mb-0 flex-grow-1">Create TL</h4>
             </div><!-- end card header -->
 
             <div class="card-body">
@@ -60,7 +60,7 @@
                                 @enderror
                             </div>
                             <!--end col-->
-                            <div class="col-md-6">
+                            {{-- <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="firstNameinput" class="form-label">User's ID</label>
                                     <input type="text" class="form-control" placeholder="Enter User's ID"
@@ -69,25 +69,10 @@
                                 @error('user_id')
                                 <p class="text-danger">{{ $message }}</p>
                                 @enderror
-                            </div>
+                            </div> --}}
                             <!--end col-->
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label for="ForminputState" class="form-label">Society</label><span
-                                        class="text-danger">*</span>
-                                    <select id="ForminputState" class="form-select" data-choices=""
-                                        data-choices-sorting="true" name="society">
-                                        <option selected="">Choose Society</option>
-                                        @foreach ($societies as $society )
-                                        <option value="{{ $society->id }}">{{ $society->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                @error('society')
-                                <p class="text-danger">{{ $message }}</p>
-                                @enderror
-                            </div>
-                            <!--end col-->
+
+                            {{-- <!--end col-->
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="ForminputState" class="form-label">Role</label><span
@@ -103,7 +88,7 @@
                                 @error('role')
                                 <p class="text-danger">{{ $message }}</p>
                                 @enderror
-                            </div>
+                            </div> --}}
                             <!--end col-->
                             <div class="col-lg-12">
                                 <div class="text-end">
@@ -123,7 +108,7 @@
         @isset($edit)
         <div class="card">
             <div class="card-header align-items-center d-flex">
-                <h4 class="card-title mb-0 flex-grow-1">Edit Member</h4>
+                <h4 class="card-title mb-0 flex-grow-1">Edit TL</h4>
             </div><!-- end card header -->
 
             <div class="card-body">
@@ -176,7 +161,7 @@
                                 @enderror
                             </div> --}}
                             <!--end col-->
-                            <div class="col-md-6">
+                            {{-- <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="firstNameinput" class="form-label">User's ID</label>
                                     <input type="text" class="form-control" value={{ $member->user_id }}
@@ -185,9 +170,9 @@
                                 @error('user_id')
                                 <p class="text-danger">{{ $message }}</p>
                                 @enderror
-                            </div>
+                            </div> --}}
                             <!--end col-->
-                            <div class="col-md-6">
+                            {{-- <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="ForminputState" class="form-label">Society</label><span
                                         class="text-danger">*</span>
@@ -203,9 +188,9 @@
                                 @error('society')
                                 <p class="text-danger">{{ $message }}</p>
                                 @enderror
-                            </div>
+                            </div> --}}
                             <!--end col-->
-                            <div class="col-md-6">
+                            {{-- <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="ForminputState" class="form-label">Role</label><span
                                         class="text-danger">*</span>
@@ -221,7 +206,7 @@
                                 @error('role')
                                 <p class="text-danger">{{ $message }}</p>
                                 @enderror
-                            </div>
+                            </div> --}}
                             <!--end col-->
                             <div class="col-lg-12">
                                 <div class="text-end">

@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Ganpati Society Admin</title>
+    <title>IIMF Insurance Provider</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Ganpati Society Admin" name="description" />
     <!-- App favicon -->
@@ -47,7 +47,7 @@
                                             style="max-height: 77px;">
                                     </a>
                                     <h5 class="text-primary mt-3">Welcome Back !</h5>
-                                    <p class="text-muted">Sign in to Ganpati Society Dashboard.</p>
+                                    <p class="text-muted">Sign in to IIMF Insurance Provider.</p>
                                 </div>
                                 <div class="p-2 mt-4">
                                     <form method="POST" action="{{ route('login') }}">

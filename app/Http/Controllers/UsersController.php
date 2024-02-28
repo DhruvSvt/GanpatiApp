@@ -15,7 +15,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $members = User::all();
+        $members = User::where('role_id', 2)->get();
         return view('admin.members.index', compact('members'));
     }
 
@@ -24,11 +24,11 @@ class UsersController extends Controller
      */
     public function create()
     {
-        $roles = Roles::limit(3)->get();
-        $societies = Society::all();
+        // $roles = Roles::limit(3)->get();
+        // $societies = Society::all();
         $create = true;
         $title = 'Members Create';
-        return view('admin.members.create', compact('roles', 'societies', 'create', 'title'));
+        return view('admin.members.create', compact('create', 'title'));
     }
 
     /**
@@ -42,14 +42,19 @@ class UsersController extends Controller
             'phone' => 'required',
             'email' => 'required',
             'password' => 'required',
-            'user_id' => 'unique:users,user_id',
-            'society' => 'required',
-            'role_id' => 'required',
         ]);
 
-        User::create($request->post());
+        $user = new User();
+        $user->name = $request->name;
+        $user->phone = $request->phone;
+        $user->email = $request->email;
+        $user->password = $request->password;
+        $user->role_id = 2;
 
-        return redirect()->route('members.index')->with('message', 'Data added Successfully');
+        $user->save();
+        // User::create($request->post());
+
+        return redirect()->route('members.index')->with('message', 'TL Created Successfully');
     }
 
     /**
@@ -83,13 +88,13 @@ class UsersController extends Controller
             'name' => 'required',
             'phone' => 'required',
             'email' => 'required',
-            'user_id' => 'required',
-            'society' => 'required',
-            'role_id' => 'required',
         ]);
 
-        $user->update($request->post());
-        return redirect()->route('members.index')->with('message', 'Data Updated Successfully');
+        $user->name = $request->name;
+        $user->phone = $request->phone;
+        $user->email = $request->email;
+        $user->update();
+        return redirect()->route('members.index')->with('message', 'TL Updated Successfully');
     }
 
     /**
@@ -99,7 +104,7 @@ class UsersController extends Controller
     {
         $user = User::findOrFail($id);
         $user->delete();
-        return redirect()->route('members.index')->with('message', 'Data Deleted Successfully');
+        return redirect()->route('members.index')->with('message', 'TL Deleted Successfully');
     }
 
     public function status(Request $request)
