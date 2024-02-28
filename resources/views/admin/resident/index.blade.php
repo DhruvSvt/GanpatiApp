@@ -18,10 +18,10 @@
                                     <th scope="col">Name</th>
                                     <th scope="col">Phone</th>
                                     <th scope="col">Email</th>
-                                    <th scope="col">Society</th>
-                                    <th scope="col">Appartment No.</th>
-                                    <th scope="col">Resident ID</th>
-                                    <th scope="col">Resident Type</th>
+                                    <th scope="col">Policy</th>
+                                    <th scope="col">Policy No.</th>
+                                    <th scope="col">Policy ID</th>
+                                    <th scope="col">Policy Type</th>
                                     <th scope="col">Status</th>
                                     <th scope="col">Actions</th>
                                 </tr>
