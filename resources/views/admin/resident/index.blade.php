@@ -3,7 +3,7 @@
 <div class="row">
     <div class="col-xl-12">
         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-            <h4 class="mb-sm-0">Policy Details</h4>
+            <h4 class="mb-sm-0">Policy Commision</h4>
         </div>
         {{-- <a href="{{ route('resident.create') }}">
             <button type="button" class="btn btn-primary bg-gradient waves-effect waves-light mb-3">Create</button>
@@ -15,13 +15,9 @@
                         <table class="table align-middle table-nowrap mb-0">
                             <thead class="table-light">
                                 <tr>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Phone</th>
-                                    <th scope="col">Email</th>
                                     <th scope="col">Policy</th>
-                                    <th scope="col">Policy No.</th>
-                                    <th scope="col">Policy ID</th>
-                                    <th scope="col">Policy Type</th>
+                                    <th scope="col">Commision</th>
+                                     
                                     <th scope="col">Status</th>
                                     <th scope="col">Actions</th>
                                 </tr>
@@ -30,12 +26,8 @@
                                 @foreach ($residents as $resident)
                                 <tr>
                                     <td>{{ $resident->name }}</td>
-                                    <td>{{ $resident->phone }}</td>
-                                    <td>{{ $resident->email }}</td>
-                                    <td>{{ $resident->society_name->name ?? '' }}</td>
-                                    <td>{{ $resident->appartment_no }}</td>
-                                    <td>{{ $resident->resident_id }}</td>
-                                    <td>{{ $resident->resident_type }}</td>
+                                    <td>{{ $resident->society }}</td>
+                                     
                                     <td>
                                         <div class="form-check form-switch form-switch-md mb-3" dir="ltr">
                                             <input type="checkbox" class="form-check-input" id="customSwitchsizemd"
@@ -48,15 +40,7 @@
                                             <a href="{{ route('resident.edit',$resident->id) }}" class="action-icon">
                                                 <i class="ri-edit-box-line" style="font-size: 20px"></i>
                                             </a>
-                                            <form action="{{ route('resident.destroy', $resident->id) }}" method="post">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit"
-                                                    onclick="return confirm('Are You Sure You Want to Delete !!')"
-                                                    class="action-icon px-2">
-                                                    <i class="ri-delete-bin-line" style="font-size: 20px"></i>
-                                                </button>
-                                            </form>
+                                            
                                         </div>
                                     </td>
                                 </tr>

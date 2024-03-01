@@ -2,7 +2,7 @@
     <!-- LOGO -->
     <div class="navbar-brand-box">
         <!-- Dark Logo-->
-        <a href="#" class="logo logo-dark">
+        <a href="{{ config('app.url') }}" class="logo logo-dark">
             <span class="logo-sm">
                 <img src="{{ config('app.url') }}/assets/images/imf-letters-01.png" alt="" height="22">
             </span>
@@ -33,23 +33,13 @@
             <ul class="navbar-nav" id="navbar-nav">
                 <li class="menu-title"><span data-key="t-menu">Menu</span></li>
                 <!-- Dashboard Menu -->
+                    <li class="nav-item">
+                            <a class="nav-link menu-link" href="{{ route('admin.index') }}">
+                                 <i class="ri-dashboard-2-line"></i> <span data-key="t-widgets">Dashboards</span>
+                            </a>
+                        </li>
 
-                <li class="nav-item">
-                    <a class="nav-link menu-link" href="#sidebarDashboards" data-bs-toggle="collapse" role="button"
-                        aria-expanded="false" aria-controls="sidebarDashboards">
-                        <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards"
-                            style="font-size: 18px">Dashboards</span>
-                    </a>
-                    <div class="collapse menu-dropdown" id="sidebarDashboards">
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                                <a href="{{ route('admin.index') }}" class="nav-link" data-key="t-analytics"
-                                    style="font-size: 15px;">
-                                    Analytics </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
+               
                 <!-- End Dashboard Menu -->
 
                 <!-- Admin Menu -->
@@ -76,11 +66,11 @@
                         </ul>
                     </div>
                 </li>
-                {{-- <li class="nav-item">
+                 <li class="nav-item">
                     <a class="nav-link menu-link" href="#society" data-bs-toggle="collapse" role="button"
                         aria-expanded="false" aria-controls="society">
                         <i class="ri-building-2-fill"></i> <span data-key="t-dashboards"
-                            style="font-size: 18px">Society</span>
+                            style="font-size: 18px">Policy</span>
                     </a>
                     <div class="collapse menu-dropdown" id="society">
                         <ul class="nav nav-sm flex-column">
@@ -98,7 +88,25 @@
                             </li>
                         </ul>
                     </div>
-                </li> --}}
+                </li> 
+                 <li class="nav-item">
+                                    <a class="nav-link menu-link" href="#resident" data-bs-toggle="collapse" role="button"
+                                        aria-expanded="false" aria-controls="resident">
+                                        <i class="ri-file-3-fill"></i> <span data-key="t-dashboards"
+                                            style="font-size: 18px">Policy Types</span>
+                                    </a>
+                                    <div class="collapse menu-dropdown" id="resident">
+                
+                                         
+                                        <ul class="nav nav-sm flex-column">
+                                            <li class="nav-item">
+                                                <a href="{{ route('resident.index') }}" class="nav-link" data-key="t-analytics"
+                                                    style="font-size: 15px;">
+                                                    Update </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li> 
                 {{-- @endif --}}
 
                 {{-- @if (Auth()->user()->hasRole('secretary')) --}}
@@ -125,30 +133,7 @@
                         </ul>
                     </div>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link menu-link" href="#resident" data-bs-toggle="collapse" role="button"
-                        aria-expanded="false" aria-controls="resident">
-                        <i class="ri-file-3-fill"></i> <span data-key="t-dashboards"
-                            style="font-size: 18px">Policy</span>
-                    </a>
-                    <div class="collapse menu-dropdown" id="resident">
-
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                                <a href="{{ route('resident.create') }}" class="nav-link" data-key="t-analytics"
-                                    style="font-size: 15px;">
-                                    Create </a>
-                            </li>
-                        </ul>
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                                <a href="{{ route('resident.index') }}" class="nav-link" data-key="t-analytics"
-                                    style="font-size: 15px;">
-                                    View </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
+                
                 @endif
                 {{-- @endif --}}
                 <!-- End Admin Menu -->

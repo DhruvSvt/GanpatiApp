@@ -50,6 +50,7 @@
     @include('admin.inc.footer')
 
     @yield('scripts')
+    
 </body>
 
 </html>

@@ -12,8 +12,8 @@
             <div class="card-body">
                 <div class="live-preview">
                     <div class="table-responsive">
-                        <table class="table align-middle table-nowrap mb-0">
-                            <thead class="table-light">
+                         <table id="example" class="table table-bordered dt-responsive nowrap table-striped align-middle" style="width:100%">
+                                        <thead>
                                 <tr>
                                     <th scope="col">Name</th>
                                     <th scope="col">Phone</th>

@@ -64,10 +64,10 @@ class ResidentController extends Controller
     public function edit($id)
     {
         $resident = Resident::findOrFail($id);
-        $societies = Society::whereStatus(true)->get();
-        $title = 'Resident Edit';
+        
+        $title = 'Commision Edit';
         $edit = true;
-        return view('admin.resident.create', compact('societies', 'title', 'edit', 'resident'));
+        return view('admin.resident.create', compact('title', 'edit', 'resident'));
     }
 
     /**
@@ -78,18 +78,9 @@ class ResidentController extends Controller
         $resident = Resident::findOrFail($id);
         $request->validate([
             'name' => 'required',
-            'phone' => 'required',
-            'email' => 'required',
-            'resident_id' => 'required',
             'society' => 'required',
-            'appartment_no' => 'required',
-            'resident_type' => 'required',
         ]);
-
-        $request['role_id'] = 4;
-
         $resident->update($request->all());
-
         return redirect()->route('resident.index')->with('message', 'Data Updated Successfully');
     }
 
@@ -108,7 +99,6 @@ class ResidentController extends Controller
         $resident = Resident::findOrFail($request->resident_id);
         $resident->status = $request->status;
         $resident->save();
-
         return redirect()->back();
     }
 }
