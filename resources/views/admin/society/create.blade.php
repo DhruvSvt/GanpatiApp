@@ -21,6 +21,9 @@
             <div class="card-header align-items-center d-flex">
                 <h4 class="card-title mb-0 flex-grow-1">Create Policy</h4>
             </div>
+            @if($errors->any())
+    {{ implode('', $errors->all('<div>:message</div>')) }}
+@endif
             <!-- end card header -->
             <div class="card-body">
                 <div class="live-preview">

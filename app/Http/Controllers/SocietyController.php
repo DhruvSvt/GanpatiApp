@@ -41,7 +41,7 @@ class SocietyController extends Controller
 
         $user = new Society();
 
-        $user->policy_type = $request->policy_type;
+        $user->policydd_type = $request->policy_type;
         $user->agent = $request->agent;
         $user->value = $request->value;
         $user->exp_date = $request->exp_date;
@@ -111,17 +111,13 @@ class SocietyController extends Controller
             'f_predisease'  => $request->f_predisease[$count],
             'policyID' => $policyID
           );
-
             Member::insert($data);
- }
-
-            // Session::flash('success', 'Policy Added Successfully');
-            // return redirect()->intended('/society/index');
-            return redirect()->route('society.index')->with
+        }
+            return redirect()->route('society.index')->with('message', 'Policy added successfully!');
 
         } catch (\Exception $e) {
-            $chammo = $e->getMessage();
-             return redirect()->route('society.create',compact('chammo'));
+            $em = $e->getMessage();
+            return back()->with('error', $em);
       }
     }
 
