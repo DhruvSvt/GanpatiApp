@@ -43,7 +43,7 @@
                             <div class="card-body p-4">
                                 <div class="text-center mt-2">
                                     <a href="{{ config('app.url') }}/" class="d-inline-block auth-logo">
-                                        <img src="{{ config('app.url') }}/assets/images/logo-new.png" alt=""
+                                        <img src="{{ config('app.url') }}/assets/images/imf-letters-01.png" alt=""
                                             style="max-height: 77px;">
                                     </a>
                                     <h5 class="text-primary mt-3">Welcome Back !</h5>
