@@ -8,6 +8,7 @@ use App\Models\Resident;
 use App\Models\Member;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Redirect;
 
 class SocietyController extends Controller
 {
@@ -28,7 +29,7 @@ class SocietyController extends Controller
         $agents = User::where(['role_id'=> 3, 'status' => 1])->orderBy('user_id', 'ASC')->get();
         $residents = Resident::where(['status' => 1])->orderBy('name', 'ASC')->get();
         $create = true;
-        $title = 'Society Create';
+        $title = 'Policy Create';
         return view('admin.society.create', compact('create','residents', 'title','agents'));
     }
 
@@ -116,8 +117,16 @@ class SocietyController extends Controller
             return redirect()->route('society.index')->with('message', 'Policy added successfully!');
 
         } catch (\Exception $e) {
-            $em = $e->getMessage();
-            return back()->with('error', $em);
+
+              Session::flash('error', 'YOGESH DON');
+              return back();
+
+            //return redirect()->route('society.create')->with('message', 'Data Updated Successfully');
+            //  Session::flash('message', "Special message goes here");
+            //  return redirect()->back()->with('success', 'your message,here');
+            // $em = $e->getMessage();
+            // return Redirect::back()->withErrors(['msg' => $em]);
+            // return back()->with('error', $em);
       }
     }
 
@@ -136,7 +145,7 @@ class SocietyController extends Controller
     {
 
         $society = Society::findOrFail($id);
-        $title = 'Society Edit';
+        $title = 'Policy Edit';
         $edit = true;
         return view('admin.society.create', compact('edit', 'title', 'society'));
     }

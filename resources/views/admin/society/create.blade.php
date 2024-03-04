@@ -16,14 +16,18 @@
 <div class="row">
     <div class="col">
         <!-- **************************************************  Create Form ************************************************** -->
+
+        {{ Session::get('error') }}
         @isset($create)
         <div class="card">
             <div class="card-header align-items-center d-flex">
-                <h4 class="card-title mb-0 flex-grow-1">Create Policy</h4>
+                <h4 class="card-title mb-0 flex-grow-1">Create Policy  {{ Session::get('error') }}</h4>
+                 @if(Session::has('error'))
+        {{ Session::get('error') }}
+        <p>hgdudheydhevdygevdvhevd</p>
+  @endif
             </div>
-            @if($errors->any())
-    {{ implode('', $errors->all('<div>:message</div>')) }}
-@endif
+
             <!-- end card header -->
             <div class="card-body">
                 <div class="live-preview">

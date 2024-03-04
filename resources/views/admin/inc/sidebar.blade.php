@@ -39,7 +39,7 @@
                             </a>
                         </li>
 
-               
+
                 <!-- End Dashboard Menu -->
 
                 <!-- Admin Menu -->
@@ -88,7 +88,7 @@
                             </li>
                         </ul>
                     </div>
-                </li> 
+                </li>
                  <li class="nav-item">
                                     <a class="nav-link menu-link" href="#resident" data-bs-toggle="collapse" role="button"
                                         aria-expanded="false" aria-controls="resident">
@@ -96,8 +96,8 @@
                                             style="font-size: 18px">Policy Types</span>
                                     </a>
                                     <div class="collapse menu-dropdown" id="resident">
-                
-                                         
+
+
                                         <ul class="nav nav-sm flex-column">
                                             <li class="nav-item">
                                                 <a href="{{ route('resident.index') }}" class="nav-link" data-key="t-analytics"
@@ -106,7 +106,7 @@
                                             </li>
                                         </ul>
                                     </div>
-                                </li> 
+                                </li>
                 {{-- @endif --}}
 
                 {{-- @if (Auth()->user()->hasRole('secretary')) --}}
@@ -133,7 +133,7 @@
                         </ul>
                     </div>
                 </li>
-                
+
                 @endif
                 {{-- @endif --}}
                 <!-- End Admin Menu -->
