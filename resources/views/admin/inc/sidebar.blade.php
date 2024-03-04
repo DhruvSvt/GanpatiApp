@@ -38,35 +38,7 @@
                                  <i class="ri-dashboard-2-line"></i> <span data-key="t-widgets">Dashboards</span>
                             </a>
                         </li>
-
-
-                <!-- End Dashboard Menu -->
-
-                <!-- Admin Menu -->
-                @if (Auth()->user()->hasRole('admin'))
-                <li class="nav-item">
-                    <a class="nav-link menu-link" href="#members" data-bs-toggle="collapse" role="button"
-                        aria-expanded="false" aria-controls="members">
-                        <i class="ri-group-fill"></i> <span data-key="t-dashboards" style="font-size: 18px">TL</span>
-                    </a>
-                    <div class="collapse menu-dropdown" id="members">
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                                <a href="{{ route('members.index') }}" class="nav-link" data-key="t-analytics"
-                                    style="font-size: 15px;">
-                                    View </a>
-                            </li>
-                        </ul>
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                                <a href="{{ route('members.create') }}" class="nav-link" data-key="t-analytics"
-                                    style="font-size: 15px;">
-                                    Create </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                 <li class="nav-item">
+ <li class="nav-item">
                     <a class="nav-link menu-link" href="#society" data-bs-toggle="collapse" role="button"
                         aria-expanded="false" aria-controls="society">
                         <i class="ri-building-2-fill"></i> <span data-key="t-dashboards"
@@ -89,7 +61,35 @@
                         </ul>
                     </div>
                 </li>
-                 <li class="nav-item">
+
+                <!-- End Dashboard Menu -->
+
+                <!-- Admin Menu -->
+                 @if(auth()->user()->role_id==1)
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="#members" data-bs-toggle="collapse" role="button"
+                        aria-expanded="false" aria-controls="members">
+                        <i class="ri-group-fill"></i> <span data-key="t-dashboards" style="font-size: 18px">TL</span>
+                    </a>
+                    <div class="collapse menu-dropdown" id="members">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="{{ route('members.index') }}" class="nav-link" data-key="t-analytics"
+                                    style="font-size: 15px;">
+                                    View </a>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="{{ route('members.create') }}" class="nav-link" data-key="t-analytics"
+                                    style="font-size: 15px;">
+                                    Create </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li class="nav-item">
                                     <a class="nav-link menu-link" href="#resident" data-bs-toggle="collapse" role="button"
                                         aria-expanded="false" aria-controls="resident">
                                         <i class="ri-file-3-fill"></i> <span data-key="t-dashboards"
@@ -107,10 +107,12 @@
                                         </ul>
                                     </div>
                                 </li>
-                {{-- @endif --}}
+                @endif
 
-                {{-- @if (Auth()->user()->hasRole('secretary')) --}}
-                <li class="nav-item">
+
+                 @if(auth()->user()->role_id==1 || auth()->user()->role_id==2)
+
+                 <li class="nav-item">
                     <a class="nav-link menu-link" href="#guard" data-bs-toggle="collapse" role="button"
                         aria-expanded="false" aria-controls="guard">
                         <i class="ri-shield-user-fill"></i> <span data-key="t-dashboards"
@@ -124,6 +126,7 @@
                                     Veiw </a>
                             </li>
                         </ul>
+                        @if(auth()->user()->role_id==1)
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
                                 <a href="{{ route('guard.create') }}" class="nav-link" data-key="t-analytics"
@@ -131,6 +134,7 @@
                                     Create </a>
                             </li>
                         </ul>
+                          @endif
                     </div>
                 </li>
 

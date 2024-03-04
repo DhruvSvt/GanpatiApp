@@ -1,9 +1,9 @@
-@extends('admin.layouts.app',['title' => 'Society Details'])
+@extends('admin.layouts.app',['title' => 'Policy Details'])
 @section('content')
 <div class="row">
     <div class="col-xl-12">
         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-            <h4 class="mb-sm-0">Society Details</h4>
+            <h4 class="mb-sm-0">Policy Details</h4>
         </div>
         {{-- <a href="{{ route('society.create') }}">
             <button type="button" class="btn btn-primary bg-gradient waves-effect waves-light mb-3">Create</button>
@@ -12,35 +12,44 @@
             <div class="card-body">
                 <div class="live-preview">
                     <div class="table-responsive">
-                        <table class="table align-middle table-nowrap mb-0">
-                            <thead class="table-light">
-                                <tr class="col-8">
-                                    <th scope="col" class="col-2">Society Name</th>
-                                    <th scope="col" class="col-2">No of Appartments</th>
-                                    <th scope="col" class="col-2">City</th>
-                                    <th scope="col" class="col-2">Address</th>
-                                    <th scope="col" class="col-2">Status</th>
+                         <table id="example" class="table table-bordered dt-responsive nowrap table-striped align-middle" style="width:100%">
+                                        <thead>
+                                <tr>
+                                    <th scope="col" class="col-2">Sr No</th>
+                                    <th scope="col" class="col-2">Policy Details</th>
+                                    <th scope="col" class="col-2">Agent Details</th>
+                                    <th scope="col" class="col-2">Expiry Date</th>
+                                    <th scope="col" class="col-2">Holder Details</th>
                                     <th scope="col" class="col-2">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($societies as $society)
                                 <tr>
-                                    <td>{{ $society->name }}</td>
-                                    <td>{{ $society->total_appartments }}</td>
-                                    <td>{{ $society->city }}</td>
-                                    <td>{{ $society->address }}</td>
-                                    <td>
-                                        <div class="form-check form-switch form-switch-md mb-3" dir="ltr">
-                                            <input type="checkbox" class="form-check-input" id="customSwitchsizemd"
-                                                data-id="{{ $society->id }}" name="status" {{ $society->status == 1 ?
-                                            'checked' : '' }}>
-                                        </div>
-                                    </td>
+                                    <td>{{ $loop->index }}</td>
+
+                                    <td><mark>{{ $society->policy }}</mark><br>
+                                    <b>Date</b> : {{ date('d-m-Y', strtotime($society->start_date)) }}<br>
+                                    <b>Policy Id</b> : #{{ $society->id }}<br>
+                                    <b>Agent Name</b> : {{ $society->value }}</td>
+
+                                    <td>{{ $society->agentname }}<br>
+                                    <b>Commision</b> : {{ $society->commision }}</td>
+
+                                    <td>{{ date('d-m-Y', strtotime($society->exp_date)) }}</td>
+
+                                    <td>{{ $society->proposer }}<br>
+                                    <b>Phone</b> : <a href="tel:{{ $society->mobile }}">{{ $society->mobile }}</a><br>
+                                    <b>Mail</b> : <a href="mailto:{{ $society->email }}">{{ $society->email }}</a></td>
+
                                     <td>
                                         <div class="d-flex">
-                                            <a href="{{ route('society.edit',$society->id) }}" class="action-icon">
+                                            {{-- <a href="{{ route('society.edit',$society->id) }}" class="action-icon">
                                                 <i class="ri-edit-box-line" style="font-size: 20px"></i>
+                                            </a> --}}
+
+                                            <a href="{{ route('society.view') }}/{{$society->id}}" class="btn btn-sm btn-primary">
+                                                View Policy
                                             </a>
                                             <form action="{{ route('society.destroy', $society->id) }}" method="post">
                                                 @csrf

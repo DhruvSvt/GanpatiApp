@@ -87,7 +87,7 @@
                                 @enderror
                             </div>
                             <!--end col-->
-                            <div class="col-md-6">
+                            {{-- <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="phonenumberInput" class="form-label">Commission (%)</label><span
                                         class="text-danger">*</span>
@@ -97,7 +97,7 @@
                                 @error('commission')
                                 <p class="text-danger">{{ $message }}</p>
                                 @enderror
-                            </div>
+                            </div> --}}
 
                             <div class="col-lg-12">
                                 <div class="text-end">
@@ -198,7 +198,7 @@
                                 <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
-                            <div class="col-md-6">
+                            {{-- <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="phonenumberInput" class="form-label">Commission (%)</label><span class="text-danger">*</span>
                                     <input type="num" class="form-control" placeholder="Enter the commission" name="commission" value="{{ $member->commission }}" required>
@@ -206,7 +206,7 @@
                                 @error('commission')
                                 <p class="text-danger">{{ $message }}</p>
                                 @enderror
-                            </div>
+                            </div> --}}
                             <div class="col-lg-12">
                                 <div class="text-end">
                                     <button type="submit" class="btn btn-primary">Submit</button>

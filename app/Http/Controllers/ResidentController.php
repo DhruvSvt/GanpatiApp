@@ -64,7 +64,7 @@ class ResidentController extends Controller
     public function edit($id)
     {
         $resident = Resident::findOrFail($id);
-        
+
         $title = 'Commision Edit';
         $edit = true;
         return view('admin.resident.create', compact('title', 'edit', 'resident'));

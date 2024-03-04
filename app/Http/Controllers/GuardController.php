@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use DB;
 use App\Models\Roles;
 use App\Models\Society;
 use App\Models\User;
@@ -14,7 +14,14 @@ class GuardController extends Controller
      */
     public function index()
     {
-        $members = User::where('role_id', 3)->get();
+        $members = User::select('users.*', DB::raw('SUM(societies.commision) As commision'))
+         ->leftJoin('societies', 'societies.agent', '=', 'users.user_id')
+         ->where('users.role_id',  3)
+         ->groupBy('users.user_id')
+         ->get();
+
+        // $members = User::Leftjoin('societies', 'societies.agent', '=', 'users.user_id')->where('role_id', 3)->select('users.*','societies.commision as commision')->groupBy('users.id')->get();
+
         return view('admin.societyGuard.index', compact('members'));
     }
 
@@ -43,7 +50,6 @@ class GuardController extends Controller
             'password' => 'required',
             'user_id' => 'unique:users,user_id',
             'society' => 'required',
-            'commission' => 'required',
         ]);
 
         $user = new User();
@@ -53,7 +59,7 @@ class GuardController extends Controller
         $user->password = $request->password;
         $user->society = $request->society;
         $user->user_id = $request->user_id;
-        $user->commission = $request->commission;
+        $user->commission = 0;
         $user->role_id = 3;
 
 
@@ -95,7 +101,6 @@ class GuardController extends Controller
             'email' => 'required|unique:users,email,' . $id,
             'user_id' => 'unique:users,user_id,' . $id,
             'society' => 'required',
-            'commission' => 'required',
         ]);
 
         $user->name = $request->name;
@@ -104,7 +109,7 @@ class GuardController extends Controller
         $user->password = $request->password;
         $user->society = $request->society;
         $user->user_id = $request->user_id;
-        $user->commission = $request->commission;
+        $user->commission = 0;
 
         $user->save();
         return redirect()->route('guard.index')->with('message', 'Agent Updated Successfully');

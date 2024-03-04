@@ -17,7 +17,20 @@ class SocietyController extends Controller
      */
     public function index()
     {
-        $societies = Society::all();
+        if(auth()->user()->role_id==1){
+$societies = Society::Join('residents', 'residents.id', '=', 'societies.policy_type')->leftJoin('users','users.user_id', '=', 'societies.agent')->select('societies.value','societies.id','societies.exp_date','societies.start_date','societies.mobile','societies.commision','societies.email','societies.status','societies.proposer','residents.name as policy','users.name as agentname')
+                 ->orderby('societies.id', 'DESC')->get();
+        }elseif(auth()->user()->role_id==2){
+            $userid = auth()->user()->id;
+            $societies = Society::Join('residents', 'residents.id', '=', 'societies.policy_type')->Join('users','users.user_id', '=', 'societies.agent')->select('societies.value','societies.id','societies.exp_date','societies.start_date','societies.mobile','societies.commision','societies.email','societies.status','societies.proposer','residents.name as policy','users.name as agentname')->where('users.society',$userid)
+                 ->orderby('societies.id', 'DESC')->get();
+        }else{
+            $userid = auth()->user()->user_id;
+            $societies = Society::Join('residents', 'residents.id', '=', 'societies.policy_type')->Join('users','users.user_id', '=', 'societies.agent')->select('societies.value','societies.id','societies.exp_date','societies.start_date','societies.mobile','societies.commision','societies.email','societies.status','societies.proposer','residents.name as policy','users.name as agentname')->where('societies.agent',$userid)
+                 ->orderby('societies.id', 'DESC')->get();
+
+        }
+
         return view('admin.society.index', compact('societies'));
     }
 
@@ -26,7 +39,19 @@ class SocietyController extends Controller
      */
     public function create()
     {
-        $agents = User::where(['role_id'=> 3, 'status' => 1])->orderBy('user_id', 'ASC')->get();
+        if(auth()->user()->role_id==1){
+            $agents = User::where(['role_id'=> 3, 'status' => 1])->orderBy('user_id', 'ASC')->get();
+        }elseif(auth()->user()->role_id==2){
+            $userid = auth()->user()->id;
+            $agents = User::where(['role_id'=> 3, 'society' => $userid])->orderBy('user_id', 'ASC')->get();
+        }else{
+            $userid = auth()->user()->id;
+            $agents = User::where(['id' => $userid])->orderBy('user_id', 'ASC')->get();
+        }
+               //Session::flash('success', 'Task successfully added!');
+
+       // echo Session::get('success');die;
+
         $residents = Resident::where(['status' => 1])->orderBy('name', 'ASC')->get();
         $create = true;
         $title = 'Policy Create';
@@ -42,7 +67,7 @@ class SocietyController extends Controller
 
         $user = new Society();
 
-        $user->policydd_type = $request->policy_type;
+        $user->policy_type = $request->policy_type;
         $user->agent = $request->agent;
         $user->value = $request->value;
         $user->exp_date = $request->exp_date;
@@ -117,9 +142,9 @@ class SocietyController extends Controller
             return redirect()->route('society.index')->with('message', 'Policy added successfully!');
 
         } catch (\Exception $e) {
-
-              Session::flash('error', 'YOGESH DON');
-              return back();
+            dd($e->getMessage());
+               Session::flash('error', 'Task successfully added!');
+               return redirect()->route('society.create');
 
             //return redirect()->route('society.create')->with('message', 'Data Updated Successfully');
             //  Session::flash('message', "Special message goes here");
@@ -149,6 +174,12 @@ class SocietyController extends Controller
         $edit = true;
         return view('admin.society.create', compact('edit', 'title', 'society'));
     }
+    public function view($id)
+    {
+
+            $societies = Society::select('*')->where('id',$id)->first();
+       return view('admin.society.view', compact('societies'));
+    }
 
     /**
      * Update the specified resource in storage.
@@ -175,6 +206,7 @@ class SocietyController extends Controller
     {
         $society = Society::findOrFail($id);
         $society->delete();
+        Member::where('policyID',$id)->delete();
         return redirect()->route('society.index')->with('message', 'Data Deleted Successfully');
     }
 
