@@ -18,6 +18,7 @@
                                     <th scope="col">Name</th>
                                     <th scope="col">Phone</th>
                                     <th scope="col">Email</th>
+                                    <th scope="col">PAN</th>
                                     {{-- <th scope="col">Society</th>
                                     <th scope="col">User ID</th> --}}
                                     {{-- <th scope="col">Role</th> --}}
@@ -31,6 +32,7 @@
                                     <td>{{ $member->name }}</td>
                                     <td>{{ $member->phone }}</td>
                                     <td>{{ $member->email }}</td>
+                                     <td>{{ $member->PAN }}</td>
                                     {{-- <td>{{ $member->society_name->name ?? '' }}</td>
                                     <td>{{ $member->user_id }}</td> --}}
                                     {{-- <td>{{ $member->role->display_name }}</td> --}}

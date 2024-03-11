@@ -20,6 +20,7 @@
                                     <th scope="col">Email</th>
                                     <th scope="col">TL Name</th>
                                     <th scope="col">Agent Code</th>
+                                    <th scope="col">PAN</th>
                                      <th scope="col">commision</th>
                                     <th scope="col">Status</th>
                                     <th scope="col">Actions</th>
@@ -33,6 +34,7 @@
                                     <td>{{ $member->email }}</td>
                                     <td>{{ $member->tl_name->name }}</td>
                                     <td>{{ $member->user_id }}</td>
+                                    <td>{{ $member->PAN }}</td>
                                     <td>{{ $member->commision }}</td>
                                     <td>
                                         <div class="form-check form-switch form-switch-md mb-3" dir="ltr">
