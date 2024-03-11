@@ -53,9 +53,20 @@
                                 <div class="mb-3">
                                     <label for="" class="form-label">Password</label><span class="text-danger">*</span>
                                     <input type="password" class="form-control" value=""
-                                        placeholder="Enter the password" name="password">
+                                        placeholder="Enter the password" name="password" required>
                                 </div>
                                 @error('password')
+                                <p class="text-danger">{{ $message }}</p>
+                                @enderror
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="" class="form-label">PAN Card</label><span class="text-danger">*</span>
+                                    <input type="text" class="form-control" value=""
+                                        placeholder="Enter PAN" name="PAN" required>
+                                </div>
+                                @error('PAN')
                                 <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
@@ -146,6 +157,16 @@
                                     <input type="email" class="form-control" value="{{ $member->email }}" name="email">
                                 </div>
                                 @error('email')
+                                <p class="text-danger">{{ $message }}</p>
+                                @enderror
+                            </div>
+                             <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="" class="form-label">PAN Card</label><span class="text-danger">*</span>
+                                    <input type="text" class="form-control" value="{{ $member->PAN }}"
+                                        placeholder="Enter PAN" name="PAN" required>
+                                </div>
+                                @error('PAN')
                                 <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>

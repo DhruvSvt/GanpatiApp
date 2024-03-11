@@ -46,6 +46,7 @@ class UsersController extends Controller
 
         $user = new User();
         $user->name = $request->name;
+         $user->PAN = $request->PAN;
         $user->phone = $request->phone;
         $user->email = $request->email;
         $user->password = $request->password;
@@ -92,6 +93,7 @@ class UsersController extends Controller
 
         $user->name = $request->name;
         $user->phone = $request->phone;
+         $user->PAN = $request->PAN;
         $user->email = $request->email;
         $user->update();
         return redirect()->route('members.index')->with('message', 'TL Updated Successfully');

@@ -50,6 +50,7 @@ class GuardController extends Controller
             'password' => 'required',
             'user_id' => 'unique:users,user_id',
             'society' => 'required',
+            'PAN' => 'required',
         ]);
 
         $user = new User();
@@ -59,6 +60,7 @@ class GuardController extends Controller
         $user->password = $request->password;
         $user->society = $request->society;
         $user->user_id = $request->user_id;
+        $user->PAN = $request->PAN;
         $user->commission = 0;
         $user->role_id = 3;
 
@@ -101,6 +103,7 @@ class GuardController extends Controller
             'email' => 'required|unique:users,email,' . $id,
             'user_id' => 'unique:users,user_id,' . $id,
             'society' => 'required',
+            'PAN' => 'required',
         ]);
 
         $user->name = $request->name;
@@ -109,6 +112,7 @@ class GuardController extends Controller
         $user->password = $request->password;
         $user->society = $request->society;
         $user->user_id = $request->user_id;
+        $user->PAN = $request->PAN;
         $user->commission = 0;
 
         $user->save();

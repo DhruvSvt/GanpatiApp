@@ -86,6 +86,16 @@
                                 <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
+                               <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="" class="form-label">PAN Card</label><span class="text-danger">*</span>
+                                    <input type="text" class="form-control" value=""
+                                        placeholder="Enter PAN" name="PAN" required>
+                                </div>
+                                @error('PAN')
+                                <p class="text-danger">{{ $message }}</p>
+                                @enderror
+                            </div>
                             <!--end col-->
                             {{-- <div class="col-md-6">
                                 <div class="mb-3">
@@ -195,6 +205,16 @@
                                     </select>
                                 </div>
                                 @error('society')
+                                <p class="text-danger">{{ $message }}</p>
+                                @enderror
+                            </div>
+                               <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="" class="form-label">PAN Card</label><span class="text-danger">*</span>
+                                    <input type="text" class="form-control" value="{{ $member->PAN }}"
+                                        placeholder="Enter PAN" name="PAN" required>
+                                </div>
+                                @error('PAN')
                                 <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
