@@ -41,7 +41,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
 
     // -------------------------Society Routes-------------------------
     Route::resource('society', SocietyController::class);
-    Route::get('society/view', [SocietyController::class, 'view'])->name('society.view');
+    Route::get('society/view/{id}', [SocietyController::class, 'view'])->name('society.view');
     Route::post('society/status', [SocietyController::class, 'status'])->name('society.status');
      Route::resource('guard', GuardController::class);
     Route::post('guard/status', [GuardController::class, 'status'])->name('guard.status');

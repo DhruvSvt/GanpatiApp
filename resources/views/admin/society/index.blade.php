@@ -48,7 +48,7 @@
                                                 <i class="ri-edit-box-line" style="font-size: 20px"></i>
                                             </a> --}}
 
-                                            <a href="{{ route('society.view') }}/{{$society->id}}" class="btn btn-sm btn-primary">
+                                            <a href="{{ route('society.view',$society->id) }}" class="btn btn-sm btn-primary">
                                                 View Policy
                                             </a>
                                             <form action="{{ route('society.destroy', $society->id) }}" method="post">

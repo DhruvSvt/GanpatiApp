@@ -177,8 +177,18 @@ $societies = Society::Join('residents', 'residents.id', '=', 'societies.policy_t
     public function view($id)
     {
 
-            $societies = Society::select('*')->where('id',$id)->first();
+        $societies = Society::Join('residents', 'residents.id', '=', 'societies.policy_type')->Join('users', 'users.user_id', '=', 'societies.agent')->Join('members', 'members.policyID', 'societies.id')->select('societies.*', 'residents.name as policy', 'users.name as agentname', 'members.*')->where('societies.id', $id)->get();
+        $title = 'Policy View';
        return view('admin.society.view', compact('societies'));
+    }
+
+
+
+    public function viewPolicy($id)
+    {
+
+        $societies = Society::select('*')->where('id', $id)->first();
+        return view('admin.society.view', compact('societies'));
     }
 
     /**

@@ -14,7 +14,7 @@ class GuardController extends Controller
      */
     public function index()
     {
-        $members = User::select('users.*', DB::raw('SUM(societies.commision) As commision'))
+        $members = User::select('users.*', DB::raw('SUM(societies.commision) As commision'), DB::raw('SUM(societies.value) As sale'))
          ->leftJoin('societies', 'societies.agent', '=', 'users.user_id')
          ->where('users.role_id',  3)
          ->groupBy('users.user_id')
