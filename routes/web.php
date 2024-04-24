@@ -66,3 +66,10 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
 });
 
 
+
+Route::get('/storage-link', function () {
+    $target = storage_path('app/public');
+    $link = public_path('/storage');
+    echo symlink($target, $link);
+    // echo "symbolic link created successfully";
+});
