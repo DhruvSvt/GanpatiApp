@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use App\Models\Roles;
 use App\Models\Society;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Schema;
 
 class UsersController extends Controller
 {
@@ -15,8 +17,36 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $members = User::where('role_id', 2)->get();
-        return view('admin.members.index', compact('members'));
+
+        $keyword = request()->keyword;
+        $rows = request()->rows ?? 25;
+
+        if ($rows == 'all') {
+            $rows = User::count();
+        }
+
+        // Get the table columns
+        $allColumns = Schema::getColumnListing((new User())->getTable());
+
+
+        $items = User::select('users.*', DB::raw('SUM(commissions.amount) As commision'),'u.name as director')->leftJoin('commissions', 'commissions.user', '=', 'users.id')->leftJoin('users as u', 'u.id', '=', 'users.society')
+        ->where('users.role_id',  2)
+        ->groupBy('users.id')->when(isset($keyword), function ($query) use ($keyword, $allColumns) {
+            $query->where(function ($query) use ($keyword, $allColumns) {
+                // Dynamically construct the search query
+                foreach ($allColumns as $column) {
+                    $query->orWhere(
+                        'users.' . $column,
+                        'LIKE',
+                        "%$keyword%"
+                    );
+                }
+            });
+        })
+            ->latest()
+            ->paginate($rows);
+        $title = 'View TL';
+        return view('admin.members.index', compact('items', 'title'));
     }
 
     /**
@@ -27,8 +57,9 @@ class UsersController extends Controller
         // $roles = Roles::limit(3)->get();
         // $societies = Society::all();
         $create = true;
-        $title = 'Members Create';
-        return view('admin.members.create', compact('create', 'title'));
+        $societies = User::where('role_id', 5)->where('status', 1)->get();
+        $title = 'TL Create';
+        return view('admin.members.create', compact('create', 'title', 'societies'));
     }
 
     /**
@@ -42,14 +73,16 @@ class UsersController extends Controller
             'phone' => 'required',
             'email' => 'required|unique:users,email',
             'password' => 'required',
+            'society' => 'required',
         ]);
 
         $user = new User();
         $user->name = $request->name;
-         $user->PAN = $request->PAN;
+        $user->PAN = $request->PAN;
         $user->phone = $request->phone;
         $user->email = $request->email;
-        $user->password = $request->password;
+        $user->password = Hash::make($request->password);
+        $user->society = $request->society;
         $user->role_id = 2;
 
         $user->save();
@@ -73,10 +106,21 @@ class UsersController extends Controller
     {
         $member = User::findOrFail($id);
         $roles = Roles::limit(3)->get();
-        $societies = Society::all();
+        $societies = User::where('role_id', 5)->where('status', 1)->get();
         $edit = true;
-        $title = 'Members Edit';
+        $title = 'TL Edit';
         return view('admin.members.create', compact('member', 'roles', 'societies', 'edit', 'title'));
+    }
+    public function getTl(Request $request)
+    {
+        $out = '';
+        $id = $request->d_id;
+        $societies = User::where('society', $id)->where('status', 1)->get();
+        foreach($societies as $row){
+            $out.= '<option value="'. $row->id. '">'. $row->name. ' (' . $row->id . ')</option>';
+        }
+
+        echo $out;
     }
 
     /**
@@ -88,12 +132,18 @@ class UsersController extends Controller
         $request->validate([
             'name' => 'required',
             'phone' => 'required',
-            'email' => 'required|unique:users,email',
+            'email' => 'required|unique:users,email,' . $id,
+            'PAN' => 'required',
+            'society' => 'required',
         ]);
+        if ($request->password != '') {
+            $user->password = Hash::make($request->password);
+        }
 
         $user->name = $request->name;
         $user->phone = $request->phone;
          $user->PAN = $request->PAN;
+        $user->society = $request->society;
         $user->email = $request->email;
         $user->update();
         return redirect()->route('members.index')->with('message', 'TL Updated Successfully');

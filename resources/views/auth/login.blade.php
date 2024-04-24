@@ -4,11 +4,11 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>IIMF Insurance Provider</title>
+    <title>Guruji IMF</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Ganpati Society Admin" name="description" />
     <!-- App favicon -->
-    <link rel="shortcut icon" href="{{ config('app.url') }}/assets/images/cropped-favicon1-32x32.png">
+    <link rel="shortcut icon" href="{{ config('app.url') }}/assets/images/logoicon.png">
     <!-- Layout config Js -->
     <script src="{{ config('app.url') }}/assets/js/layout.js"></script>
     <!-- Bootstrap Css -->
@@ -19,6 +19,7 @@
     <link href="{{ config('app.url') }}/assets/css/app.min.css" rel="stylesheet" type="text/css" />
     <!-- custom Css-->
     <link href="{{ config('app.url') }}/assets/css/custom.min.css" rel="stylesheet" type="text/css" />
+     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -43,11 +44,11 @@
                             <div class="card-body p-4">
                                 <div class="text-center mt-2">
                                     <a href="{{ config('app.url') }}/" class="d-inline-block auth-logo">
-                                        <img src="{{ config('app.url') }}/assets/images/logo-new.png" alt=""
-                                            style="max-height: 77px;">
+                                        <img src="{{ config('app.url') }}/assets/images/logo8.jpg" alt=""
+                                            style="max-height: 97px;">
                                     </a>
                                     <h5 class="text-primary mt-3">Welcome Back !</h5>
-                                    <p class="text-muted">Sign in to IIMF Insurance Provider.</p>
+                                    <p class="text-muted">Sign in to Guruji IMF.</p>
                                 </div>
                                 <div class="p-2 mt-4">
                                     <form method="POST" action="{{ route('login') }}">
@@ -86,7 +87,7 @@
                                             </div>
                                         </div>
                                         <div class="mt-4">
-                                            <button class="btn btn-success w-100" type="submit">Sign In</button>
+                                            <button class="btn btn-primary w-100" type="submit">Sign In</button>
                                         </div>
                                     </form>
                                 </div>

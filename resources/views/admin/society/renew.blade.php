@@ -58,8 +58,8 @@
                                             <a href="{{ route('society.view',$society->id) }}" class="btn btn-primary w-100 btn-sm ">
                                                 View Policy
                                             </a>
-                                             <a href="{{ route('society.approve',$society->id) }}" class="btn btn-success w-100 btn-sm mt-2">
-                                                Approve Policy
+                                             <a href="{{ route('society.renew',$society->id) }}" class="btn btn-warning w-100 btn-sm mt-2">
+                                                Renew Policy
                                             </a>
                                             {{-- <form action="{{ route('society.destroy', $society->id) }}" method="post">
                                                 @csrf

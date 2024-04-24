@@ -4,19 +4,19 @@
         <!-- Dark Logo-->
         <a href="{{ config('app.url') }}" class="logo logo-dark">
             <span class="logo-sm">
-                <img src="{{ config('app.url') }}/assets/images/imf-letters-01.png" alt="" height="22">
+                <img src="{{ config('app.url') }}/assets/images/logo-on-removebg-preview.png" alt="" height="22">
             </span>
             <span class="logo-lg">
-                <img src="{{ config('app.url') }}/assets/images/imf-letters-01.png" alt="" height="17">
+                <img src="{{ config('app.url') }}/assets/images/logo-on-removebg-preview.png" alt="" height="17">
             </span>
         </a>
         <!-- Light Logo-->
         <a href="#" class="logo logo-light">
             <span class="logo-sm">
-                <img src="{{ config('app.url') }}/assets/images/imf-letters-01.png" alt="" height="35">
+                <img src="{{ config('app.url') }}/assets/images/logo-on-removebg-preview.png" alt="" height="35">
             </span>
             <span class="logo-lg">
-                <img src="{{ config('app.url') }}/assets/images/imf-letters-01.png" alt="" height="40">
+                <img src="{{ config('app.url') }}/assets/images/logo-on-removebg-preview.png" alt="" height="30">
             </span>
         </a>
         <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover"
@@ -28,35 +28,92 @@
     <div id="scrollbar">
         <div class="container-fluid">
 
-            <div id="two-column-menu">
+            <div id="two-column-menu" style="    border-bottom: 1px solid #ddd;
+    background: aliceblue;
+    margin: 0 !important;">
+                <button type="button" class="btn" id="page-header-user-dropdown" data-bs-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    <span class="d-flex align-items-center">
+                        <img class="header-profile-user"
+                            src="{{ config('app.url') }}/assets/images/user-badge-vector-removebg-preview.png"
+                            alt="Header Avatar">
+                        <span class="text-start ms-xl-2">
+                            <span
+                                class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">{{ auth()->user()->name }}
+                                Panel</span>
+                            <span
+                                class="d-none d-xl-block ms-1 fs-12 user-name-sub-text">{{ auth()->user()->role->display_name }}</span>
+                        </span>
+                    </span>
+                </button>
             </div>
             <ul class="navbar-nav" id="navbar-nav">
-                <li class="menu-title"><span data-key="t-menu">Menu</span></li>
+
                 <!-- Dashboard Menu -->
-                    <li class="nav-item">
-                            <a class="nav-link menu-link" href="{{ route('admin.index') }}">
-                                 <i class="ri-dashboard-2-line"></i> <span data-key="t-widgets">Dashboards</span>
-                            </a>
-                        </li>
- <li class="nav-item">
+                <li class="menu-title"><span data-key="t-menu">Menu</span></li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="{{ route('admin.index') }}">
+                        <i class="ri-dashboard-2-line"></i> <span data-key="t-widgets">Dashboards</span>
+                    </a>
+                </li>
+                <li class="menu-title"><span data-key="t-menu">Policy</span></li>
+                <li class="nav-item">
                     <a class="nav-link menu-link" href="#society" data-bs-toggle="collapse" role="button"
                         aria-expanded="false" aria-controls="society">
-                        <i class="ri-building-2-fill"></i> <span data-key="t-dashboards"
-                            style="font-size: 18px">Policy</span>
+                        <i class="ri-building-2-line"></i> <span data-key="t-dashboards">Policy</span>
                     </a>
                     <div class="collapse menu-dropdown" id="society">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
                                 <a href="{{ route('society.index') }}" class="nav-link" data-key="t-analytics"
-                                    style="font-size: 15px;">
-                                    View </a>
+                                    >
+                                    Approve Policy </a>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="{{ route('society.renewe') }}" class="nav-link" data-key="t-analytics"
+                                    >
+                                    Renew Policy</a>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="{{ route('society.list') }}" class="nav-link" data-key="t-analytics"
+                                    >
+                                    View List</a>
                             </li>
                         </ul>
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
                                 <a href="{{ route('society.create') }}" class="nav-link" data-key="t-analytics"
-                                    style="font-size: 15px;">
+                                    >
                                     Create</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="#resident" data-bs-toggle="collapse" role="button"
+                        aria-expanded="false" aria-controls="resident">
+                        <i class="ri-file-3-line"></i> <span data-key="t-dashboards">Policy Types</span>
+                    </a>
+                    <div class="collapse menu-dropdown" id="resident">
+
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="{{ route('resident.index') }}" class="nav-link" data-key="t-analytics"
+                                    >
+                                    View </a>
+                            </li>
+                        </ul>
+
+
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="{{ route('resident.create') }}" class="nav-link" data-key="t-analytics"
+                                    >
+                                    Create </a>
                             </li>
                         </ul>
                     </div>
@@ -65,80 +122,115 @@
                 <!-- End Dashboard Menu -->
 
                 <!-- Admin Menu -->
-                 @if(auth()->user()->role_id==1)
+
+                <li class="menu-title"><span data-key="t-menu">Members</span></li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="#Director" data-bs-toggle="collapse" role="button"
+                        aria-expanded="false" aria-controls="Director">
+                        <i class="ri-user-2-line"></i> <span data-key="t-dashboards">Director</span>
+                    </a>
+                    <div class="collapse menu-dropdown" id="Director">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="{{ route('director.index') }}" class="nav-link" data-key="t-analytics"
+                                    >
+                                    Veiw </a>
+                            </li>
+                        </ul>
+
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="{{ route('director.create') }}" class="nav-link" data-key="t-analytics"
+                                    >
+                                    Create </a>
+                            </li>
+                        </ul>
+
+                    </div>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="#members" data-bs-toggle="collapse" role="button"
                         aria-expanded="false" aria-controls="members">
-                        <i class="ri-group-fill"></i> <span data-key="t-dashboards" style="font-size: 18px">TL</span>
+                        <i class="ri-user-3-line"></i> <span data-key="t-dashboards">TL</span>
                     </a>
                     <div class="collapse menu-dropdown" id="members">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
                                 <a href="{{ route('members.index') }}" class="nav-link" data-key="t-analytics"
-                                    style="font-size: 15px;">
+                                    >
                                     View </a>
                             </li>
                         </ul>
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
                                 <a href="{{ route('members.create') }}" class="nav-link" data-key="t-analytics"
-                                    style="font-size: 15px;">
+                                    >
                                     Create </a>
                             </li>
                         </ul>
                     </div>
                 </li>
-
                 <li class="nav-item">
-                                    <a class="nav-link menu-link" href="#resident" data-bs-toggle="collapse" role="button"
-                                        aria-expanded="false" aria-controls="resident">
-                                        <i class="ri-file-3-fill"></i> <span data-key="t-dashboards"
-                                            style="font-size: 18px">Policy Types</span>
-                                    </a>
-                                    <div class="collapse menu-dropdown" id="resident">
-
-
-                                        <ul class="nav nav-sm flex-column">
-                                            <li class="nav-item">
-                                                <a href="{{ route('resident.index') }}" class="nav-link" data-key="t-analytics"
-                                                    style="font-size: 15px;">
-                                                    Update </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                @endif
-
-
-                 @if(auth()->user()->role_id==1 || auth()->user()->role_id==2)
-
-                 <li class="nav-item">
                     <a class="nav-link menu-link" href="#guard" data-bs-toggle="collapse" role="button"
                         aria-expanded="false" aria-controls="guard">
-                        <i class="ri-shield-user-fill"></i> <span data-key="t-dashboards"
-                            style="font-size: 18px">Agent</span>
+                        <i class="ri-user-5-line"></i> <span data-key="t-dashboards">Agent</span>
                     </a>
                     <div class="collapse menu-dropdown" id="guard">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
                                 <a href="{{ route('guard.index') }}" class="nav-link" data-key="t-analytics"
-                                    style="font-size: 15px;">
+                                    >
                                     Veiw </a>
                             </li>
                         </ul>
-                        @if(auth()->user()->role_id==1)
+
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
                                 <a href="{{ route('guard.create') }}" class="nav-link" data-key="t-analytics"
-                                    style="font-size: 15px;">
+                                    >
                                     Create </a>
                             </li>
                         </ul>
-                          @endif
+
                     </div>
                 </li>
 
-                @endif
+                <li class="menu-title"><span data-key="t-menu">Reports</span></li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="#Reports" data-bs-toggle="collapse" role="button"
+                        aria-expanded="false" aria-controls="Director">
+                        <i class="ri-user-2-line"></i> <span data-key="t-dashboards">Reports</span>
+                    </a>
+                    <div class="collapse menu-dropdown" id="Reports">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="{{ route('report.sale') }}" class="nav-link" data-key="t-analytics"
+                                    >
+                                    Sale </a>
+                            </li>
+                        </ul>
+
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="{{ route('report.renewal') }}" class="nav-link" data-key="t-analytics"
+                                    >
+                                    Renewal </a>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="{{ route('report.commission') }}" class="nav-link" data-key="t-analytics"
+                                    >
+                                    Commission </a>
+                            </li>
+                        </ul>
+
+                    </div>
+                </li>
+
+
+
+
                 {{-- @endif --}}
                 <!-- End Admin Menu -->
 

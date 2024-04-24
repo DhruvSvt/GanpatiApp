@@ -29,7 +29,7 @@
                                 <div class="mb-3">
                                     <label for="phonenumberInput" class="form-label">Phone Number</label><span
                                         class="text-danger">*</span>
-                                    <input type="tel" class="form-control" placeholder="Enter the number" name="phone">
+                                    <input pattern="[56789][0-9]{9}" title="Please enter valid phone number"  type="tel" class="form-control" placeholder="Enter the number" name="phone">
                                 </div>
                                 @error('phone')
                                 <p class="text-danger">{{ $message }}</p>
@@ -59,30 +59,35 @@
                                 @enderror
                             </div>
                             <!--end col-->
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label for="firstNameinput" class="form-label">Agent Code</label>
-                                    <input type="text" class="form-control" placeholder="Enter Agent's Code"
-                                        name="user_id">
-                                </div>
-                                @error('user_id')
-                                <p class="text-danger">{{ $message }}</p>
-                                @enderror
-                            </div>
+
                             <!--end col-->
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="ForminputState" class="form-label">TL</label><span
+                                    <label for="ForminputState" class="form-label">Director</label><span
                                         class="text-danger">*</span>
-                                    <select id="ForminputState" class="form-select" data-choices=""
+                                    <select id="directors"  onChange="getTl(this.value);" class="form-select" data-choices=""
                                         data-choices-sorting="true" name="society">
-                                        <option selected="">Choose TL</option>
+                                        <option selected="">Choose Director</option>
                                         @foreach ($societies as $society )
-                                        <option value="{{ $society->id }}">{{ $society->name }}</option>
+                                        <option value="{{ $society->id }}">{{ $society->name }} ({{ $society->id }})</option>
                                         @endforeach
                                     </select>
                                 </div>
                                 @error('society')
+                                <p class="text-danger">{{ $message }}</p>
+                                @enderror
+                            </div>
+                             <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="ForminputState" class="form-label">TL</label><span
+                                        class="text-danger">*</span>
+                                    <select class="form-select tls" data-choices=""
+                                        data-choices-sorting="true" name="tl">
+                                        <option value="">Choose TL</option>
+
+                                    </select>
+                                </div>
+                                @error('tl')
                                 <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
@@ -151,7 +156,7 @@
                                 <div class="mb-3">
                                     <label for="phonenumberInput" class="form-label">Phone Number</label><span
                                         class="text-danger">*</span>
-                                    <input type="tel" class="form-control" value="{{ $member->phone }}" name="phone">
+                                    <input pattern="[56789][0-9]{9}" title="Please enter valid phone number"  type="tel" class="form-control" value="{{ $member->phone }}" name="phone">
                                 </div>
                                 @error('phone')
                                 <p class="text-danger">{{ $message }}</p>
@@ -168,39 +173,16 @@
                                 <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
-                            <!--end col-->
-                            {{-- <div class="col-md-6">
+                               <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="" class="form-label">Password</label><span class="text-danger">*</span>
-                                    <input type="password" class="form-control" value=""
-                                        placeholder="Enter the password" name="password">
-                                </div>
-                                @error('password')
-                                <p class="text-danger">{{ $message }}</p>
-                                @enderror
-                            </div> --}}
-                            <!--end col-->
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label for="firstNameinput" class="form-label">Agent's Code</label>
-                                    <input type="text" class="form-control" value="{{ $member->user_id }}"
-                                        name="user_id">
-                                </div>
-                                @error('user_id')
-                                <p class="text-danger">{{ $message }}</p>
-                                @enderror
-                            </div>
-                            <!--end col-->
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label for="ForminputState" class="form-label">Select TL</label><span
+                                    <label for="ForminputState" class="form-label">Director</label><span
                                         class="text-danger">*</span>
-                                    <select id="ForminputState" class="form-select" data-choices=""
+                                    <select id="directors"  onChange="getTl(this.value);" class="form-select" data-choices=""
                                         data-choices-sorting="true" name="society">
+                                        <option selected="">Choose Director</option>
                                         @foreach ($societies as $society )
-
                                         <option value="{{ $society->id }}" @if($society->id==$member->society)selected
-                                            @endif >{{ $society->name }}</option>
+                                            @endif>{{ $society->name }} ({{ $society->id }})</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -208,6 +190,27 @@
                                 <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
+                             <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="ForminputState" class="form-label">TL</label><span
+                                        class="text-danger">*</span>
+                                    <select  class="form-select tls" data-choices=""
+                                        data-choices-sorting="true" name="tl">
+                                        <option value="">Choose TL</option>
+
+                                        @foreach ($tls as $society )
+                                        <option value="{{ $society->id }}" @if($society->id==$member->tl)selected
+                                            @endif>{{ $society->name }} ({{ $society->id }})</option>
+                                        @endforeach
+
+                                    </select>
+                                </div>
+                                @error('tl')
+                                <p class="text-danger">{{ $message }}</p>
+                                @enderror
+                            </div>
+                            <!--end col-->
+
                                <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="" class="form-label">PAN Card</label><span class="text-danger">*</span>
@@ -218,15 +221,15 @@
                                 <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
-                            {{-- <div class="col-md-6">
+                            <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="phonenumberInput" class="form-label">Commission (%)</label><span class="text-danger">*</span>
-                                    <input type="num" class="form-control" placeholder="Enter the commission" name="commission" value="{{ $member->commission }}" required>
+                                    <label for="" class="form-label">Password (Leave Blank For No change)</label>
+                                    <input type="password" class="form-control"  name="password" >
                                 </div>
-                                @error('commission')
+                                @error('password')
                                 <p class="text-danger">{{ $message }}</p>
                                 @enderror
-                            </div> --}}
+                            </div>
                             <div class="col-lg-12">
                                 <div class="text-end">
                                     <button type="submit" class="btn btn-primary">Submit</button>
@@ -242,4 +245,27 @@
         @endisset
     </div>
 </div>
+@endsection
+
+@section('scripts')
+<script>
+    function getTl(val) {
+        $("#tls").html('');
+	$.ajax({
+		type: "POST",
+		headers: {
+                            'X-CSRF-TOKEN': "{{csrf_token()}}",
+                        },
+        url : "{{route('getTl')}}",
+        data: {
+        "d_id": val
+        },
+
+		success: function(data){
+			$(".tls").html(data);
+
+		}
+	});
+}
+</script>
 @endsection

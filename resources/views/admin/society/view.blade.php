@@ -90,6 +90,18 @@
                                                         Last Policy Details
                                                     </a>
                                                 </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link fw-semibold" data-bs-toggle="tab"
+                                                        href="#Renewal-team" role="tab">
+                                                        Renewal Details
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link fw-semibold" data-bs-toggle="tab"
+                                                        href="#Commission-team" role="tab">
+                                                        Commission Details
+                                                    </a>
+                                                </li>
                                             </ul>
                                         </div>
                                         <!-- end card body -->
@@ -124,7 +136,7 @@
                                                         <div class="col-lg-6 col-sm-6">
                                                             <div>
                                                                 <p class="mb-2 text-uppercase fw-medium">Policy Value :</p>
-                                                                <h5 class="fs-15 mb-0">{{ $fs->value }}</h5>
+                                                                <h5 class="fs-15 mb-0">₹{{ $fs->value }}</h5>
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-6 col-sm-6">
@@ -309,7 +321,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                       <div class="tab-pane fade" id="project-activities" role="tabpanel">
+                                    <div class="tab-pane fade" id="project-activities" role="tabpanel">
                                         <div class="row g-4 mb-3">
                                             <div class="col-sm">
                                                 <h6 class="mb-3 fw-semibold text-uppercase">Documents</h6>
@@ -321,7 +333,7 @@
                                             <div class="card team-box">
                                                 <div class="card-body px-4">
                                                     @php
-                                                        $str = explode (",", $fs->docs);
+                                                        $str = explode(',', $fs->docs);
                                                     @endphp
 
                                                     @foreach ($str as $st)
@@ -330,8 +342,11 @@
 
                                                                 <div class="col-lg-12">
                                                                     <div>
-                                                                        <p class="mb-2 text-uppercase fw-medium">Document No. {{ $loop->index+1 }} :</p>
-                                                                        <h5 class="fs-15 mb-0"><a href="{{ Storage::url($st)}}" target="_blank">View File</a></h5>
+                                                                        <p class="mb-2 text-uppercase fw-medium">Document
+                                                                            No. {{ $loop->index + 1 }} :</p>
+                                                                        <h5 class="fs-15 mb-0"><a
+                                                                                href="{{ Storage::url($st) }}"
+                                                                                target="_blank">View File</a></h5>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -343,7 +358,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                       <div class="tab-pane fade" id="project-team" role="tabpanel">
+                                    <div class="tab-pane fade" id="project-team" role="tabpanel">
                                         <div class="row g-4 mb-3">
                                             <div class="col-sm">
                                                 <h6 class="mb-3 fw-semibold text-uppercase">Last Policy Details</h6>
@@ -351,7 +366,7 @@
 
                                         </div>
 
-                                          <div class="team-list list-view-filter">
+                                        <div class="team-list list-view-filter">
                                             <div class="card team-box">
                                                 <div class="card-body px-4">
 
@@ -361,14 +376,17 @@
 
                                                         <div class="col-lg-6 col-sm-6">
                                                             <div>
-                                                                <p class="mb-2 text-uppercase fw-medium">Last Company Name :</p>
+                                                                <p class="mb-2 text-uppercase fw-medium">Last Company Name
+                                                                    :</p>
                                                                 <h5 class="fs-15 mb-0">{{ $fs->last_c_name }}</h5>
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-6 col-sm-6">
                                                             <div>
-                                                                <p class="mb-2 text-uppercase fw-medium">Date Of Expiry :</p>
-                                                                <h5 class="fs-15 mb-0">{{ date('d-m-Y', strtotime($fs->last_expiry)) }}</h5>
+                                                                <p class="mb-2 text-uppercase fw-medium">Date Of Expiry :
+                                                                </p>
+                                                                <h5 class="fs-15 mb-0">
+                                                                    {{ date('d-m-Y', strtotime($fs->last_expiry)) }}</h5>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -377,13 +395,102 @@
                                                         <div class="row gy-3">
                                                             <div class="col-lg-6 col-sm-6">
                                                                 <div>
-                                                                    <p class="mb-2 text-uppercase fw-medium">Last Year Copy:</p>
+                                                                    <p class="mb-2 text-uppercase fw-medium">Last Year
+                                                                        Copy:</p>
                                                                     <h5 class="fs-15 mb-0">{{ $fs->last_copy }}</h5>
                                                                 </div>
                                                             </div>
 
                                                         </div>
                                                     </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="Renewal-team" role="tabpanel">
+                                        <div class="row g-4 mb-3">
+                                            <div class="col-sm">
+                                                <h6 class="mb-3 fw-semibold text-uppercase">Renewal Details</h6>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="team-list list-view-filter">
+                                            <div class="card team-box">
+                                                <div class="card-body px-4">
+
+
+
+                                                    <div class="row gy-3">
+                                                        @foreach ($renew as $row)
+                                                            <div class="col-lg-12">
+                                                                <div>
+                                                                    <p class="mb-2 text-uppercase fw-medium">
+                                                                        ₹{{ $row->amount }} </p>
+                                                                    <h5 class="fs-15 mb-0">
+                                                                        {{ date('d-m-Y', strtotime($row->created_at)) }}
+                                                                    </h5>
+                                                                </div>
+                                                            </div>
+                                                        @endforeach
+                                                    </div>
+
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="Commission-team" role="tabpanel">
+                                        <div class="row g-4 mb-3">
+                                            <div class="col-sm">
+                                                <h6 class="mb-3 fw-semibold text-uppercase">Commission Details</h6>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="team-list list-view-filter">
+                                            <div class="card team-box">
+                                                <div class="card-body px-4">
+
+
+
+                                                    <div class="row gy-3">
+
+                                                            <div class="col-lg-12">
+                                                                <table
+                                                                    class="table table-hover table-centered align-middle table-nowrap mb-0">
+                                                                     <thead class="text-muted table-light">
+                                                            <tr>
+                                                                <th scope="col">ID</th>
+                                                                <th scope="col">Name</th>
+                                                                <th scope="col">Commission</th>
+                                                                <th scope="col">Type</th>
+                                                                <th scope="col">Date</th>
+                                                            </tr>
+                                                        </thead>
+                                                                    <tbody>
+                                                                           @foreach ($comm as $row)
+                                                                        <tr>
+
+                                        <td>{{$row->id}}</td>
+                                        <td>{{$row->name}} (#{{$row->user}})</td>
+                                        <td>{{$row->amount}}</td>
+                                        <td>{{$row->type}}</td>
+                                        <td>{{ date('d-m-Y', strtotime($row->created_at)) }}</td>
+                                                                       </tr>
+                                                                       @endforeach
+                                                                    </tbody>
+                                                                </table>
+
+
+
+                                                            </div>
+
+                                                    </div>
+
+
 
                                                 </div>
                                             </div>

@@ -67,7 +67,8 @@
     --vz-dark-border-subtle: #adb5bd;
     --vz-white-rgb: 255, 255, 255;
     --vz-black-rgb: 0, 0, 0;
-    --vz-font-sans-serif: "Poppins", sans-serif;
+    --vz-font-sans-serif: "Roboto",
+        sans-serif;
     --vz-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     --vz-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
     --vz-body-font-family: var(--vz-font-sans-serif);

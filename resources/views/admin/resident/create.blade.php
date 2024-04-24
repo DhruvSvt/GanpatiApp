@@ -1,4 +1,4 @@
-@extends('admin.layouts.app',['title' => 'Commision Edit'])
+@extends('admin.layouts.app',['title' => $title])
 @section('content')
 <div class="row">
     <div class="col">
@@ -6,7 +6,7 @@
         @isset($create)
         <div class="card">
             <div class="card-header align-items-center d-flex">
-                <h4 class="card-title mb-0 flex-grow-1">Create Resident</h4>
+                <h4 class="card-title mb-0 flex-grow-1">{{$title}}</h4>
             </div><!-- end card header -->
 
             <div class="card-body">
@@ -14,99 +14,14 @@
                     <form action="{{ route('resident.store') }}" method="POST">
                         @csrf
                         <div class="row">
-                            <div class="col-md-6">
+
+                            <!--end col-->
+                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label class="form-label">Full Name</label><span class="text-danger">*</span>
-                                    <input type="text" class="form-control" placeholder="Enter Fullname" name="name">
+                                    <label class="form-label">Policy Type</label><span class="text-danger">*</span>
+                                    <input type="text" class="form-control"   name="name"  >
                                 </div>
                                 @error('name')
-                                <p class="text-danger">{{ $message }}</p>
-                                @enderror
-                            </div>
-                            <!--end col-->
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label class="form-label">Phone Number</label><span class="text-danger">*</span>
-                                    <input type="tel" class="form-control" placeholder="Enter the number" name="phone">
-                                </div>
-                                @error('phone')
-                                <p class="text-danger">{{ $message }}</p>
-                                @enderror
-                            </div>
-                            <!--end col-->
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label class="form-label">Email Address</label><span class="text-danger">*</span>
-                                    <input type="email" class="form-control" placeholder="example@gamil.com"
-                                        name="email">
-                                </div>
-                                @error('email')
-                                <p class="text-danger">{{ $message }}</p>
-                                @enderror
-                            </div>
-                            <!--end col-->
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label class="form-label">Password</label><span class="text-danger">*</span>
-                                    <input type="password" class="form-control" value=""
-                                        placeholder="Enter the password" name="password">
-                                </div>
-                                @error('password')
-                                <p class="text-danger">{{ $message }}</p>
-                                @enderror
-                            </div>
-                            <!--end col-->
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label class="form-label">Resident's ID</label>
-                                    <input type="text" class="form-control" placeholder="Enter Resident's ID"
-                                        name="resident_id">
-                                </div>
-                                @error('resident_id')
-                                <p class="text-danger">{{ $message }}</p>
-                                @enderror
-                            </div>
-                            <!--end col-->
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label for="ForminputState" class="form-label">Society</label><span
-                                        class="text-danger">*</span>
-                                    <select id="ForminputState" class="form-select" data-choices=""
-                                        data-choices-sorting="true" name="society">
-                                        <option selected="">Choose Society</option>
-                                        @foreach ($societies as $society )
-                                        <option value="{{ $society->id }}">{{ $society->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                @error('society')
-                                <p class="text-danger">{{ $message }}</p>
-                                @enderror
-                            </div>
-                            <!--end col-->
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label class="form-label">Appartment No.</label>
-                                    <input type="text" class="form-control" placeholder="Enter Appartment No."
-                                        name="appartment_no">
-                                </div>
-                                @error('appartment_no')
-                                <p class="text-danger">{{ $message }}</p>
-                                @enderror
-                            </div>
-                            <!--end col-->
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label class="form-label">Residentinal Type</label><span
-                                        class="text-danger">*</span>
-                                    <select id="ForminputState" class="form-select" data-choices=""
-                                        data-choices-sorting="true" name="resident_type">
-                                        <option selected="">Choose Residentinal Type</option>
-                                        <option value="landlord">Landlord</option>
-                                        <option value="tenant">Tenant</option>
-                                    </select>
-                                </div>
-                                @error('resident_type')
                                 <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
@@ -129,7 +44,7 @@
         @isset($edit)
         <div class="card">
             <div class="card-header align-items-center d-flex">
-                <h4 class="card-title mb-0 flex-grow-1">Edit Commission</h4>
+                <h4 class="card-title mb-0 flex-grow-1">{{$title}}</h4>
             </div><!-- end card header -->
 
             <div class="card-body">
@@ -142,29 +57,20 @@
                                 <div class="mb-3">
                                     <label class="form-label">Policy Type</label><span class="text-danger">*</span>
                                     <input type="text" class="form-control" value="{{ $resident->name ?? '' }}"
-                                        name="name" readonly>
+                                        name="name"  >
                                 </div>
                                 @error('name')
                                 <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
                             <!--end col-->
-                          
+
                             <!--end col-->
-                         
-                           
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label class="form-label">Commission (%)</label>
-                                    <input type="number" class="form-control" value="{{ $resident->society }}"
-                                        name="society" required>
-                                </div>
-                                @error('society')
-                                <p class="text-danger">{{ $message }}</p>
-                                @enderror
-                            </div>
+
+
+
                             <!--end col-->
-                          
+
                             <!--end col-->
                             <div class="col-lg-12">
                                 <div class="text-end">

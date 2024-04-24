@@ -11,7 +11,7 @@
 
             <div class="card-body">
                 <div class="live-preview">
-                    <form action="{{ route('members.store') }}" method="POST">
+                    <form action="{{ route('director.store') }}" method="POST">
                         @csrf
                         <div class="row">
                             <div class="col-md-6">
@@ -30,7 +30,7 @@
                                 <div class="mb-3">
                                     <label for="phonenumberInput" class="form-label">Phone Number</label><span
                                         class="text-danger">*</span>
-                                    <input pattern="[56789][0-9]{9}" title="Please enter valid phone number"  type="tel" class="form-control" placeholder="Enter the number" name="phone">
+                                    <input type="tel" pattern="[56789][0-9]{9}" title="Please enter valid phone number" class="form-control" placeholder="Enter the number" name="phone">
                                 </div>
                                 @error('phone')
                                 <p class="text-danger">{{ $message }}</p>
@@ -62,7 +62,7 @@
 
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="" class="form-label">PAN Card</label><span class="text-danger">*</span>
+                                    <label for="" class="form-label">PAN Number</label><span class="text-danger">*</span>
                                     <input type="text" class="form-control" value=""
                                         placeholder="Enter PAN" name="PAN" required>
                                 </div>
@@ -70,32 +70,7 @@
                                 <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
-                              <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label for="ForminputState" class="form-label">Director</label><span
-                                        class="text-danger">*</span>
-                                    <select id="ForminputState" class="form-select" data-choices=""
-                                        data-choices-sorting="true" name="society" required>
-                                        <option value="">Choose Director</option>
-                                        @foreach ($societies as $society )
-                                        <option value="{{ $society->id }}">{{ $society->name }} ({{ $society->id }})</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                @error('society')
-                                <p class="text-danger">{{ $message }}</p>
-                                @enderror
-                            </div>
-                             <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label for="" class="form-label">Password</label><span class="text-danger">*</span>
-                                    <input type="password" class="form-control" value=""
-                                        placeholder="Enter the password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" name="password" required>
-                                </div>
-                                @error('password')
-                                <p class="text-danger">{{ $message }}</p>
-                                @enderror
-                            </div>
+
                             <!--end col-->
                             {{-- <div class="col-md-6">
                                 <div class="mb-3">
@@ -145,12 +120,12 @@
         @isset($edit)
         <div class="card">
             <div class="card-header align-items-center d-flex">
-                <h4 class="card-title mb-0 flex-grow-1">Edit TL</h4>
+                <h4 class="card-title mb-0 flex-grow-1">{{$title}}</h4>
             </div><!-- end card header -->
 
             <div class="card-body">
                 <div class="live-preview">
-                    <form action="{{ route('members.update',$member->id) }}" method="POST">
+                    <form action="{{ route('director.update',$member->id) }}" method="POST">
                         @csrf
                         @method('PUT')
                         <div class="row">
@@ -186,6 +161,15 @@
                                 <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="" class="form-label">Password (Leave Blank For No change)</label>
+                                    <input type="password" class="form-control"  name="password" >
+                                </div>
+                                @error('password')
+                                <p class="text-danger">{{ $message }}</p>
+                                @enderror
+                            </div>
                              <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="" class="form-label">PAN Card</label><span class="text-danger">*</span>
@@ -193,32 +177,6 @@
                                         placeholder="Enter PAN" name="PAN" required>
                                 </div>
                                 @error('PAN')
-                                <p class="text-danger">{{ $message }}</p>
-                                @enderror
-                            </div>
-                             <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label for="ForminputState" class="form-label">Director</label><span
-                                        class="text-danger">*</span>
-                                    <select id="ForminputState" class="form-select" data-choices=""
-                                        data-choices-sorting="true" name="society" required>
-                                        <option value="">Choose Director</option>
-                                        @foreach ($societies as $society )
-                                        <option value="{{ $society->id }}" @if($society->id==$member->society)selected
-                                            @endif>{{ $society->name }} ({{ $society->id }})</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                @error('society')
-                                <p class="text-danger">{{ $message }}</p>
-                                @enderror
-                            </div>
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label for="" class="form-label">Password (Leave Blank For No change)</label>
-                                    <input type="password" class="form-control"  name="password" >
-                                </div>
-                                @error('password')
                                 <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>

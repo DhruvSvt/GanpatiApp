@@ -29,9 +29,9 @@
                     <form action="{{ route('society.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="mb-3">
-                                    <label for="firstNameinput" class="form-label">Proposed For</label><span
+                                    <label for="firstNameinput" class="form-label">Policy Type</label><span
                                         class="text-danger">*</span>
                                     <select class="form-control" name="policy_type" required>
                                         <option selected="" value="">-Policy Type-</option>
@@ -44,22 +44,7 @@
                                 <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label for="firstNameinput" class="form-label">AGENT CODE</label>
-                                    <select id="ForminputState" class="form-select" data-choices="" data-choices-sorting="true" name="agent">
-                                        <option selected="" value="">-AGENT CODE-</option>
-                                        @foreach ($agents as $society )
-                                        <option value="{{ $society->user_id }}">{{ $society->user_id }} ({{ $society->name }})</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                @error('agent')
-                                <p class="text-danger">{{ $message }}</p>
-                                @enderror
-                            </div>
-                            <!--end col-->
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="mb-3">
                                     <label for="firstNameinput" class="form-label">Policy Value</label><span class="text-danger">*</span>
                                     <input type="number" class="form-control" placeholder="Enter value"
@@ -69,7 +54,7 @@
                                 <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="mb-3">
                                     <label for="firstNameinput" class="form-label">Expiry Date</label><span class="text-danger">*</span>
                                     <input type="date" class="form-control" placeholder="Expiry Date" name="exp_date" required>
@@ -78,9 +63,54 @@
                                 <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label for="firstNameinput" class="form-label">Director</label>
+                                    <select id="ForminputState" class="form-select" data-choices="" data-choices-sorting="true" name="director">
+                                        <option selected="" value="">-Director CODE-</option>
+                                        @foreach ($dr as $society )
+                                        <option value="{{ $society->id }}">{{ $society->id }} ({{ $society->name }})</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                @error('director')
+                                <p class="text-danger">{{ $message }}</p>
+                                @enderror
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label for="firstNameinput" class="form-label">TL CODE</label>
+                                    <select id="ForminputState" class="form-select" data-choices="" data-choices-sorting="true" name="tl">
+                                        <option selected="" value="">-TL CODE-</option>
+                                        @foreach ($tl as $society )
+                                        <option value="{{ $society->id }}">{{ $society->id }} ({{ $society->name }})</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                @error('tl')
+                                <p class="text-danger">{{ $message }}</p>
+                                @enderror
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label for="firstNameinput" class="form-label">AGENT CODE</label>
+                                    <select id="ForminputState" class="form-select" data-choices="" data-choices-sorting="true" name="agent">
+                                        <option selected="" value="">-AGENT CODE-</option>
+                                        @foreach ($agents as $society )
+                                        <option value="{{ $society->id }}">{{ $society->id }} ({{ $society->name }})</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                @error('agent')
+                                <p class="text-danger">{{ $message }}</p>
+                                @enderror
+                            </div>
+                            <!--end col-->
+
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="firstNameinput" class="form-label">Date</label>
+                                    <label for="firstNameinput" class="form-label">Start Date <span
+                                        class="text-danger">*</span></label>
                                     <input type="date" class="form-control" placeholder="Date" name="start_date" required>
                                 </div>
                                 @error('start_date')
@@ -99,8 +129,9 @@
                             <!--end col-->
                         <div class="col-md-6">
                             <div class="mb-3">
-                                <label for="firstNameinput" class="form-label">Proposer Name</label>
-                                <input type="text" class="form-control" placeholder="proposer name" name="proposer" >
+                                <label for="firstNameinput" class="form-label">Proposer Name <span
+                                        class="text-danger">*</span></label>
+                                <input type="text" class="form-control" placeholder="proposer name" name="proposer" required>
                             </div>
                             @error('proposer')
                             <p class="text-danger">{{ $message }}</p>

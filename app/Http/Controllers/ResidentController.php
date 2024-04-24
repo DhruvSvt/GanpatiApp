@@ -24,7 +24,9 @@ class ResidentController extends Controller
     public function create()
     {
         $societies = Society::all();
-        return view('admin.resident.create', compact('societies'));
+        $title = 'Create Policy Type';
+        $create = true;
+        return view('admin.resident.create', compact('societies', 'title', 'create'));
     }
 
     /**
@@ -34,16 +36,8 @@ class ResidentController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'phone' => 'required',
-            'email' => 'required',
-            'password' => 'required',
-            'resident_id' => 'unique:residents,resident_id',
-            'society' => 'required',
-            'appartment_no' => 'required',
-            'resident_type' => 'required',
         ]);
 
-        $request['role_id'] = 4;
 
         Resident::create($request->all());
 
@@ -78,7 +72,6 @@ class ResidentController extends Controller
         $resident = Resident::findOrFail($id);
         $request->validate([
             'name' => 'required',
-            'society' => 'required',
         ]);
         $resident->update($request->all());
         return redirect()->route('resident.index')->with('message', 'Data Updated Successfully');
