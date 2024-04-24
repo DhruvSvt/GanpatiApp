@@ -16,9 +16,9 @@
     <!-- Icons Css -->
     <link href="{{ config('app.url') }}/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
     <!-- App Css-->
-    <link href="{{ config('app.url') }}/assets/css/app.min.css" rel="stylesheet" type="text/css" />
+    <link href="{{ config('app.url') }}/assets/css/app.min.css?v=85" rel="stylesheet" type="text/css" />
     <!-- custom Css-->
-    <link href="{{ config('app.url') }}/assets/css/custom.min.css" rel="stylesheet" type="text/css" />
+    <link href="{{ config('app.url') }}/assets/css/custom.min.css?v=85" rel="stylesheet" type="text/css" />
     <!-- cloudflare bootstrap-->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-
      alpha/css/bootstrap.css" rel="stylesheet">
