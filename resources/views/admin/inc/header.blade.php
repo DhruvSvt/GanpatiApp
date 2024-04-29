@@ -6,19 +6,19 @@
                 <div class="navbar-brand-box horizontal-logo">
                     <a href="{{ config('app.url') }}" class="logo logo-dark">
                         <span class="logo-sm">
-                            <img src="{{ config('app.url') }}/assets/images/logo-on-removebg-preview.png" alt="" height="22">
+                            <img src="{{ config('app.url') }}/assets/images/logo-on.jpg" alt="" height="22">
                         </span>
                         <span class="logo-lg">
-                            <img src="{{ config('app.url') }}/assets/images/logo-on-removebg-preview.png" alt="" height="17">
+                            <img src="{{ config('app.url') }}/assets/images/logo-on.jpg" alt="" height="17">
                         </span>
                     </a>
 
                     <a href="{{ config('app.url') }}" class="logo logo-light">
                         <span class="logo-sm">
-                            <img src="{{ config('app.url') }}/assets/images/logo-on-removebg-preview.png" alt="" height="22">
+                            <img src="{{ config('app.url') }}/assets/images/logo-on.jpg" alt="" height="22">
                         </span>
                         <span class="logo-lg">
-                            <img src="{{ config('app.url') }}/assets/images/logo-on-removebg-preview.png" alt="" height="17">
+                            <img src="{{ config('app.url') }}/assets/images/logo-on.jpg" alt="" height="17">
                         </span>
                     </a>
                 </div>

@@ -864,7 +864,7 @@
     -webkit-transition: all .1s ease-out;
     transition: all .1s ease-out;
         --cui-bg-opacity: 1;
-            background-color: rgba(var(--cui-primary-rgb), var(--cui-bg-opacity)) !important;
+            background-color: #fff !important;
 }
 
 @media (max-width:767.98px) {

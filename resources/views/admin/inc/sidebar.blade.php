@@ -4,19 +4,19 @@
         <!-- Dark Logo-->
         <a href="{{ config('app.url') }}" class="logo logo-dark">
             <span class="logo-sm">
-                <img src="{{ config('app.url') }}/assets/images/logo-on-removebg-preview.png" alt="" height="22">
+                <img src="{{ config('app.url') }}/assets/images/logo-on.jpg" alt="" height="22">
             </span>
             <span class="logo-lg">
-                <img src="{{ config('app.url') }}/assets/images/logo-on-removebg-preview.png" alt="" height="17">
+                <img src="{{ config('app.url') }}/assets/images/logo-on.jpg" alt="" height="17">
             </span>
         </a>
         <!-- Light Logo-->
         <a href="#" class="logo logo-light">
             <span class="logo-sm">
-                <img src="{{ config('app.url') }}/assets/images/logo-on-removebg-preview.png" alt="" height="35">
+                <img src="{{ config('app.url') }}/assets/images/logo-on.jpg" alt="" height="35">
             </span>
             <span class="logo-lg">
-                <img src="{{ config('app.url') }}/assets/images/logo-on-removebg-preview.png" alt="" height="30">
+                <img src="{{ config('app.url') }}/assets/images/logo-on.jpg" alt="" height="30">
             </span>
         </a>
         <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover"
@@ -29,20 +29,19 @@
         <div class="container-fluid">
 
             <div id="two-column-menu" style="    border-bottom: 1px solid #ddd;
-    background: aliceblue;
+    background: #f1f1f1;
     margin: 0 !important;">
                 <button type="button" class="btn" id="page-header-user-dropdown" data-bs-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
                     <span class="d-flex align-items-center">
-                        <img class="header-profile-user"
-                            src="{{ config('app.url') }}/assets/images/user-badge-vector-removebg-preview.png"
-                            alt="Header Avatar">
+                        <img class="header-profile-user rounded-circle shadow-4-strong" src="{{ Storage::url(auth()->user()->profile_dp) }}"
+                        onerror="this.onerror=null;this.src='{{ config('app.url') }}/assets/images/user-badge-vector-removebg-preview.png';"
+                             alt="Header Avatar">
                         <span class="text-start ms-xl-2">
                             <span
-                                class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">{{ auth()->user()->name }}
-                                Panel</span>
+                                class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">{{ auth()->user()->name }}</span>
                             <span
-                                class="d-none d-xl-block ms-1 fs-12 user-name-sub-text">{{ auth()->user()->role->display_name }}</span>
+                                class="d-none d-xl-block ms-1 fs-12 user-name-sub-text">{{ auth()->user()->user_id }} ({{ auth()->user()->role->display_name }})</span>
                         </span>
                     </span>
                 </button>

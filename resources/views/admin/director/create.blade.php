@@ -3,6 +3,9 @@
 <div class="row">
     <div class="col">
         <!-- **************************************************  Create Form ************************************************** -->
+
+
+
         @isset($create)
         <div class="card">
             <div class="card-header align-items-center d-flex">
@@ -11,7 +14,7 @@
 
             <div class="card-body">
                 <div class="live-preview">
-                    <form action="{{ route('director.store') }}" method="POST">
+                    <form action="{{ route('director.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-md-6">
@@ -72,16 +75,25 @@
                             </div>
 
                             <!--end col-->
-                            {{-- <div class="col-md-6">
+                            <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="firstNameinput" class="form-label">User's ID</label>
+                                    <label for="firstNameinput" class="form-label">User's Code</label>
                                     <input type="text" class="form-control" placeholder="Enter User's ID"
-                                        name="user_id">
+                                        name="user_id" required>
                                 </div>
                                 @error('user_id')
                                 <p class="text-danger">{{ $message }}</p>
                                 @enderror
-                            </div> --}}
+                            </div>
+                              <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="firstNameinput" class="form-label">Profile Pic</label>
+                                    <input type="file" accept="image/*" class="form-control" name="profile_dp">
+                                </div>
+                                @error('profile_dp')
+                                <p class="text-danger">{{ $message }}</p>
+                                @enderror
+                            </div>
                             <!--end col-->
 
                             {{-- <!--end col-->
@@ -125,7 +137,7 @@
 
             <div class="card-body">
                 <div class="live-preview">
-                    <form action="{{ route('director.update',$member->id) }}" method="POST">
+                    <form action="{{ route('director.update',$member->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="row">
@@ -192,16 +204,25 @@
                                 @enderror
                             </div> --}}
                             <!--end col-->
-                            {{-- <div class="col-md-6">
+                            <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="firstNameinput" class="form-label">User's ID</label>
+                                    <label for="firstNameinput" class="form-label">User's Code</label>
                                     <input type="text" class="form-control" value={{ $member->user_id }}
                                     name="user_id">
                                 </div>
                                 @error('user_id')
                                 <p class="text-danger">{{ $message }}</p>
                                 @enderror
-                            </div> --}}
+                            </div>
+                             <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="firstNameinput" class="form-label">Profile Pic</label>
+                                    <input type="file" accept="image/*" class="form-control" name="profile_dp">
+                                </div>
+                                @error('profile_dp')
+                                <p class="text-danger">{{ $message }}</p>
+                                @enderror
+                            </div>
                             <!--end col-->
                             {{-- <div class="col-md-6">
                                 <div class="mb-3">

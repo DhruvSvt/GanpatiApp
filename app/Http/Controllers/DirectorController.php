@@ -9,6 +9,7 @@ use Illuminate\Contracts\Session\Session;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Validation\Validator;
 
 class DirectorController extends Controller
 {
@@ -70,10 +71,20 @@ class DirectorController extends Controller
             'email' => 'required|unique:users,email',
             'password' => 'required',
             'PAN' => 'required',
+            'user_id' => 'required|unique:users,user_id',
         ]);
 
         $user = new User();
+        if ($request->file('profile_dp')) {
+            $extension = $request->file('profile_dp')->getClientOriginalExtension();
+            if ($extension == 'png' || $extension == 'jpg' || $extension == 'jpeg' ) {
+                $image = $request->file('profile_dp');
+                $path = $image->store('files', 'public');
+                $user->profile_dp  = $path;
+            }
+        }
         $user->name = $request->name;
+        $user->user_id = $request->user_id;
         $user->phone = $request->phone;
         $user->email = $request->email;
         $user->password =Hash::make($request->password);
@@ -111,18 +122,29 @@ class DirectorController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $user = User::findOrFail($id);
         $request->validate([
             'name' => 'required',
             'phone' => 'required',
             'email' => 'required|unique:users,email,' . $id,
             'PAN' => 'required',
+            'user_id' => 'required|unique:users,user_id,' . $id,
         ]);
+
+        $user = User::findOrFail($id);
         if($request->password!=''){
             $user->password = Hash::make($request->password);
         }
+        if ($request->file('profile_dp')) {
+            $extension = $request->file('profile_dp')->getClientOriginalExtension();
+            if ($extension == 'png' || $extension == 'jpg' || $extension == 'jpeg' ) {
+                $image = $request->file('profile_dp');
+                $path = $image->store('files', 'public');
+                $user->profile_dp  = $path;
+            }
+        }
 
         $user->name = $request->name;
+        $user->user_id = $request->user_id;
         $user->phone = $request->phone;
         $user->email = $request->email;
         $user->PAN = $request->PAN;
