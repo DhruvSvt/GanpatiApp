@@ -62,13 +62,15 @@
                         <i class="ri-building-2-line"></i> <span data-key="t-dashboards">Policy</span>
                     </a>
                     <div class="collapse menu-dropdown" id="society">
-                        <ul class="nav nav-sm flex-column">
+                         @if (auth()->user()->role_id==1)
+                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
                                 <a href="{{ route('society.index') }}" class="nav-link" data-key="t-analytics"
                                     >
                                     Approve Policy </a>
                             </li>
                         </ul>
+                        @endif
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
                                 <a href="{{ route('society.renewe') }}" class="nav-link" data-key="t-analytics"
@@ -92,6 +94,7 @@
                         </ul>
                     </div>
                 </li>
+                @if (auth()->user()->role_id==1)
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="#resident" data-bs-toggle="collapse" role="button"
                         aria-expanded="false" aria-controls="resident">
@@ -119,8 +122,6 @@
                 </li>
 
                 <!-- End Dashboard Menu -->
-
-                <!-- Admin Menu -->
 
                 <li class="menu-title"><span data-key="t-menu">Members</span></li>
                 <li class="nav-item">
@@ -193,39 +194,25 @@
 
                     </div>
                 </li>
+                  @endif
 
                 <li class="menu-title"><span data-key="t-menu">Reports</span></li>
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="#Reports" data-bs-toggle="collapse" role="button"
-                        aria-expanded="false" aria-controls="Director">
-                        <i class="ri-user-2-line"></i> <span data-key="t-dashboards">Reports</span>
+                    <a class="nav-link menu-link" href="{{ route('report.sale') }}">
+                        <i class="ri-dashboard-line"></i> <span data-key="t-widgets">Sale Report</span>
                     </a>
-                    <div class="collapse menu-dropdown" id="Reports">
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                                <a href="{{ route('report.sale') }}" class="nav-link" data-key="t-analytics"
-                                    >
-                                    Sale </a>
-                            </li>
-                        </ul>
-
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                                <a href="{{ route('report.renewal') }}" class="nav-link" data-key="t-analytics"
-                                    >
-                                    Renewal </a>
-                            </li>
-                        </ul>
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                                <a href="{{ route('report.commission') }}" class="nav-link" data-key="t-analytics"
-                                    >
-                                    Commission </a>
-                            </li>
-                        </ul>
-
-                    </div>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="{{ route('report.renewal') }}">
+                        <i class="ri-money-cny-box-line"></i> <span data-key="t-widgets">Renewal Report</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="{{ route('report.commission') }}">
+                        <i class="ri-newspaper-line"></i> <span data-key="t-widgets">Commission Report</span>
+                    </a>
+                </li>
+
 
 
 

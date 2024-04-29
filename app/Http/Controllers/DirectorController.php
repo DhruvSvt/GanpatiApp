@@ -114,7 +114,7 @@ class DirectorController extends Controller
         $member = User::findOrFail($id);
         $title = 'Director Edit';
         $edit = true;
-        return view('admin.director.create', compact('member', 'edit', 'title'));
+        return view('admin.director.edit', compact('member', 'edit', 'title'));
     }
 
     /**

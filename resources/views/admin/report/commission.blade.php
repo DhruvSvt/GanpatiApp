@@ -44,6 +44,8 @@
                 <th>SrNo</th>
                 <th>Policy ID</th>
                 <th>Commission</th>
+                 <th>TDS</th>
+                  <th>After TDS</th>
                 <th>Type</th>
                 <th>Name</th>
                 <th>Role</th>
@@ -97,15 +99,17 @@ $(document).ready(function(){
     data:{from_date:from_date, to_date:to_date}
    },
    columns: [
-            {data: 'DT_RowIndex', name: 'sr'},
+            {data: 'DT_RowIndex', name: 'id'},
             {data: 'policy', name: 'policy'},
             {data: 'amount', name: 'amount'},
+            {data: 'TDS', name: 'TDS'},
+            {data: 'Final_amnt', name: 'Final_amnt'},
             {data: 'type', name: 'type'},
-            {data: 'uname', name: 'uname'},
-              {data: 'display_name', name: 'display_name'},
-              {data: 'code', name: 'code'},
-              {data: 'policytype', name: 'policytype'},
-            {data: 'exp_date', name: 'exp_date'},
+            {data: 'uname', name: 'user'},
+              {data: 'display_name', name: 'user'},
+              {data: 'code', name: 'id'},
+              {data: 'policytype', name: 'id'},
+            {data: 'exp_date', name: 'id'},
 
             {
                 data: 'action',

@@ -74,9 +74,20 @@ class UsersController extends Controller
             'email' => 'required|unique:users,email',
             'password' => 'required',
             'society' => 'required',
+            'user_id' => 'required|unique:users,user_id',
         ]);
 
         $user = new User();
+        if ($request->file('profile_dp')) {
+            $extension = $request->file('profile_dp')->getClientOriginalExtension();
+            if ($extension == 'png' || $extension == 'jpg' || $extension == 'jpeg') {
+                $image = $request->file('profile_dp');
+                $path = $image->store('files', 'public');
+                $user->profile_dp  = $path;
+            }
+        }
+
+        $user->user_id = $request->user_id;
         $user->name = $request->name;
         $user->PAN = $request->PAN;
         $user->phone = $request->phone;
@@ -117,7 +128,7 @@ class UsersController extends Controller
         $id = $request->d_id;
         $societies = User::where('society', $id)->where('status', 1)->get();
         foreach($societies as $row){
-            $out.= '<option value="'. $row->id. '">'. $row->name. ' (' . $row->id . ')</option>';
+            $out.= '<option value="'. $row->id. '">'. $row->name. ' (' . $row->user_id . ')</option>';
         }
 
         echo $out;
@@ -135,16 +146,27 @@ class UsersController extends Controller
             'email' => 'required|unique:users,email,' . $id,
             'PAN' => 'required',
             'society' => 'required',
+            'user_id' => 'required|unique:users,user_id,' . $id,
         ]);
         if ($request->password != '') {
             $user->password = Hash::make($request->password);
         }
+        if ($request->file('profile_dp')) {
+            $extension = $request->file('profile_dp')->getClientOriginalExtension();
+            if ($extension == 'png' || $extension == 'jpg' || $extension == 'jpeg') {
+                $image = $request->file('profile_dp');
+                $path = $image->store('files', 'public');
+                $user->profile_dp  = $path;
+            }
+        }
 
         $user->name = $request->name;
+        $user->user_id = $request->user_id;
         $user->phone = $request->phone;
          $user->PAN = $request->PAN;
         $user->society = $request->society;
         $user->email = $request->email;
+
         $user->update();
         return redirect()->route('members.index')->with('message', 'TL Updated Successfully');
     }

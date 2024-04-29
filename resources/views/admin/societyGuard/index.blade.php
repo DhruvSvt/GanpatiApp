@@ -19,7 +19,8 @@
                                         <thead>
                                 <tr>
                                     <th scope="col">SrNo</th>
-                                    <th scope="col">TL Code</th>
+                                    <th scope="col">Profile</th>
+                                    <th scope="col">Agent Code</th>
                                     <th scope="col">Name</th>
                                     <th scope="col">Phone</th>
                                     <th scope="col">Email</th>
@@ -40,7 +41,10 @@
                                 @foreach ($items as $member)
                                 <tr>
                                      <th scope="row">{{ $loop->index+$currentPage+1 }}</th>
-                                    <td><b>{{ $member->id }}</b></td>
+                                     <td><img class="header-profile-user rounded-circle shadow-4-strong" src="{{ Storage::url($member->profile_dp) }}"
+                        onerror="this.onerror=null;this.src='{{ config('app.url') }}/assets/images/user-badge-vector-removebg-preview.png';"
+                             alt="Header Avatar"></td>
+                                    <td><b>{{ $member->user_id }}</b></td>
                                     <td>{{ $member->name }}</td>
                                     <td>{{ $member->phone }}</td>
                                     <td>{{ $member->email }}</td>

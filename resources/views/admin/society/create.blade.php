@@ -69,7 +69,7 @@
                                     <select id="ForminputState" class="form-select" data-choices="" data-choices-sorting="true" name="director">
                                         <option selected="" value="">-Director CODE-</option>
                                         @foreach ($dr as $society )
-                                        <option value="{{ $society->id }}">{{ $society->id }} ({{ $society->name }})</option>
+                                        <option value="{{ $society->id }}">{{ $society->user_id }} ({{ $society->name }})</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -83,7 +83,7 @@
                                     <select id="ForminputState" class="form-select" data-choices="" data-choices-sorting="true" name="tl">
                                         <option selected="" value="">-TL CODE-</option>
                                         @foreach ($tl as $society )
-                                        <option value="{{ $society->id }}">{{ $society->id }} ({{ $society->name }})</option>
+                                        <option value="{{ $society->id }}">{{ $society->user_id }} ({{ $society->name }})</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -97,7 +97,7 @@
                                     <select id="ForminputState" class="form-select" data-choices="" data-choices-sorting="true" name="agent">
                                         <option selected="" value="">-AGENT CODE-</option>
                                         @foreach ($agents as $society )
-                                        <option value="{{ $society->id }}">{{ $society->id }} ({{ $society->name }})</option>
+                                        <option value="{{ $society->id }}">{{ $society->user_id }} ({{ $society->name }})</option>
                                         @endforeach
                                     </select>
                                 </div>

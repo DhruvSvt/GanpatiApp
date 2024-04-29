@@ -20,6 +20,8 @@ class SocietyController extends Controller
      */
     public function index()
     {
+
+
         $keyword = request()->keyword;
         $rows = request()->rows ?? 25;
 
@@ -31,7 +33,7 @@ class SocietyController extends Controller
         $allColumns = Schema::getColumnListing((new Society())->getTable());
 
 
-        $items = Society::select('societies.value', 'societies.agent', 'societies.tl', 'societies.director', 'societies.id','societies.exp_date','societies.start_date','societies.mobile','societies.proposer','residents.name as policy','a.name as agentname', 't.name as tlname', 'd.name as directorname')->join('residents', 'residents.id', '=', 'societies.policy_type')->leftJoin('users as a', 'a.id', '=', 'societies.agent')->leftJoin('users as d', 'd.id', '=', 'societies.director')->leftJoin('users as t', 't.user_id', '=', 't.tl')
+        $items = Society::select('societies.value', 'societies.agent', 'societies.tl', 'societies.director', 'societies.id','societies.exp_date','societies.start_date','societies.mobile','societies.proposer','residents.name as policy','a.name as agentname', 't.name as tlname', 'd.name as directorname', 'a.user_id as auser_id', 't.user_id as tuser_id', 'd.user_id as duser_id')->join('residents', 'residents.id', '=', 'societies.policy_type')->leftJoin('users as a', 'a.id', '=', 'societies.agent')->leftJoin('users as d', 'd.id', '=', 'societies.director')->leftJoin('users as t', 't.id', '=', 'societies.tl')
         ->where('societies.status',  0)->groupBy('societies.id')->when(isset($keyword), function ($query) use ($keyword, $allColumns) {
             $query->where(function ($query) use ($keyword, $allColumns) {
                 // Dynamically construct the search query
@@ -56,6 +58,8 @@ class SocietyController extends Controller
     }
     public function list()
     {
+        $rid = auth()->user()->role_id;
+        $uid = auth()->user()->id;
         $keyword = request()->keyword;
         $rows = request()->rows ?? 25;
 
@@ -67,7 +71,7 @@ class SocietyController extends Controller
         $allColumns = Schema::getColumnListing((new Society())->getTable());
 
 
-        $items = Society::select('societies.value', 'societies.agent', 'societies.tl', 'societies.director', 'societies.id', 'societies.exp_date', 'societies.start_date', 'societies.mobile', 'societies.proposer', 'residents.name as policy', 'a.name as agentname', 't.name as tlname', 'd.name as directorname')->join('residents', 'residents.id', '=', 'societies.policy_type')->leftJoin('users as a', 'a.id', '=', 'societies.agent')->leftJoin('users as d', 'd.id', '=', 'societies.director')->leftJoin('users as t', 't.user_id', '=', 't.tl')
+        $items = Society::select('societies.value', 'societies.agent', 'societies.tl', 'societies.director', 'societies.id', 'societies.exp_date', 'societies.start_date', 'societies.mobile', 'societies.proposer', 'residents.name as policy', 'a.name as agentname', 't.name as tlname', 'd.name as directorname', 'a.user_id as auser_id', 't.user_id as tuser_id', 'd.user_id as duser_id')->join('residents', 'residents.id', '=', 'societies.policy_type')->leftJoin('users as a', 'a.id', '=', 'societies.agent')->leftJoin('users as d', 'd.id', '=', 'societies.director')->leftJoin('users as t', 't.id', '=', 'societies.tl')
         ->where('societies.status',  1)->groupBy('societies.id')->when(isset($keyword), function ($query) use ($keyword, $allColumns) {
             $query->where(function ($query) use ($keyword, $allColumns) {
                 // Dynamically construct the search query
@@ -82,6 +86,12 @@ class SocietyController extends Controller
                 $query->orWhere('t.name', 'LIKE', "%$keyword%");
                 $query->orWhere('d.name', 'LIKE', "%$keyword%");
             });
+        })->when($rid == 2, function ($query) use ($uid) {
+            $query->where('societies.tl', $uid);
+        })->when($rid == 3, function ($query) use ($uid) {
+            $query->where('societies.agent', $uid);
+        })->when($rid == 5, function ($query) use ($uid) {
+            $query->where('societies.director', $uid);
         })
             ->orderBy('societies.id', 'DESC')
             ->paginate($rows);
@@ -90,6 +100,9 @@ class SocietyController extends Controller
     }
     public function renewList()
     {
+
+        $rid = auth()->user()->role_id;
+        $uid = auth()->user()->id;
 
         $keyword = request()->keyword;
         $rows = request()->rows ?? 25;
@@ -102,7 +115,7 @@ class SocietyController extends Controller
         $allColumns = Schema::getColumnListing((new Society())->getTable());
 
 
-        $items = Society::select('societies.value', 'societies.agent', 'societies.tl', 'societies.director', 'societies.id', 'societies.exp_date', 'societies.start_date', 'societies.mobile', 'societies.proposer', 'residents.name as policy', 'a.name as agentname', 't.name as tlname', 'd.name as directorname')->join('residents', 'residents.id', '=', 'societies.policy_type')->leftJoin('users as a', 'a.id', '=', 'societies.agent')->leftJoin('users as d', 'd.id', '=', 'societies.director')->leftJoin('users as t', 't.user_id', '=', 't.tl')
+        $items = Society::select('societies.value', 'societies.agent', 'societies.tl', 'societies.director', 'societies.id', 'societies.exp_date', 'societies.start_date', 'societies.mobile', 'societies.proposer', 'residents.name as policy', 'a.name as agentname', 't.name as tlname', 'd.name as directorname', 'a.user_id as auser_id', 't.user_id as tuser_id', 'd.user_id as duser_id')->join('residents', 'residents.id', '=', 'societies.policy_type')->leftJoin('users as a', 'a.id', '=', 'societies.agent')->leftJoin('users as d', 'd.id', '=', 'societies.director')->leftJoin('users as t', 't.id', '=', 'societies.tl')
             ->where('exp_date', '<=', \DB::raw('NOW()'))->groupBy('societies.id')->when(isset($keyword), function ($query) use ($keyword, $allColumns) {
             $query->where(function ($query) use ($keyword, $allColumns) {
                 // Dynamically construct the search query
@@ -117,6 +130,12 @@ class SocietyController extends Controller
                 $query->orWhere('t.name', 'LIKE', "%$keyword%");
                 $query->orWhere('d.name', 'LIKE', "%$keyword%");
             });
+        })->when($rid == 2, function ($query) use ($uid) {
+            $query->where('societies.tl', $uid);
+        })->when($rid == 3, function ($query) use ($uid) {
+            $query->where('societies.agent', $uid);
+        })->when($rid == 5, function ($query) use ($uid) {
+            $query->where('societies.director', $uid);
         })
             ->orderBy('societies.id', 'DESC')
             ->paginate($rows);
@@ -156,28 +175,40 @@ class SocietyController extends Controller
         $director = $society->director;
         if($agent!=''){
             $amnt = round(($request->agent* $society->value)/100);
+            $tdc =  round(($amnt*5)/100);
+            $Final_amnt = $amnt - $tdc;
             $user = new Commission();
             $user->user = $agent;
             $user->policy = $id;
             $user->amount = $amnt;
+            $user->TDS = $tdc;
+            $user->Final_amnt = $Final_amnt;
             $user->type = 'NEW';
             $user->save();
         }
         if ($tl != '') {
             $amnt = round(($request->tl * $society->value) / 100);
+            $tdc =  round(($amnt * 5) / 100);
+            $Final_amnt = $amnt - $tdc;
             $user = new Commission();
             $user->user = $tl;
             $user->policy = $id;
             $user->amount = $amnt;
+            $user->TDS = $tdc;
+            $user->Final_amnt = $Final_amnt;
             $user->type = 'NEW';
             $user->save();
         }
         if ($director != '') {
             $amnt = round(($request->director * $society->value) / 100);
+            $tdc =  round(($amnt * 5) / 100);
+            $Final_amnt = $amnt - $tdc;
             $user = new Commission();
             $user->user = $director;
             $user->policy = $id;
             $user->amount = $amnt;
+            $user->TDS = $tdc;
+            $user->Final_amnt = $Final_amnt;
             $user->type = 'NEW';
             $user->save();
         }
@@ -201,28 +232,40 @@ class SocietyController extends Controller
         $director = $society->director;
         if ($agent != '') {
             $amnt = round(($request->agent * $request->amount) / 100);
+            $tdc =  round(($amnt * 5) / 100);
+            $Final_amnt = $amnt - $tdc;
             $user = new Commission();
             $user->user = $agent;
             $user->policy = $id;
             $user->amount = $amnt;
+            $user->TDS = $tdc;
+            $user->Final_amnt = $Final_amnt;
             $user->type = 'RENEW';
             $user->save();
         }
         if ($tl != '') {
             $amnt = round(($request->tl * $request->amount) / 100);
+            $tdc =  round(($amnt * 5) / 100);
+            $Final_amnt = $amnt - $tdc;
             $user = new Commission();
             $user->user = $tl;
             $user->policy = $id;
             $user->amount = $amnt;
+            $user->TDS = $tdc;
+            $user->Final_amnt = $Final_amnt;
             $user->type = 'RENEW';
             $user->save();
         }
         if ($director != '') {
             $amnt = round(($request->director * $request->amount) / 100);
+            $tdc =  round(($amnt * 5) / 100);
+            $Final_amnt = $amnt - $tdc;
             $user = new Commission();
             $user->user = $director;
             $user->policy = $id;
             $user->amount = $amnt;
+            $user->TDS = $tdc;
+            $user->Final_amnt = $Final_amnt;
             $user->type = 'RENEW';
             $user->save();
         }
@@ -353,9 +396,9 @@ class SocietyController extends Controller
     public function view($id)
     {
         $society = Society::findOrFail($id);
-        $societies = Society::select('societies.*', 'residents.name as policy', 'a.name as agentname', 't.name as tlname', 'd.name as directorname', 'members.*')->Join('members', 'members.policyID', 'societies.id')->join('residents', 'residents.id', '=', 'societies.policy_type')->leftJoin('users as a', 'a.id', '=', 'societies.agent')->leftJoin('users as d', 'd.id', '=', 'societies.director')->leftJoin('users as t', 't.user_id', '=', 't.tl')->where('societies.id', $id)->get();
+        $societies = Society::select('societies.*', 'residents.name as policy', 'a.name as agentname', 't.name as tlname', 'd.name as directorname', 'members.*', 'a.user_id as auser_id', 't.user_id as tuser_id', 'd.user_id as duser_id')->Join('members', 'members.policyID', 'societies.id')->join('residents', 'residents.id', '=', 'societies.policy_type')->leftJoin('users as a', 'a.id', '=', 'societies.agent')->leftJoin('users as d', 'd.id', '=', 'societies.director')->leftJoin('users as t', 't.user_id', '=', 't.tl')->where('societies.id', $id)->get();
         $renew = Renewal::where('policy', $id)->get();
-        $comm = Commission::select('commissions.*', 'users.name')->Join('users', 'users.id', 'commissions.user')->where('commissions.policy', $id)->get();
+        $comm = Commission::select('commissions.*', 'users.name', 'users.user_id')->Join('users', 'users.id', 'commissions.user')->where('commissions.policy', $id)->get();
         $title = 'Policy View';
        return view('admin.society.view', compact('societies', 'title', 'renew', 'comm'));
     }

@@ -40,9 +40,9 @@
                                     <b>Policy Id</b> : #{{ $society->id }}<br>
                                     <b>Policy Value</b> : ₹ {{ $society->value }}</td>
 
-                                    <td><b>AG</b> : {{ $society->agentname }}({{ $society->agent }})<br>
-                                    <b>TL</b> : {{ $society->tlname }}({{ $society->tl }})<br>
-                                <b>DR</b> : {{ $society->directorname }}({{ $society->director }})</td>
+                                      <td><b>AG</b> : {{ $society->auser_id }}<br>
+                                    <b>TL</b> : {{ $society->tuser_id }}<br>
+                                <b>DR</b> : {{ $society->duser_id }}</td>
 
                                     <td class="text-danger">{{ date('d-m-Y', strtotime($society->exp_date)) }}</td>
 

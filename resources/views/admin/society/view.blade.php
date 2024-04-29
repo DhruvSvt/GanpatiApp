@@ -43,7 +43,13 @@
                                                             <div>
                                                                 <h4 class="fw-bold">{{ $fs->proposer }}</h4>
                                                                 <div class="hstack gap-3 flex-wrap">
-                                                                    <div>Agent : {{ $fs->agentname }}({{ $fs->agent }})
+                                                                    <div>Agent : {{ $fs->auser_id }}
+                                                                    </div>
+                                                                    <div class="vr"></div>
+                                                                      <div>TL : {{ $fs->tuser_id }}
+                                                                    </div>
+                                                                    <div class="vr"></div>
+                                                                      <div>Director : {{ $fs->duser_id }}
                                                                     </div>
                                                                     <div class="vr"></div>
                                                                     <div>Start Date : <span
@@ -466,6 +472,8 @@
                                                                 <th scope="col">ID</th>
                                                                 <th scope="col">Name</th>
                                                                 <th scope="col">Commission</th>
+                                                                <th scope="col">TDS(5%)</th>
+                                                                <th scope="col">After TDS</th>
                                                                 <th scope="col">Type</th>
                                                                 <th scope="col">Date</th>
                                                             </tr>
@@ -475,8 +483,10 @@
                                                                         <tr>
 
                                         <td>{{$row->id}}</td>
-                                        <td>{{$row->name}} (#{{$row->user}})</td>
+                                        <td>{{$row->name}} (#{{$row->user_id}})</td>
                                         <td>{{$row->amount}}</td>
+                                        <td>{{$row->TDS}}</td>
+                                        <td>{{$row->Final_amnt}}</td>
                                         <td>{{$row->type}}</td>
                                         <td>{{ date('d-m-Y', strtotime($row->created_at)) }}</td>
                                                                        </tr>

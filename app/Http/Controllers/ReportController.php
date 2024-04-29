@@ -31,12 +31,23 @@ class ReportController extends Controller
     public function sale(Request $request)
     {
             if ($request->ajax()) {
-            if (!empty($request->from_date)) {
-                $data = Society::select('societies.id', 'value', 'director', 'tl', 'agent', 'exp_date', 'proposer', 'residents.name as policy', DB::raw("DATE_FORMAT(exp_date, '%d-%M-%Y') as exp_date"), DB::raw("DATE_FORMAT(start_date, '%d-%M-%Y') as start_date"))->join('residents', 'residents.id', '=', 'societies.policy_type')->whereBetween('start_date', array($request->from_date, $request->to_date));
+                $fd = $request->from_date;
+                $td = $request->to_date;
+                $rid = auth()->user()->role_id;
+                $uid = auth()->user()->id;
 
-            } else {
-                $data = Society::select('societies.id', 'value', 'director', 'tl', 'agent', 'exp_date', 'proposer', 'residents.name as policy', DB::raw("DATE_FORMAT(exp_date, '%d-%M-%Y') as exp_date"), DB::raw("DATE_FORMAT(start_date, '%d-%M-%Y') as start_date"))->join('residents', 'residents.id', '=', 'societies.policy_type');
-            }
+
+            $data = Society::select('societies.id', 'value', 'exp_date', 'proposer', 'residents.name as policy', DB::raw("DATE_FORMAT(exp_date, '%d-%M-%Y') as exp_date"), DB::raw("DATE_FORMAT(start_date, '%d-%M-%Y') as start_date"), 'a.user_id as auser_id', 't.user_id as tuser_id', 'd.user_id as duser_id')->join('residents', 'residents.id', '=', 'societies.policy_type')->leftJoin('users as a', 'a.id', '=', 'societies.agent')->leftJoin('users as d', 'd.id', '=', 'societies.director')->leftJoin('users as t', 't.id', '=', 'societies.tl')->when(!empty($request->from_date), function ($query) use ($fd, $td) {
+                $query->whereBetween('start_date', array($fd, $td));
+            })->when($rid == 2, function ($query) use ($uid) {
+                $query->where('societies.tl', $uid);
+            })->when($rid == 3, function ($query) use ($uid) {
+                $query->where('societies.agent', $uid);
+            })->when($rid == 5, function ($query) use ($uid) {
+                $query->where('societies.director', $uid);
+            });
+
+
                 return Datatables::of($data)
                 ->addIndexColumn()
 
@@ -56,11 +67,23 @@ class ReportController extends Controller
     public function renewal(Request $request)
     {
         if ($request->ajax()) {
-            if (!empty($request->from_date)) {
-                $data = Society::select('societies.id', 'amount', 'director', 'tl', 'agent', 'exp_date', 'proposer', 'residents.name as policy', DB::raw("DATE_FORMAT(exp_date, '%d-%M-%Y') as exp_date"), DB::raw("DATE_FORMAT(start_date, '%d-%M-%Y') as start_date"))->join('residents', 'residents.id', '=', 'societies.policy_type')->join('renewals', 'renewals.policy', '=', 'societies.id')->whereBetween('start_date', array($request->from_date, $request->to_date));
-            } else {
-                $data = Society::select('societies.id', 'amount', 'director', 'tl', 'agent', 'exp_date', 'proposer', 'residents.name as policy', DB::raw("DATE_FORMAT(exp_date, '%d-%M-%Y') as exp_date"), DB::raw("DATE_FORMAT(start_date, '%d-%M-%Y') as start_date"))->join('residents', 'residents.id', '=', 'societies.policy_type')->join('renewals', 'renewals.policy', '=', 'societies.id');
-            }
+
+            $fd = $request->from_date;
+            $td = $request->to_date;
+            $rid = auth()->user()->role_id;
+            $uid = auth()->user()->id;
+
+
+                $data = Society::select('societies.id', 'amount',  'exp_date', 'proposer', 'residents.name as policy', DB::raw("DATE_FORMAT(exp_date, '%d-%M-%Y') as exp_date"), DB::raw("DATE_FORMAT(start_date, '%d-%M-%Y') as start_date"), 'a.user_id as auser_id', 't.user_id as tuser_id', 'd.user_id as duser_id')->join('residents', 'residents.id', '=', 'societies.policy_type')->join('renewals', 'renewals.policy', '=', 'societies.id')->leftJoin('users as a', 'a.id', '=', 'societies.agent')->leftJoin('users as d', 'd.id', '=', 'societies.director')->leftJoin('users as t', 't.id', '=', 'societies.tl')->when(!empty($request->from_date), function ($query) use ($fd, $td) {
+                $query->whereBetween('societies.start_date', array($fd, $td));
+            })->when($rid == 2, function ($query) use ($uid) {
+                $query->where('societies.tl', $uid);
+            })->when($rid == 3, function ($query) use ($uid) {
+                $query->where('societies.agent', $uid);
+            })->when($rid == 5 , function ($query) use ($uid) {
+                $query->where('societies.director', $uid);
+            });
+
             return Datatables::of($data)
                 ->addIndexColumn()
 
@@ -80,11 +103,19 @@ class ReportController extends Controller
     public function commission(Request $request)
     {
         if ($request->ajax()) {
-            if (!empty($request->from_date)) {
-                $data = Commission::select('commissions.type', 'commissions.policy', 'commissions.amount', 'residents.name as policytype', 'users.id as code', 'users.name as uname', 'display_name', DB::raw("DATE_FORMAT(commissions.created_at, '%d-%M-%Y') as exp_date"))->join('societies', 'societies.id', '=', 'commissions.policy')->join('residents', 'residents.id', '=', 'societies.policy_type')->join('users', 'users.id', '=', 'commissions.user')->join('roles', 'roles.id', '=', 'users.role_id')->whereBetween('commissions.created_at', array($request->from_date, $request->to_date));
-            } else {
-                $data = Commission::select('commissions.type', 'commissions.policy', 'commissions.amount', 'residents.name as policytype', 'users.id as code','users.name as uname','display_name',DB::raw("DATE_FORMAT(commissions.created_at, '%d-%M-%Y') as exp_date"))->join('societies', 'societies.id', '=', 'commissions.policy')->join('residents', 'residents.id', '=', 'societies.policy_type')->join('users', 'users.id', '=', 'commissions.user')->join('roles', 'roles.id', '=', 'users.role_id');
-            }
+
+            $fd = $request->from_date;
+            $td = $request->to_date;
+            $rid = auth()->user()->role_id;
+            $uid = auth()->user()->id;
+
+                $data = Commission::select('commissions.type', 'commissions.Final_amnt', 'commissions.TDS', 'commissions.policy', 'commissions.amount', 'residents.name as policytype', 'users.user_id as code', 'users.name as uname', 'display_name', DB::raw("DATE_FORMAT(commissions.created_at, '%d-%M-%Y') as exp_date"))->join('societies', 'societies.id', '=', 'commissions.policy')->join('residents', 'residents.id', '=', 'societies.policy_type')->join('users', 'users.id', '=', 'commissions.user')->join('roles', 'roles.id', '=', 'users.role_id')->when(!empty($request->from_date), function ($query) use ($fd, $td) {
+                    $query->whereBetween('commissions.created_at', array($fd, $td));
+                })->when($rid != 1, function ($query) use ($uid) {
+                    $query->where('commissions.user', $uid);
+                });
+
+
             return Datatables::of($data)
                 ->addIndexColumn()
 

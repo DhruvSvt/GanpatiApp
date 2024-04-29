@@ -94,16 +94,16 @@ $(document).ready(function(){
     data:{from_date:from_date, to_date:to_date}
    },
    columns: [
-            {data: 'DT_RowIndex', name: 'sr'},
+            {data: 'DT_RowIndex', name: 'id'},
             {data: 'id', name: 'id'},
-            {data: 'amount', name: 'amount'},
+            {data: 'amount', name: 'value'},
             {data: 'proposer', name: 'proposer'},
-             {data: 'policy', name: 'policy'},
+             {data: 'policy', name: 'policy_type'},
               {data: 'start_date', name: 'start_date'},
             {data: 'exp_date', name: 'exp_date'},
-            {data: 'director', name: 'director'},
-            {data: 'tl', name: 'tl'},
-            {data: 'agent', name: 'agent'},
+            {data: 'duser_id', name: 'director'},
+            {data: 'tuser_id', name: 'tl'},
+            {data: 'auser_id', name: 'agent'},
             {
                 data: 'action',
                 name: 'action',

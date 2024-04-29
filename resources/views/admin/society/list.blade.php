@@ -40,9 +40,9 @@
                                     <b>Policy Id</b> : #{{ $society->id }}<br>
                                     <b>Policy Value</b> : ₹ {{ $society->value }}</td>
 
-                                    <td><b>AG</b> : {{ $society->agentname }}({{ $society->agent }})<br>
-                                    <b>TL</b> : {{ $society->tlname }}({{ $society->tl }})<br>
-                                <b>DR</b> : {{ $society->directorname }}({{ $society->director }})</td>
+                                    <td><b>AG</b> : {{ $society->auser_id }}<br>
+                                    <b>TL</b> : {{ $society->tuser_id }}<br>
+                                <b>DR</b> : {{ $society->duser_id }}</td>
 
                                     <td class="text-danger">{{ date('d-m-Y', strtotime($society->exp_date)) }}</td>
 
@@ -58,9 +58,11 @@
                                             <a href="{{ route('society.view',$society->id) }}" class="btn btn-primary w-100 btn-sm ">
                                                 View Policy
                                             </a>
-                                              <a href="{{ route('society.renew',$society->id) }}" class="btn btn-warning w-100 btn-sm mt-2">
+                                              @if (auth()->user()->role_id==1)
+                                            <a href="{{ route('society.renew',$society->id) }}" class="btn btn-warning w-100 btn-sm mt-2">
                                                 Renew Policy
                                             </a>
+                                            @endif
                                             {{-- <form action="{{ route('society.destroy', $society->id) }}" method="post">
                                                 @csrf
                                                 @method('DELETE')

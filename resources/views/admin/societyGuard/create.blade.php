@@ -11,7 +11,7 @@
 
             <div class="card-body">
                 <div class="live-preview">
-                    <form action="{{ route('guard.store') }}" method="POST">
+                    <form action="{{ route('guard.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-md-6">
@@ -69,7 +69,7 @@
                                         data-choices-sorting="true" name="society">
                                         <option selected="">Choose Director</option>
                                         @foreach ($societies as $society )
-                                        <option value="{{ $society->id }}">{{ $society->name }} ({{ $society->id }})</option>
+                                        <option value="{{ $society->id }}">{{ $society->name }} ({{ $society->user_id }})</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -101,18 +101,25 @@
                                 <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
-                            <!--end col-->
-                            {{-- <div class="col-md-6">
+                           <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="phonenumberInput" class="form-label">Commission (%)</label><span
-                                        class="text-danger">*</span>
-                                    <input type="num" class="form-control" placeholder="Enter the commission"
-                                        name="commission" required>
+                                    <label for="firstNameinput" class="form-label">User's Code</label>
+                                    <input type="text" class="form-control" placeholder="Enter User's ID"
+                                        name="user_id" required>
                                 </div>
-                                @error('commission')
+                                @error('user_id')
                                 <p class="text-danger">{{ $message }}</p>
                                 @enderror
-                            </div> --}}
+                            </div>
+                              <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="firstNameinput" class="form-label">Profile Pic</label>
+                                    <input type="file" accept="image/*" class="form-control" name="profile_dp">
+                                </div>
+                                @error('profile_dp')
+                                <p class="text-danger">{{ $message }}</p>
+                                @enderror
+                            </div>
 
                             <div class="col-lg-12">
                                 <div class="text-end">
@@ -137,7 +144,7 @@
 
             <div class="card-body">
                 <div class="live-preview">
-                    <form action="{{ route('guard.update', $member->id) }}" method="POST">
+                    <form action="{{ route('guard.update', $member->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="row">
@@ -200,7 +207,7 @@
 
                                         @foreach ($tls as $society )
                                         <option value="{{ $society->id }}" @if($society->id==$member->tl)selected
-                                            @endif>{{ $society->name }} ({{ $society->id }})</option>
+                                            @endif>{{ $society->name }} ({{ $society->user_id }})</option>
                                         @endforeach
 
                                     </select>
@@ -227,6 +234,25 @@
                                     <input type="password" class="form-control"  name="password" >
                                 </div>
                                 @error('password')
+                                <p class="text-danger">{{ $message }}</p>
+                                @enderror
+                            </div>
+                             <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="firstNameinput" class="form-label">User's Code</label>
+                                    <input type="text" class="form-control" placeholder="Enter User's ID"
+                                        name="user_id" value="{{ $member->user_id }}" required>
+                                </div>
+                                @error('user_id')
+                                <p class="text-danger">{{ $message }}</p>
+                                @enderror
+                            </div>
+                              <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="firstNameinput" class="form-label">Profile Pic</label>
+                                    <input type="file" accept="image/*" class="form-control" name="profile_dp">
+                                </div>
+                                @error('profile_dp')
                                 <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
