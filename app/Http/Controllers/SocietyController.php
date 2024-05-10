@@ -391,7 +391,8 @@ class SocietyController extends Controller
         $society = Society::findOrFail($id);
         $title = 'Policy Edit';
         $edit = true;
-        return view('admin.society.create', compact('edit', 'title', 'society'));
+        $residents = Resident::where(['status' => 1])->orderBy('name', 'ASC')->get();
+        return view('admin.society.create', compact('edit', 'title', 'society', 'residents'));
     }
     public function view($id)
     {
@@ -417,17 +418,25 @@ class SocietyController extends Controller
      */
     public function update(Request $request,$id)
     {
-        $society = Society::findOrFail($id);
-        $request->validate([
-            'name' => 'required',
-            'total_appartments' => 'required',
-            'city' => 'required',
-            'address' => 'required'
-        ]);
+        $user = Society::findOrFail($id);
 
-        $society->update($request->post());
+        $user->policy_type = $request->policy_type;
+        $user->value = $request->value;
+        $user->exp_date = $request->exp_date;
+        $user->start_date = $request->start_date;
+        $user->vehicle_no = $request->vehicle_no;
+        $user->proposer = $request->proposer;
+        $user->address = $request->address;
+        $user->dob = $request->dob;
+        $user->ocupation = $request->ocupation;
+        $user->gender = $request->gender;
+        $user->mobile = $request->mobile;
+        $user->email = $request->email;
+        $user->annual_income = $request->annual_income;
+        $user->sum_insured = $request->sum_insured;
+        $user->save();
 
-        return redirect()->route('society.index')->with('message', 'Data Updated Successfully');
+        return redirect()->back()->with('message', 'Data Updated Successfully');
     }
 
     /**

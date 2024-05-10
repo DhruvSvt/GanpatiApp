@@ -58,7 +58,11 @@
                                             <a href="{{ route('society.view',$society->id) }}" class="btn btn-primary w-100 btn-sm ">
                                                 View Policy
                                             </a>
+
                                               @if (auth()->user()->role_id==1)
+                                               <a href="{{ route('society.edit',$society->id) }}" class="btn btn-danger w-100 btn-sm mt-2">
+                                                Edit Policy
+                                            </a>
                                             <a href="{{ route('society.renew',$society->id) }}" class="btn btn-warning w-100 btn-sm mt-2">
                                                 Renew Policy
                                             </a>

@@ -61,6 +61,12 @@
                                              <a href="{{ route('society.approve',$society->id) }}" class="btn btn-success w-100 btn-sm mt-2">
                                                 Approve Policy
                                             </a>
+                                             @if (auth()->user()->role_id==1)
+                                               <a href="{{ route('society.edit',$society->id) }}" class="btn btn-danger w-100 btn-sm mt-2">
+                                                Edit Policy
+                                            </a>
+
+                                            @endif
                                             {{-- <form action="{{ route('society.destroy', $society->id) }}" method="post">
                                                 @csrf
                                                 @method('DELETE')

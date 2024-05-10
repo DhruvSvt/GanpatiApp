@@ -347,6 +347,179 @@
         </div>
         @endisset
 
+          @isset($edit)
+        <div class="card">
+            <div class="card-header align-items-center d-flex">
+                <h4 class="card-title mb-0 flex-grow-1">Edit Policy</h4>
+
+            </div>
+
+            <!-- end card header -->
+            <div class="card-body">
+                <div class="live-preview">
+                    <form action="{{ route('society.update',$society->id) }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        @method('PUT')
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label for="firstNameinput" class="form-label">Policy Type</label><span
+                                        class="text-danger">*</span>
+                                    <select class="form-control" name="policy_type" required>
+
+                                        @foreach ($residents as $societys )
+                                        <option value="{{ $societys->id }}"
+                                            @if($society->policy_type==$societys->id)
+                                            selected=""
+                                        @endif >{{ $societys->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                @error('policy_type')
+                                <p class="text-danger">{{ $message }}</p>
+                                @enderror
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label for="firstNameinput" class="form-label">Policy Value</label><span class="text-danger">*</span>
+                                    <input type="number" class="form-control" placeholder="Enter value"
+                                        min="0" name="value" value="{{$society->value}}" required>
+                                </div>
+                                @error('value')
+                                <p class="text-danger">{{ $message }}</p>
+                                @enderror
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label for="firstNameinput" class="form-label">Expiry Date</label><span class="text-danger">*</span>
+                                    <input type="date" class="form-control" placeholder="Expiry Date" name="exp_date" value="{{$society->exp_date}}" required>
+                                </div>
+                                @error('exp_date')
+                                <p class="text-danger">{{ $message }}</p>
+                                @enderror
+                            </div>
+
+                            <!--end col-->
+
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="firstNameinput" class="form-label">Start Date <span
+                                        class="text-danger">*</span></label>
+                                    <input type="date" class="form-control" value="{{$society->start_date}}" placeholder="Date" name="start_date" required>
+                                </div>
+                                @error('start_date')
+                                <p class="text-danger">{{ $message }}</p>
+                                @enderror
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="firstNameinput" class="form-label">Vehicle Number <span class="text text-success">(IF Any)</span></label>
+                                    <input type="text" class="form-control" value="{{$society->vehicle_no}}"  placeholder="Vehicle No" name="vehicle_no" >
+                                </div>
+                                @error('vehicle_no')
+                                <p class="text-danger">{{ $message }}</p>
+                                @enderror
+                            </div>
+                            <!--end col-->
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="firstNameinput" class="form-label">Proposer Name <span
+                                        class="text-danger">*</span></label>
+                                <input type="text" class="form-control" value="{{$society->proposer}}" placeholder="proposer name" name="proposer" required>
+                            </div>
+                            @error('proposer')
+                            <p class="text-danger">{{ $message }}</p>
+                            @enderror
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="firstNameinput" class="form-label">Address</label>
+                                <input type="text" class="form-control" placeholder="Enter Address" name="address" value="{{$society->address}}"  >
+                            </div>
+                            @error('address')
+                            <p class="text-danger">{{ $message }}</p>
+                            @enderror
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="firstNameinput" class="form-label">DOB</label>
+                                <input type="date" value="{{$society->dob}}"  class="form-control" placeholder="Enter DOB" name="dob" >
+                            </div>
+                            @error('dob')
+                            <p class="text-danger">{{ $message }}</p>
+                            @enderror
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="firstNameinput" class="form-label">Ocupation</label>
+                                <input type="text" class="form-control" value="{{$society->ocupation}}" placeholder="Enter Ocupation" name="ocupation" >
+                            </div>
+                            @error('ocupation')
+                            <p class="text-danger">{{ $message }}</p>
+                            @enderror
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="firstNameinput" class="form-label">Gender</label>
+                                <select class="form-select"  name="gender">
+                                    <option selected="" value="{{$society->gender}}">{{$society->gender}}</option>
+                                <option   value="Male">Male</option>
+                                <option   value="Female">Female</option>
+                                </select>
+                            </div>
+                            @error('gender')
+                            <p class="text-danger">{{ $message }}</p>
+                            @enderror
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="firstNameinput" class="form-label">Mobile</label>
+                                <input type="number" value="{{$society->mobile}}" class="form-control" placeholder="Enter Mobile" name="mobile" >
+                            </div>
+                            @error('mobile')
+                            <p class="text-danger">{{ $message }}</p>
+                            @enderror
+                        </div>
+                        <div class="col-md-4">
+                            <div class="mb-3">
+                                <label for="firstNameinput" class="form-label">Email</label>
+                                <input type="email" value="{{$society->email}}" class="form-control" placeholder="Enter Email" name="email" >
+                            </div>
+                            @error('email')
+                            <p class="text-danger">{{ $message }}</p>
+                            @enderror
+                        </div>
+                        <div class="col-md-4">
+                            <div class="mb-3">
+                                <label for="firstNameinput" class="form-label">Annual Income</label>
+                                <input type="number" value="{{$society->annual_income}}" class="form-control" placeholder="Enter Annual Income" name="annual_income" >
+                            </div>
+                            @error('annualincome')
+                            <p class="text-danger">{{ $message }}</p>
+                            @enderror
+                        </div>
+                        <div class="col-md-4">
+                            <div class="mb-3">
+                                <label for="firstNameinput" class="form-label">Sum Insured</label>
+                                <input type="number" value="{{$society->sum_insured}}" class="form-control" placeholder="Enter Sum Insured" name="sum_insured" >
+                            </div>
+                            @error('sum_insured')
+                            <p class="text-danger">{{ $message }}</p>
+                            @enderror
+                        </div>
+                         <div class="col-lg-12">
+                                <div class="text-end">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </div>
+
+                        <!--end row-->
+                    </form>
+                </div>
+            </div>
+        </div>
+        @endisset
+
         <!-- **************************************************  Edit Form ************************************************** -->
 
     </div>
