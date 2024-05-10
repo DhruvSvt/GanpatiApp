@@ -403,7 +403,9 @@
                                                                 <div>
                                                                     <p class="mb-2 text-uppercase fw-medium">Last Year
                                                                         Copy:</p>
-                                                                    <h5 class="fs-15 mb-0">{{ $fs->last_copy }}</h5>
+                                                                    <h5 class="fs-15 mb-0"><a
+                                                                                href="{{ Storage::url($fs->last_copy) }}"
+                                                                                target="_blank">View File</a></h5>
                                                                 </div>
                                                             </div>
 
