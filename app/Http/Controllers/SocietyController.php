@@ -180,6 +180,7 @@ class SocietyController extends Controller
             $user = new Commission();
             $user->user = $agent;
             $user->policy = $id;
+            $user->per = $request->agent;
             $user->amount = $amnt;
             $user->TDS = $tdc;
             $user->Final_amnt = $Final_amnt;
@@ -193,6 +194,7 @@ class SocietyController extends Controller
             $user = new Commission();
             $user->user = $tl;
             $user->policy = $id;
+            $user->per = $request->tl;
             $user->amount = $amnt;
             $user->TDS = $tdc;
             $user->Final_amnt = $Final_amnt;
@@ -205,6 +207,7 @@ class SocietyController extends Controller
             $Final_amnt = $amnt - $tdc;
             $user = new Commission();
             $user->user = $director;
+            $user->per = $request->director;
             $user->policy = $id;
             $user->amount = $amnt;
             $user->TDS = $tdc;
@@ -420,6 +423,42 @@ class SocietyController extends Controller
     {
         $user = Society::findOrFail($id);
 
+
+
+        if($user->agent!= null){
+            $rows = Commission::where('policy',  $id)->where('user',  $user->agent)->first();
+            $per = $rows->per;
+            $cid = $rows->id;
+            $amnt = round(($per* $request->value)/100);
+            $tdc =  round(($amnt*5)/100);
+            $Final_amnt = $amnt - $tdc;
+
+            Commission::where('id', $cid)
+            ->update(['amount' => $amnt,'TDS' => $tdc,'Final_amnt' => $Final_amnt]);
+        }
+        if ($user->tl != null) {
+            $rows = Commission::where('policy',  $id)->where('user',  $user->tl)->first();
+            $per = $rows->per;
+            $cid = $rows->id;
+            $amnt = round(($per * $request->value) / 100);
+            $tdc =  round(($amnt * 5) / 100);
+            $Final_amnt = $amnt - $tdc;
+
+            Commission::where('id', $cid)
+            ->update(['amount' => $amnt, 'TDS' => $tdc, 'Final_amnt' => $Final_amnt]);
+        }
+        if ($user->director != null) {
+            $rows = Commission::where('policy',  $id)->where('user',  $user->director)->first();
+            $per = $rows->per;
+            $cid = $rows->id;
+            $amnt = round(($per * $request->value) / 100);
+            $tdc =  round(($amnt * 5) / 100);
+            $Final_amnt = $amnt - $tdc;
+
+            Commission::where('id', $cid)
+            ->update(['amount' => $amnt, 'TDS' => $tdc, 'Final_amnt' => $Final_amnt]);
+        }
+
         $user->policy_type = $request->policy_type;
         $user->value = $request->value;
         $user->exp_date = $request->exp_date;
@@ -435,6 +474,7 @@ class SocietyController extends Controller
         $user->annual_income = $request->annual_income;
         $user->sum_insured = $request->sum_insured;
         $user->save();
+
 
         return redirect()->back()->with('message', 'Data Updated Successfully');
     }
