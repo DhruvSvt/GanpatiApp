@@ -395,7 +395,10 @@ class SocietyController extends Controller
         $title = 'Policy Edit';
         $edit = true;
         $residents = Resident::where(['status' => 1])->orderBy('name', 'ASC')->get();
-        return view('admin.society.create', compact('edit', 'title', 'society', 'residents'));
+
+        $members = Member::where('policyID', $id)->get();
+
+        return view('admin.society.create', compact('edit', 'title', 'society', 'residents', 'members'));
     }
     public function view($id)
     {
@@ -474,6 +477,25 @@ class SocietyController extends Controller
         $user->annual_income = $request->annual_income;
         $user->sum_insured = $request->sum_insured;
         $user->save();
+
+        $f_name = $request->input('f_name');
+        Member::where('policyID', $id)->delete();
+        for ($count = 0; $count < collect($f_name)->count(); $count++) {
+            $data = array(
+                'f_name' => $request->f_name[$count],
+                'f_dob'  => $request->f_dob[$count],
+                'f_ht'  => $request->f_ht[$count],
+                'f_ocuppation'  => $request->f_ocuppation[$count],
+                'f_relation'  => $request->f_relation[$count],
+                'f_nominee'  => $request->f_nominee[$count],
+                'f_nomineeDOB'  => $request->f_nomineeDOB[$count],
+                'f_diabetes'  => $request->f_diabetes[$count],
+                'f_bp'  => $request->f_bp[$count],
+                'f_predisease'  => $request->f_predisease[$count],
+                'policyID' => $id
+            );
+            Member::insert($data);
+        }
 
 
         return redirect()->back()->with('message', 'Data Updated Successfully');
