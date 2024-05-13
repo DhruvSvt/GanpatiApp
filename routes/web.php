@@ -63,6 +63,10 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('report-commission', [ReportController::class, 'commission'])->name('report.commission');
 
 
+    Route::get('/change-password', [HomeController::class, 'changePassword'])->name('change-password');
+    Route::post('/change-password', [HomeController::class, 'updatePassword'])->name('update-password');
+
+
 });
 
 

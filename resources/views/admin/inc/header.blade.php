@@ -107,9 +107,14 @@
                                 class="badge bg-success-subtle text-success mt-1 float-end">New</span><i
                                 class="mdi mdi-cog-outline text-muted fs-16 align-middle me-1"></i> <span
                                 class="align-middle">Settings</span></a>
+
                         <a class="dropdown-item" href="auth-lockscreen-basic.html"><i
                                 class="mdi mdi-lock text-muted fs-16 align-middle me-1"></i> <span
                                 class="align-middle">Lock screen</span></a> --}}
+
+                                <a class="dropdown-item" href="{{ route('change-password') }}"><i
+                                class="mdi mdi-lock text-muted fs-16 align-middle me-1"></i> <span
+                                class="align-middle"> Change Password</span></a>
 
                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">

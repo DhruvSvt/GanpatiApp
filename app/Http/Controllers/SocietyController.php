@@ -427,7 +427,7 @@ class SocietyController extends Controller
         $user = Society::findOrFail($id);
 
 
-
+        if($user->status != 0){
         if($user->agent!= null){
             $rows = Commission::where('policy',  $id)->where('user',  $user->agent)->first();
             $per = $rows->per;
@@ -460,6 +460,7 @@ class SocietyController extends Controller
 
             Commission::where('id', $cid)
             ->update(['amount' => $amnt, 'TDS' => $tdc, 'Final_amnt' => $Final_amnt]);
+        }
         }
 
         $user->policy_type = $request->policy_type;
