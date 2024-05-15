@@ -361,7 +361,7 @@ class SocietyController extends Controller
           );
             Member::insert($data);
         }
-            return redirect()->route('society.index')->with('message', 'Policy added successfully!');
+            return redirect()->route('society.list')->with('message', 'Policy added successfully!');
 
         } catch (\Exception $e) {
             dd($e->getMessage());

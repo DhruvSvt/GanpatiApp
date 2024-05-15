@@ -84,7 +84,8 @@
                                                         Members
                                                     </a>
                                                 </li>
-                                                <li class="nav-item">
+                                                 @if (auth()->user()->role_id==1)
+                                              <li class="nav-item">
                                                     <a class="nav-link fw-semibold" data-bs-toggle="tab"
                                                         href="#project-activities" role="tab">
                                                         Documents
@@ -96,6 +97,8 @@
                                                         Last Policy Details
                                                     </a>
                                                 </li>
+                                            @endif
+
                                                 <li class="nav-item">
                                                     <a class="nav-link fw-semibold" data-bs-toggle="tab"
                                                         href="#Renewal-team" role="tab">
