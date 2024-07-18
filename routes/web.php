@@ -5,8 +5,12 @@ use App\Http\Controllers\ResidentController;
 use App\Http\Controllers\SocietyController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DirectorController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\WebController;
+use App\Http\Controllers\InsuranceController;
+use App\Http\Controllers\EnquiryController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,9 +25,17 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
+Route::get('/', [WebController::class, 'index'])->name('index');
+Route::get('/about', [WebController::class, 'about'])->name('about');
+Route::get('/contact', [WebController::class, 'contact'])->name('contact');
+
+Route::get('policies/{slug}', [WebController::class, 'policies'])->name('policies');
+Route::get('policy/{slug}', [WebController::class, 'policy'])->name('policy');
 
 Route::get('/admin', [HomeController::class, 'index'])->name('admin');
-Route::get('/', [HomeController::class, 'index'])->name('admin.index');
+Route::get('/admin', [HomeController::class, 'index'])->name('admin.index');
+Route::post('submit_enquiry', [WebController::class, 'enquiry'])->name('enquiry.submit');
+
 Auth::routes();
 
 
@@ -67,6 +79,14 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::post('/change-password', [HomeController::class, 'updatePassword'])->name('update-password');
 
 
+
+    Route::resource('categories', CategoryController::class);
+    Route::post('categories/status', [CategoryController::class, 'status'])->name('categories.status');
+
+    Route::resource('insurances', InsuranceController::class);
+    Route::post('insurances/status', [InsuranceController::class, 'status'])->name('insurances.status');
+    Route::resource('enquiries', EnquiryController::class);
+    Route::post('enquiries/status', [EnquiryController::class, 'status'])->name('enquiries.status');
 });
 
 

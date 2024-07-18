@@ -1,0 +1,3312 @@
+/*-----------------------------------------------------------------------------------
+
+    Template Name: PolicyHut
+    Template URI:
+    Description: This is html5 template
+    Author: DevsArray
+    Author URI:
+    Version: 1.0
+-----------------------------------------------------------------------------------
+/*----------------------------------------*/
+/*  #. Theme default CSS
+/*----------------------------------------*/
+
+.clear {
+    clear: both
+}
+
+::-moz-selection {
+    background: #00b0ff;
+    color: #fff;
+    text-shadow: none;
+}
+
+::selection {
+    background: #00b0ff;
+    color: #fff;
+    text-shadow: none;
+}
+
+.no-mar {
+    margin: 0 !important;
+}
+
+.no-pad {
+    padding: 0 !important;
+}
+
+.navbar-toggler {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 6px 16px rgba(52, 105, 203, .16);
+    padding: 8px;
+    border: 0;
+    font-size: 18px;
+}
+
+.mobile-h-sign-in {
+    display: none;
+    background-color: #fff;
+    color: #1c2954;
+    border: 1px solid #1c2954;
+    text-decoration: none;
+    margin-right: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 16px;
+    padding: 7px 13px;
+    letter-spacing: 0;
+}
+
+div#preloader {
+    background: #000 url("../img/loader.gif") no-repeat scroll center center;
+    height: 100%;
+    left: 0;
+    overflow: visible;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+}
+
+header.navbar-fixed-top {
+    animation-duration: 0.8s;
+    animation-name: fadeInDown;
+    animation-timing-function: ease-in-out;
+    box-shadow: 0 4px 12px -4px rgba(0, 0, 0, 0.75);
+    left: 0;
+    padding-top: 20px;
+    position: fixed !important;
+    right: 0;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+}
+
+.mar-bot-50 {
+    margin-bottom: 50px;
+}
+
+.mar-bot-40 {
+    margin-bottom: 40px;
+}
+
+.mar-bot-35 {
+    margin-bottom: 35px;
+}
+
+.mar-bot-30 {
+    margin-bottom: 30px;
+}
+
+.mar-top-30 {
+    margin-top: 30px;
+}
+
+.mar-top-80 {
+    margin-top: 80px;
+}
+
+.mar-top-80 {
+    margin-top: 80px;
+}
+
+.mar-top-55 {
+    margin-top: 55px;
+}
+
+.mar-top-108 {
+    margin-top: 108px;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+*,
+*:before,
+*:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+*:focus {
+    outline: 0;
+}
+
+html {
+    font-size: 62.5%;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    background: #fff;
+    font-weight: normal;
+    font-size: 15px;
+    letter-spacing: 0.2px;
+    color: #888;
+    line-height: 30px;
+    -webkit-font-smoothing: antialiased;
+    /* Fix for webkit rendering */
+    -webkit-text-size-adjust: 100%;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+button,
+input,
+textarea {
+    letter-spacing: 1px;
+}
+
+
+
+/*
+Table Of Contents
+=========================
+- Default Typography
+- Custom Typography
+=========================
+*/
+
+
+/*
+--------------------------
+- Default Typography
+--------------------------
+*/
+
+body {
+    font-family: "Roboto", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    color: #000;
+    letter-spacing: 0.4px;
+}
+
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a,
+h6 a {
+    font-weight: inherit;
+    font-family: "Roboto", sans-serif;
+}
+
+h1 {
+    font-size: 36px;
+    line-height: 70px;
+    letter-spacing: 1px;
+    margin-bottom: 0px;
+}
+
+h2 {
+    font-size: 22px;
+    line-height: 24px;
+    margin-bottom: 0px;
+}
+
+h3 {
+    font-size: 24px;
+    line-height: 30px;
+    margin-bottom: 0px;
+}
+
+h4 {
+    font-size: 20px;
+    line-height: 27px;
+}
+
+h5 {
+    font-size: 16px;
+    line-height: 24px;
+}
+
+h6 {
+    font-size: 14px;
+    line-height: 24px;
+}
+
+p {
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    letter-spacing: 0;
+    line-height: 28px;
+    margin: 0;
+}
+
+p img {
+    margin: 0;
+}
+
+span {
+    font-family: "Roboto", sans-serif;
+}
+
+
+/* em and strong */
+
+em {
+    font: 15px/30px;
+}
+
+strong,
+b {
+    font: 15px/30px;
+}
+
+small {
+    font-size: 11px;
+    line-height: inherit;
+}
+
+
+/*  blockquotes */
+
+blockquote {
+    border-left: 0 none;
+    font-family: "Roboto", sans-serif;
+    margin: 10px 0;
+    padding-left: 40px;
+    position: relative;
+}
+
+blockquote::before {
+    color: #4e5665;
+    content: "";
+    font-family: FontAwesome;
+    font-size: 36px;
+    left: 20px;
+    line-height: 0;
+    margin: 0;
+    opacity: 0.5;
+    position: absolute;
+    top: 20px;
+}
+
+blockquote p {
+    font-style: italic;
+    padding: 0;
+    font-size: 18px;
+    line-height: 36px;
+}
+
+blockquote cite {
+    display: block;
+    font-size: 12px;
+    font-style: normal;
+    line-height: 18px;
+}
+
+blockquote cite:before {
+    content: "\2014 \0020";
+}
+
+blockquote cite a,
+blockquote cite a:visited {
+    color: #8B9798;
+    border: none
+}
+
+/* abbreviations */
+
+abbr {
+    color: #444;
+    font-weight: 700;
+    font-variant: small-caps;
+    text-transform: lowercase;
+    letter-spacing: .6px;
+}
+
+abbr:hover {
+    cursor: help;
+}
+
+/* links */
+
+a,
+a:visited {
+    text-decoration: none;
+    font-family: "Roboto", sans-serif;
+    font-weight: normal;
+    font-size: 12px;
+    color: #111;
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    outline: 0;
+}
+
+a:hover,
+a:active {
+    color: #00b0ff;
+    text-decoration: none;
+    outline: 0;
+}
+
+a:focus {
+    text-decoration: none;
+    outline: 0;
+}
+
+p a,
+p a:visited {
+    line-height: inherit;
+    outline: 0;
+}
+
+a.active-page {
+    color: #e6ae48 !important;
+}
+
+
+/* list */
+
+ul,
+ol {
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+ul {
+    margin: 0;
+}
+
+ol {
+    list-style: decimal;
+}
+
+ol,
+ul.square,
+ul.circle,
+ul.disc {
+    margin-left: 0px;
+}
+
+ul.square {
+    list-style: square outside;
+}
+
+ul.circle {
+    list-style: circle outside;
+}
+
+ul.disc {
+    list-style: disc outside;
+}
+
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+    margin: 0;
+}
+
+ul ul li,
+ul ol li,
+ol ol li,
+ol ul li {
+    margin-bottom: 0px;
+}
+
+li {
+    line-height: 18px;
+    margin-bottom: 0px;
+}
+
+ul.large li {}
+
+li p {}
+
+
+/* definition list */
+
+dl {
+    margin: 12px 0;
+}
+
+dt {
+    margin: 0;
+    color: #11ABB0;
+}
+
+dd {
+    margin: 0 0 0 20px;
+}
+
+button {}
+
+
+/*
+--------------------------
+- Custom Typography
+--------------------------
+*/
+
+
+/* Your Custom Typography. */
+
+
+/*----------------------------------------*/
+/*  #. Header CSS
+/*----------------------------------------*/
+/* Header Top Styles */
+.header-top {
+    background-color: #1c2954;
+    color: #fff;
+    padding: 10px 0;
+}
+
+.ht-left,
+.ht-right {
+    display: flex;
+    align-items: center;
+}
+
+.ht-left p,
+.ht-right p {
+    margin: 0;
+}
+
+.ht-left i,
+.ht-right i {
+    margin-right: 5px;
+}
+
+.ht-social {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.ht-social li {
+    margin-right: 10px;
+}
+
+.ht-social a {
+    display: inline-block;
+    color: #fff;
+    text-decoration: none;
+}
+
+.ht-social i {
+    margin-right: 5px;
+}
+
+/* Header Section Styles */
+.header-section {
+    background-color: #fff;
+    padding: 12px 0px;
+    position: relative;
+    border-bottom: 1px solid #f2f2f2;
+    z-index: 9;
+}
+
+.main-menu a .fas {
+    font-size: 10px;
+    padding-left: 4px;
+}
+
+.header-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: inline-block;
+}
+
+.logo img {
+    height: 60px;
+}
+
+
+
+.menu-right-components {
+    display: flex;
+    align-items: center;
+}
+
+.menur-components .mr-btn {
+    display: inline-block;
+    padding: 9px 24px;
+    background-color: #1c2954;
+    color: #fff;
+    text-decoration: none;
+    margin-right: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 16px;
+    border: 1px solid #1c2954;
+    letter-spacing: 0px;
+}
+
+.menur-components .mr-btn.h-sign-in {
+    background-color: #da2619;
+    color: #fff;
+    border: 1px solid #da2619;
+}
+
+.menur-components .mr-btn:hover {}
+
+.ht-right {
+    justify-content: end;
+}
+
+.ht-right ul.ht-social {
+    margin-left: 15px;
+}
+
+ul.ht-social {}
+
+ul.ht-social li {}
+
+ul.ht-social li a {
+    position: relative;
+    font-size: 14px;
+    background-color: #1A47A9;
+    text-align: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    padding-top: 7px;
+}
+
+ul.ht-social li a i {
+    margin: 0px auto;
+}
+
+.header-top p {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+/* ============Header CSS End.============ */
+
+/*----------------------------------------*/
+/*  #. Hero CSS
+/*----------------------------------------*/
+.hero-area {
+    position: relative;
+    background-color: #fff;
+    padding-top: 70px;
+    overflow: hidden;
+    background: linear-gradient(180deg, #fff, #e0eeff);
+}
+
+.hero-text {
+    position: relative;
+    max-width: 720px;
+}
+
+.white-blue-gradient {
+    background: linear-gradient(#fff, #E8F0FF);
+    padding: 4em 0;
+}
+
+.navbar.navbar-light {
+    background-color: #fff !important;
+    padding: 0;
+}
+
+.navbar-nav .dropdown-menu {
+    min-width: 174px;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border: 0;
+}
+
+.navbar-brand img {
+    height: 45px;
+}
+
+.dropdown-item {
+
+    font-size: 15px !important;
+    border: 0;
+    border-radius: var(--bs-dropdown-item-border-radius, 0);
+    margin: 8px 5px;
+    letter-spacing: 0;
+}
+
+.hero-text h1 {
+    position: relative;
+    font-size: 41px;
+    line-height: initial;
+    font-weight: 400;
+    letter-spacing: 0px;
+    color: #0E1941;
+}
+
+.hero-text p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 29px;
+    color: #0E1941;
+    margin: 20px auto;
+    display: block;
+}
+
+.hero-btn {
+    position: relative;
+    margin: 30px auto 10px;
+}
+
+.hero-btn a {
+    margin-right: 15px;
+    margin-bottom: 15px;
+}
+
+a.btn-style-1,
+.btn-style-1 {
+    position: relative;
+    display: inline-block;
+    padding: 20px 25px;
+    background-color: #1c2954;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 18px;
+    letter-spacing: 0px;
+    color: #fff;
+    border-radius: 8px;
+}
+
+.btn-style-2 {
+    position: relative;
+    display: inline-block;
+    padding: 20px 25px;
+    background-color: #da2619;
+    color: #fff;
+    border: 1px solid #da2619;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 18px;
+    letter-spacing: 0px;
+
+    border-radius: 8px;
+}
+
+.trust-clients {
+    position: relative;
+}
+
+.trust-clients h4 {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+.trust-clients ul {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0px;
+    list-style-type: none;
+}
+
+.trust-clients ul li {
+    position: relative;
+    display: inline-block;
+    margin-right: -12px;
+}
+
+.hero-img {
+    position: relative;
+    z-index: 1;
+    margin-right: -165px;
+}
+
+.himg-elements {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    z-index: -1;
+    height: 100%;
+}
+
+.hero-left-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+}
+
+.himg-elements img:nth-child(2) {
+    position: absolute;
+    bottom: -35px;
+    left: 20px;
+}
+
+.himg-elements img:nth-child(1) {
+    position: absolute;
+    left: 160px;
+    top: 65px;
+}
+
+/* ============Hero CSS End.============ */
+
+
+
+
+/*----------------------------------------*/
+/*  #. Experience Area CSS
+/*----------------------------------------*/
+.experience-area {
+    position: relative;
+    padding: 100px 0px;
+    background-color: #F3F6F9;
+}
+
+.eatext {
+    position: relative;
+}
+
+.eatext h3 {
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 62px;
+    /* 129.167% */
+    letter-spacing: -0.96px;
+    color: #0E1941;
+}
+
+.eatext p {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 29px;
+    color: #3E4767;
+    position: relative;
+    display: block;
+    margin: 15px auto;
+}
+
+.ea-counter {
+    position: relative;
+    margin: 25px auto;
+}
+
+.ea-counter ul {
+    position: relative;
+    padding: 0px;
+    list-style-type: none;
+}
+
+.ea-counter ul li {
+    position: relative;
+    display: inline-block;
+    margin-right: 30px;
+}
+
+.single-counterup {
+    position: relative;
+    margin-bottom: 60px;
+    text-align: center;
+}
+
+.single-counterup h4 {
+    color: #f01824;
+    font-size: 29px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: initial;
+    display: block;
+    margin-bottom: 8px;
+    letter-spacing: 0px;
+    margin-top: 11px;
+}
+
+.single-counterup p {
+    font-size: 16px;
+    font-style: normal;
+    line-height: initial;
+    letter-spacing: 0px;
+    color: #6a6a6a;
+    display: block;
+    font-weight: 400;
+}
+
+.btn-style-3 {
+    display: inline-block;
+    padding: 18px 30px;
+    text-decoration: none;
+    margin-right: 10px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 16px;
+    letter-spacing: 0px;
+    background-color: #fff;
+    color: #1c2954;
+    border: 1px solid #1c2954;
+}
+
+
+ul.eat-features {
+    position: relative;
+    padding: 0px;
+    list-style-type: none;
+    margin: 15px auto;
+}
+
+ul.eat-features li {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    margin-right: 0px;
+}
+
+.single-eatf {
+    position: relative;
+}
+
+.pt-15 {
+    padding-top: 90px;
+}
+
+.single-eatf img {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.single-eatf p {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 15px;
+    margin: 5px auto;
+}
+
+/* ============Experience Area CSS End.============ */
+
+
+
+/*----------------------------------------*/
+/*  #. Key Features Area CSS
+/*----------------------------------------*/
+.key-features-area {
+    position: relative;
+    padding: 80px 0px 80px;
+    background-color: #e1eeff;
+}
+
+.section-head {
+    position: relative;
+}
+
+.single-counterup img {
+    height: 80px;
+}
+
+.section-head h3 {
+    font-size: 27px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: initial;
+    letter-spacing: 0px;
+    color: #253858;
+    max-width: 300px;
+}
+
+.section-head p {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 30px;
+    color: #3E4767;
+    position: relative;
+    display: block;
+}
+
+.key-features-area .section-head {
+    margin-bottom: 50px;
+}
+
+.single-kfeatures {
+    position: relative;
+    border-radius: 0;
+    border: 0;
+    background: transparent;
+    padding: 0;
+    transition: .5s ease;
+    margin-bottom: 29px;
+}
+
+.single-kfeatures .kf-icon {
+    width: 100%;
+    height: auto;
+    display: block;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 1px 1px 3px #ddd;
+    text-align: center;
+    padding: 21px 5px;
+}
+
+.single-kfeatures .kf-icon img {
+    height: 41px;
+}
+
+.single-kfeatures h4 {
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 39px;
+    /* 130% */
+    letter-spacing: -0.6px;
+    position: relative;
+    display: block;
+    margin: 12px auto;
+}
+
+.single-kfeatures p {
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    color: #000000;
+    padding-top: 7px;
+    font-weight: 500;
+}
+
+.single-kfeatures:hover {
+    margin-top: 5px;
+    margin-bottom: -5px;
+}
+
+.key-features-area .section-head p {
+    font-weight: 400;
+    margin: 15px auto;
+}
+
+.key-features-area.home2-kf {
+    padding-top: 120px;
+}
+
+.view-all-products {
+    position: relative;
+    top: 15px;
+    margin: 15px auto;
+    margin-top: 16px;
+    text-align: center;
+}
+
+.view-all-products a {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    width: 142px;
+    height: 33px;
+    border: 1px solid #0065FF;
+    border-radius: 40px;
+    color: #0065FF;
+    font-size: 12px;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 10px;
+}
+
+/* ============Key Features Area CSS End.============ */
+
+
+
+/*----------------------------------------*/
+/*  #. Insurance Area CSS
+/*----------------------------------------*/
+.section-head h4 {
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 62px;
+    color: #0E1941;
+    letter-spacing: 0px;
+}
+
+.insuarance-plan-area {
+    position: relative;
+    padding: 100px 0px;
+    background-color: #e5ebf5;
+}
+
+.insuarance-plan-area .section-head {
+    text-align: center;
+    max-width: 560px;
+    margin: 0px auto 50px;
+}
+
+.plan-list-wrapper {
+    position: relative;
+    text-align: center;
+}
+
+ul.plan-lists {
+    position: relative;
+    padding: 0px;
+    list-style-type: none;
+    max-width: 1164px;
+    margin: 0px auto;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+ul.plan-lists li {
+    position: relative;
+    display: inline-block;
+    width: 390px;
+    margin-right: -3px;
+    margin-left: -3px;
+    margin-bottom: -2px;
+    vertical-align: top;
+}
+
+.single-i-plan {
+    position: relative;
+    background-color: #fff;
+    padding: 16px 14px;
+    border: 1px solid #233d74;
+    text-align: left;
+    box-shadow: 0 8px 16px 0 rgba(67, 118, 186, .2);
+    transition: .3s !important;
+    border-radius: 6px;
+}
+
+.single-i-plan .sip-icon {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    width: 70px;
+    height: 70px;
+    background-color: #233d74;
+    border-radius: 50%;
+    padding-top: 20px;
+    text-align: center;
+}
+
+.single-i-plan .sip-text {
+    position: relative;
+    width: calc(100% - 80px);
+    display: inline-block;
+    vertical-align: top;
+    padding-left: 10px;
+}
+
+.single-i-plan .sip-text h4 {
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 0px;
+    display: block;
+    color: #0E1941;
+    text-transform: uppercase;
+}
+
+.single-i-plan .sip-text p {
+    font-size: 12px;
+    font-weight: 600;
+    color: #69829f;
+
+    line-height: 24px;
+    display: block;
+
+    position: relative;
+    margin: 10px auto;
+}
+
+.single-i-plan a {
+    position: relative;
+    display: block;
+    letter-spacing: 0px;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+    color: #da2619;
+    margin-top: 10px;
+}
+
+.single-i-plan a i {
+    margin-left: 5px;
+    background: #ffd5d5;
+    padding: 4px;
+    border-radius: 50%;
+    height: 23px;
+    width: 23px;
+    text-align: center;
+    color: #da2619;
+}
+
+.single-i-plan.sipq-more {
+    background-color: #1c2954;
+    text-align: center;
+    padding: 28px 40px;
+}
+
+.single-i-plan.sipq-more p {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 30px;
+    color: #fff;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.single-i-plan.sipq-more a.btn-style-2 {
+    display: inline-block;
+}
+
+
+
+
+
+.insuarance-plan-area.insuarance-plan-areav2 {
+    background-color: #f3f6f9;
+    padding-top: 50px;
+}
+
+.single-i-plan.sip-v2 {
+    padding: 0px;
+    border-radius: 10px;
+    margin: 15px auto;
+    max-width: 305px;
+}
+
+.single-i-plan.sip-v2 .sip-img {}
+
+.single-i-plan.sip-v2 .sip-img img {
+    width: 100%;
+}
+
+.single-i-plan.sip-v2 .sip-icon {
+    display: block;
+    border: 1px solid #F3F3F5;
+    background-color: #fff;
+    margin-right: 25px;
+    margin-left: auto;
+    margin-top: -35px;
+    margin-bottom: -10px;
+}
+
+.single-i-plan.sip-v2 .sip-text {
+    width: 100%;
+    padding: 25px;
+}
+
+.plan-list-wrapper-view-more {
+    position: relative;
+    margin-top: 50px;
+    text-align: center;
+}
+
+.insuarance-plan-area.insuarance-plan-areav3 {
+    background-color: #f3f6f9;
+    padding-top: 40px;
+}
+
+.single-i-plan.sip-v3 {
+    margin: 7px auto;
+    border-radius: 10px;
+}
+
+.single-i-plan.sip-v3 .sip-icon {
+    display: block;
+    margin-bottom: 15px;
+}
+
+.single-i-plan.sip-v3 .sip-text {
+    display: block;
+}
+
+.contact-service {
+    position: relative;
+    background-color: #e5ebf5;
+    border-radius: 10px;
+    margin: 15px auto;
+    padding: 17px;
+}
+
+.cs-icon {
+    position: relative;
+    width: 110px;
+    height: 110px;
+    margin: 0px auto;
+    background-color: #F2F5FA;
+    border-radius: 50%;
+}
+
+.cs-icon img {
+    background-color: #1c2954;
+    padding: 20px;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    margin: 10px auto;
+}
+
+.contact-service h4 {
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 30px;
+    display: block;
+    color: #0E1941;
+    margin: 20px auto 40px;
+    letter-spacing: 0px;
+}
+
+/* ============Insurance Area CSS End.============ */
+
+
+
+
+
+/*----------------------------------------*/
+/*  #. Insurance/Service Details CSS
+/*----------------------------------------*/
+.single-i-plan.sip-v3.sip-service h4 {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 28px;
+    letter-spacing: 0px;
+}
+
+.single-i-plan.sip-v3.sip-service {
+    padding: 20px 15px;
+    margin: 15px auto;
+}
+
+.service-details-wrapper {
+    padding: 100px 0px;
+    position: relative;
+    background-color: #f3f6f9;
+}
+
+.section-text {}
+
+.section-text h3 {
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 62px;
+    /* 129.167% */
+    letter-spacing: -0.96px;
+    color: #0E1941;
+    margin-bottom: 20px;
+}
+
+.section-text p {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 29px;
+    color: #3E4767;
+    margin-bottom: 15px;
+}
+
+.doi-need {
+    position: relative;
+    margin: 60px auto 0px;
+}
+
+.section-text h4 {
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 54px;
+    color: #0E1941;
+    letter-spacing: 0px;
+    margin-bottom: 20px;
+}
+
+.section-text h5 {
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 45px;
+    color: #0E1941;
+    letter-spacing: 0px;
+    margin-bottom: 20px;
+}
+
+.doi-need ul.eat-features li {
+    width: 100%;
+}
+
+.how-much-coverage {
+    position: relative;
+    padding: 0px;
+    background-color: #e5ebf5;
+}
+
+.col-md-6 {}
+
+.how-much-coverage .section-text {
+    margin: 40px auto;
+    padding: 25px;
+}
+
+.how-much-coverage .section-text a.btn-style-1 {
+    margin-top: 15px;
+}
+
+.insuarance-type-details {
+    position: relative;
+    padding: 100px 0px;
+    background-color: #f3f6f9;
+}
+
+.insurance-text-table {
+    position: relative;
+}
+
+.insuarance-type-details .section-head {
+    margin-bottom: 50px;
+}
+
+.insuarance-type-details .section-head p {
+    margin: 15px auto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 29px;
+}
+
+.insurance-text-table table {
+    position: relative;
+    width: 100%;
+}
+
+.insurance-text-table table thead {}
+
+.insurance-text-table table thead th {
+    background-color: #0E1941;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+    color: #F3F3F5;
+    letter-spacing: 0px;
+    padding: 15px 25px;
+    border-right: 1px solid #F3F3F5;
+}
+
+.insurance-text-table table thead th td {}
+
+.insurance-text-table table tbody {}
+
+.insurance-text-table table tbody tr {}
+
+.insurance-text-table table tbody tr td {
+    padding: 20px 25px;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 12px;
+    letter-spacing: 0px;
+    color: #0E1941;
+    vertical-align: top;
+}
+
+.insurance-text-table table tbody tr td p {}
+
+.insurance-text-table table tbody tr:nth-of-type(odd) {
+    background-color: #f3f6f9;
+}
+
+.insurance-text-table table tbody tr:nth-of-type(even) {
+    background-color: #e5ebf5;
+}
+
+.insurance-text-table table tbody tr td ul li p {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 12px;
+    color: #0E1941;
+    letter-spacing: 0px;
+}
+
+.insurance-text-table table tbody tr td ul li {
+    margin: 0px auto 10px;
+}
+
+.service-details-wrapper.sdw2 {
+    padding-bottom: 0px;
+}
+
+/* ============Insurance/Service Details CSS End.============ */
+
+/*----------------------------------------*/
+/*  #. Counter Area CSS
+/*----------------------------------------*/
+.counter-area {
+    position: relative;
+    padding: 70px 0px;
+    background-color: #1c2954;
+}
+
+.single-counterup.scu-v2 {
+    text-align: center;
+}
+
+.single-counterup.scu-v2 h4 {
+    color: #fff;
+    font-size: 72px;
+    line-height: 76px;
+}
+
+.single-counterup.scu-v2 p {
+    color: #fff;
+    font-size: 20px;
+    line-height: 28px;
+}
+
+/* ============Counter Are CSS End.============ */
+
+/*----------------------------------------*/
+/*  #. Why Choose Us CSS
+/*----------------------------------------*/
+.why-choose-us-area {
+    position: relative;
+    padding: 100px 0px;
+    z-index: 1;
+}
+
+img.wcu-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    object-fit: cover;
+    object-position: center center;
+}
+
+.wcu-content-box {
+    position: relative;
+}
+
+.wcu-content-box .section-head {
+    margin-bottom: 20px;
+}
+
+.wcu-content-box .section-head p {
+    margin-bottom: 10px;
+}
+
+.wcu-text {
+    position: relative;
+}
+
+.wcu-text p {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 29px;
+    color: #3E4767;
+    position: relative;
+    display: block;
+    margin: 15px auto;
+}
+
+.wcu-lists {
+    position: relative;
+    margin-top: 30px;
+}
+
+.wcu-single {
+    position: relative;
+    margin-bottom: 25px;
+    max-width: 480px;
+}
+
+.wcu-single .wcu-icon {
+    position: relative;
+    width: 70px;
+    height: 70px;
+    background: #1c2954;
+    text-align: center;
+    border-radius: 50%;
+    padding-top: 18px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.wcu-single .wcu-text {
+    position: relative;
+    width: calc(100% - 75px);
+    display: inline-block;
+    vertical-align: top;
+    padding-left: 15px;
+}
+
+.wcu-single .wcu-text h4 {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+    color: #0E1941;
+    display: block;
+    letter-spacing: 0px;
+}
+
+.wcu-single .wcu-text p {
+    margin: 10px auto;
+}
+
+.why-choose-us-area.wcu-about {
+    background-color: #f3f6f9;
+    padding-top: 40px;
+}
+
+/* ============Why Choose Us CSS End.============ */
+
+
+/*----------------------------------------*/
+/*  #. Client Area CSS
+/*----------------------------------------*/
+.global-clients {
+    position: relative;
+    padding: 80px 0px 80px;
+    background: #f4f9ff;
+}
+
+.global-clients .section-head {
+    text-align: center;
+    max-width: 470px;
+    margin: 0px auto 50px;
+}
+
+.gclients-header {
+    position: relative;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.partnerLogo {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin: 0 -35px -20px 0;
+    list-style: none;
+    padding: 0;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+}
+
+.partnerLogo a img {
+    height: 88px;
+    object-fit: contain;
+}
+
+.partnerLogo a {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 0 15%;
+    flex: 1 0 15%;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    max-width: 20%;
+    margin-top: 20px;
+    margin-right: 35px;
+    background: #fff;
+    color: #000;
+    display: flex;
+    position: relative;
+    border: 1px solid #ddd;
+    border-radius: 7px;
+    padding: 10px;
+}
+
+body,
+html {
+    overflow-x: hidden;
+}
+
+.gclients-header h4 {
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 45px;
+    color: #0E1941;
+    display: block;
+    position: relative;
+}
+
+.clients-lis-bot {
+    position: relative;
+    text-align: center;
+}
+
+ul.client-lists {
+    position: relative;
+    padding: 0px;
+    list-style-type: none;
+}
+
+.logo-icon img {
+    height: 101px;
+    width: auto;
+    object-fit: contain;
+    max-width: 100%;
+}
+
+ul.client-lists li {
+    position: relative;
+    display: inline-block;
+    width: calc(17% - 4px);
+    border: 1px solid #e9eef6;
+    padding: 12px;
+    text-align: center;
+    margin-right: -3px;
+    margin-left: -3px;
+    background: #ffff;
+    margin-bottom: -1px;
+}
+
+.global-clients.gc-about {
+    background-color: #f3f6f9;
+    padding-top: 80px;
+}
+
+/* ============Client Area CSS End.============ */
+
+
+/*----------------------------------------*/
+/*  #. Easy Service Area CSS
+/*----------------------------------------*/
+.easy-way-service-area {
+    position: relative;
+    padding: 80px 0px 80px;
+    background: #fff;
+}
+
+
+.single-service-step {
+    position: relative;
+    text-align: center;
+    max-width: 285px;
+    margin: 25px auto;
+}
+
+.single-service-step .sst-img {
+    position: relative;
+    max-width: 250px;
+    text-align: center;
+    margin: 0px auto 35px;
+}
+
+.sst-img img {
+    border-radius: 50%;
+    height: 220px;
+    width: 220px;
+    object-fit: cover;
+    border: 1px solid #cdcdcd;
+    padding: 4px;
+    box-shadow: 1px 1px 11px 0px #c3c3c3;
+}
+
+.single-service-step .sst-img span {
+    position: absolute;
+    bottom: -16px;
+    letter-spacing: 0px;
+    background-color: #1c2954;
+    color: #fff;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+    display: inline-block;
+    padding: 8px 15px;
+    border-radius: 25px;
+    border: 3px solid #fff;
+    left: calc(50% - 45px);
+}
+
+.single-service-step h4 {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 30px;
+    letter-spacing: 0px;
+    display: block;
+    margin: 15px auto;
+    color: #0E1941;
+}
+
+.single-service-step p {
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 29px;
+    letter-spacing: 0px;
+    color: #3E4767;
+    display: block;
+}
+
+.easy-way-service-area.ewsh2 {
+    position: relative;
+    background-color: #f3f6f9;
+}
+
+/* ============Easy Service Area CSS End.============ */
+
+
+/*----------------------------------------*/
+/*  #. Testimonial Area CSS
+/*----------------------------------------*/
+.testimonial-area {
+    position: relative;
+    background-color: #fff;
+    padding: 80px 0px 80px;
+}
+
+.testimonial-area .section-head {
+    margin-bottom: 16px;
+}
+
+.single-testimonial {
+    position: relative;
+    background-color: #f4f8ff;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.single-testimonial .st-text {
+    position: relative;
+    padding: 30px;
+}
+
+.single-testimonial .st-text p {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 32px;
+    color: #0E1941;
+    letter-spacing: 0px;
+    display: block;
+}
+
+.single-testimonial .st-footer {
+    position: relative;
+    background-color: #f2f5fa;
+    padding: 30px;
+}
+
+.single-testimonial .st-footer .st-author {
+    position: relative;
+    width: 65%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.single-testimonial .st-footer .st-time-ago {
+    position: relative;
+    display: inline-block;
+    width: 34%;
+    text-align: right;
+}
+
+.single-testimonial .st-footer .st-time-ago p {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+    display: block;
+    color: #3E4767;
+    letter-spacing: 0px;
+}
+
+.single-testimonial .st-footer .st-author .sta-img {
+    width: 56px;
+    height: 56px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.single-testimonial .st-footer .st-author .sta-text {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    padding-left: 15px;
+}
+
+.single-testimonial .st-footer .st-author .sta-text h4 {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 20px;
+    letter-spacing: 0px;
+    display: block;
+    color: #0E1941;
+    margin-bottom: 10px;
+}
+
+.single-testimonial .st-footer .st-author .sta-text p {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+    color: #3E4767;
+}
+
+.testimonial-nav {
+    position: relative;
+    text-align: right;
+    margin: 5px auto;
+}
+
+.testimonial-nav button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 20px;
+    background-color: #fff;
+    border: 1px solid #E7E8EC;
+    line-height: 31px;
+}
+
+/* ============Testimonial Area CSS End.============ */
+
+
+/*----------------------------------------*/
+/*  #. Blog Area CSS
+/*----------------------------------------*/
+.blog-area {
+    position: relative;
+    padding: 120px 0px;
+    background-color: #f3f6f9;
+}
+
+.blog-area .section-head {
+    margin-bottom: 50px;
+}
+
+.view-all-blog-btn-wrapper {
+    position: relative;
+    text-align: right;
+    margin-bottom: 50px;
+}
+
+.single-blog {
+    position: relative;
+    max-width: 370px;
+    margin-bottom: 25px;
+}
+
+.single-blog h4 {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 36px;
+    /* 162.5% */
+    letter-spacing: -0.48px;
+    position: relative;
+    display: block;
+    color: #0E1941;
+    margin: 10px auto;
+    padding: 0px 20px;
+}
+
+.single-blog p {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px;
+    color: #3E4767;
+    display: block;
+    position: relative;
+    padding: 0px 20px;
+}
+
+.sb-date {
+    position: relative;
+    margin-top: -20px;
+    padding: 0px 20px;
+    margin-bottom: 15px;
+}
+
+.sb-date p {
+    color: #fff;
+    display: inline-block;
+    background-color: #1c2954;
+    border-radius: 60px;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+    padding: 10px 20px;
+}
+
+.main-blog-area {
+    position: relative;
+    padding: 120px 0px;
+    background-color: #f3f6f9;
+}
+
+.blog-pagination {
+    position: relative;
+    display: block;
+    text-align: center;
+    margin: 30px auto 0px;
+}
+
+ul.pagination li a {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 20px;
+    background-color: #fff;
+    border: 1px solid #E7E8EC;
+    line-height: 31px;
+    display: block;
+    padding-top: 8px;
+}
+
+ul.pagination li {
+    margin: 5px;
+}
+
+
+.sw-widget {
+    position: relative;
+    background-color: #E5EBF5;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    padding: 30px;
+}
+
+.sw-widget h4 {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 30px;
+    color: #0E1941;
+    letter-spacing: 0px;
+    margin-bottom: 20px;
+}
+
+.blog-search {
+    position: relative;
+}
+
+.blog-search input {
+    position: relative;
+    width: 100%;
+    box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+    border: none;
+    border-radius: 8px;
+    height: 50px;
+    font-size: 16px;
+    letter-spacing: 0px;
+    padding: 5px 15px;
+}
+
+.blog-search form {
+    position: relative;
+}
+
+.blog-search button {
+    position: absolute;
+    right: 0px;
+    height: 50px;
+    background-color: #0E1941;
+    width: 50px;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    top: 0px;
+    z-index: 1;
+}
+
+
+.sw-widget ul li a {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 18px;
+    color: #0E1941;
+    display: block;
+    letter-spacing: 0px;
+    border-radius: 8px;
+    background: #FFF;
+    padding: 20px;
+}
+
+.sw-widget ul {
+    position: relative;
+    list-style-type: none;
+    padding: 0px;
+}
+
+.sw-widget ul li {
+    margin-bottom: 12px;
+}
+
+.sw-widget ul li a span {
+    color: #9FA3B3;
+}
+
+.sw-widget ul.tag-lists li {
+    position: relative;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.sw-widget ul.tag-lists li a {
+    padding: 20px 30px;
+}
+
+
+
+
+.blog-details-wrapper {
+    position: relative;
+    padding: 120px 0px;
+    background-color: #f3f6f9;
+}
+
+.blog-featured-image {
+    position: relative;
+    margin-bottom: 35px;
+}
+
+.blog-featured-image img {
+    width: 100%;
+}
+
+.blog-details-wrapper p {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 29px;
+    color: #3E4767;
+}
+
+.blog-details-text {
+    position: relative;
+}
+
+.bdst-block {
+    position: relative;
+    margin: 30px auto;
+}
+
+.bdst-block h3 {
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 54px;
+    letter-spacing: 0px;
+    color: #0E1941;
+    margin-bottom: 10px;
+}
+
+.bdst-qoute-block {
+    background-color: #E5EBF5;
+    padding: 30px;
+    border-radius: 30px;
+    padding-left: 125px;
+    margin: 30px auto;
+}
+
+.bdst-qoute-block p {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 36px;
+    color: #0E1941;
+}
+
+
+.bdst-qoute-block i {
+    color: #1c2954;
+    font-size: 34px;
+    background-color: #fff;
+    width: 55px;
+    height: 55px;
+    text-align: center;
+    border-radius: 50%;
+    padding-top: 10px;
+    display: inline-block;
+    position: absolute;
+    left: 30px;
+}
+
+.bdst-share {
+    position: relative;
+    margin: 30px auto;
+}
+
+.bdst-share h4 {
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 45px;
+    color: #1E162D;
+    letter-spacing: 0px;
+}
+
+.bdst-share ul.scl-list {
+    position: relative;
+    padding: 0px;
+    list-style-type: none;
+    text-align: right;
+}
+
+.bdst-share ul.scl-list li {
+    position: relative;
+    display: inline-block;
+    margin-left: 8px;
+}
+
+
+.bdst-share ul.scl-list li a {
+    position: relative;
+    display: block;
+    width: 50px;
+    height: 50px;
+    background-color: #fff;
+    font-size: 20px;
+    color: #1c2954;
+    text-align: center;
+    border-radius: 50%;
+    padding-top: 15px;
+}
+
+.bdst-comment {
+    position: relative;
+}
+
+.bdst-comment h4 {
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 45px;
+    letter-spacing: 0px;
+    color: #020304;
+    margin-bottom: 20px;
+}
+
+.bdst-form textarea {
+    height: 125px;
+    width: 100%;
+    border: 1px solid #E5EBF5;
+    letter-spacing: 0px;
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+}
+
+.bdst-form input {
+    border: 1px solid #E5EBF5;
+    letter-spacing: 0px;
+    padding: 5px 15px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    width: 100%;
+    height: 55px;
+}
+
+.bdst-form input[type="checkbox"] {
+    width: auto;
+    display: inline-block;
+    height: auto;
+    vertical-align: middle;
+    margin: 0px auto;
+}
+
+.bdst-form p {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 22px;
+}
+
+.input-check-b {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.bdst-form {
+    position: relative;
+}
+
+.bdst-form input[type="submit"] {
+    position: relative;
+    width: auto;
+    background-color: #1c2954;
+    color: #fff;
+    padding: 12px 35px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 18px;
+}
+
+.single-sw-lp {
+    position: relative;
+    padding: 15px 0px;
+    border-bottom: 1px solid #fff;
+}
+
+.single-sw-lp .swl-img {
+    width: 90px;
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+.single-sw-lp .swl-content {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    width: calc(100% - 115px);
+}
+
+.single-sw-lp:last-child {
+    border: none;
+}
+
+.single-sw-lp .swl-content p {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 26px;
+    color: #0E1941;
+}
+
+.single-sw-lp .swl-content .swlc-author {
+    position: relative;
+    display: block;
+}
+
+.single-sw-lp .swl-content .swlc-author i {
+    color: #1c2954;
+    font-size: 16px;
+    line-height: 25px;
+    margin-right: 3px;
+}
+
+.single-sw-lp .swl-content .swlc-author span {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 0px;
+    color: #3E4767;
+}
+
+/* ============Blog Area CSS End.============ */
+
+
+/*----------------------------------------*/
+/*  #. Get In Touch Area CSS
+/*----------------------------------------*/
+.get-in-touch-area {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    background-color: #f3f6f9;
+}
+
+img.gita-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    object-fit: cover;
+    object-position: center center;
+}
+
+.get-in-touch-img {
+    position: relative;
+    margin-right: -180px;
+}
+
+.get-in-touch-content {
+    position: relative;
+}
+
+.gitouch-form {
+    position: relative;
+    margin: 40px auto;
+}
+
+.gitouch-form .form-group {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.gitouch-form label {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 29px;
+    display: block;
+    position: relative;
+    color: #0E1941;
+    letter-spacing: 0px;
+    margin-bottom: 5px;
+}
+
+.gitouch-form input,
+.gitouch-form select {
+    position: relative;
+    height: 60px;
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid #E7E8EC;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 29px;
+    color: #000;
+}
+
+.gitouch-submit {
+    position: relative;
+    margin-top: 20px;
+}
+
+.gitouch-submit input.btn-style-a {
+    position: relative;
+    display: inline-block;
+    background-color: #1c2954;
+    width: auto;
+    color: #fff;
+    min-width: 200px;
+}
+
+.rangeinput-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+.rangeinput-wrapper p.rsart {
+    float: left;
+}
+
+.rangeinput-wrapper p.rend {
+    float: right;
+}
+
+.rangeinput-wrapper input[type="range"] {
+    height: auto;
+}
+
+.rangeinput-wrapper p {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+    color: #0E1941;
+    position: relative;
+    display: block;
+}
+
+.get-in-touch-area.gith2 {
+    padding-top: 140px;
+}
+
+/* ============Get In Touch Area CSS End.============ */
+
+
+/*----------------------------------------*/
+/*  #. Our Team CSS
+/*----------------------------------------*/
+.our-team-area {
+    position: relative;
+    padding: 120px 0px;
+    background-color: #f3f6f9;
+}
+
+.team-wcu {
+    background-color: #f3f6f9;
+}
+
+.our-team-area .section-head {
+    margin-bottom: 50px;
+}
+
+.view-all-staff-btn-wrapper {
+    text-align: right;
+    margin: 25px auto;
+}
+
+.single-staff-member {
+    position: relative;
+    max-width: 305px;
+    text-align: center;
+    margin: 15px auto 25px;
+}
+
+.single-staff-member img {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.single-staff-member h4 {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+    color: #0E1941;
+    position: relative;
+    display: block;
+    letter-spacing: 0px;
+    margin: 10px auto;
+}
+
+.single-staff-member p {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+    color: #3E4767;
+    letter-spacing: 0px;
+}
+
+/* ============Our Team CSS End.============ */
+
+
+/*----------------------------------------*/
+/*  #. Faq Area CSS
+/*----------------------------------------*/
+.faq-area {
+    position: relative;
+    padding: 100px 0px;
+    background-color: #f3f6f9;
+}
+
+.faq-area .section-head {
+    text-align: center;
+    max-width: 700px;
+    margin: 0px auto 60px;
+}
+
+.accordion-item {
+    position: relative;
+    border-radius: 12px;
+    background-color: #fff;
+}
+
+.accordion-item {
+    position: relative;
+    margin-bottom: 15px;
+    border: 1px solid #fff;
+}
+
+.accordion-header {}
+
+button.accordion-button {
+    font-family: Manrope;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 32px;
+    color: #0E1941;
+    letter-spacing: 0px;
+}
+
+button.accordion-button img {
+    position: relative;
+    display: inline-block;
+    height: 25px;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+button.accordion-button::after {}
+
+.accordion-body {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 29px;
+    color: #3E4767;
+    letter-spacing: 0px;
+    padding: 19px;
+}
+
+.accordion-button:focus {
+    box-shadow: none;
+}
+
+.faq-brief-area {
+    position: relative;
+    background-color: #f3f6f9;
+}
+
+.faq-brief-area .section-img {
+    text-align: right;
+}
+
+/* ============Faq Area CSS End.============ */
+
+
+/*----------------------------------------*/
+/*  #. Pricing Area CSS
+/*----------------------------------------*/
+.pricing-area {
+    position: relative;
+    padding: 120px 0px;
+    background-color: #f3f6f9;
+}
+
+.pricing-area .section-head {
+    max-width: 700px;
+    text-align: center;
+    margin: 0px auto 60px;
+}
+
+/* ============Pricing Area CSS End.============ */
+
+
+/*----------------------------------------*/
+/*  #. Section Name CSS
+/*----------------------------------------*/
+
+/* ============Section Name CSS End.============ */
+
+
+/*----------------------------------------*/
+/*  #. Section Name CSS
+/*----------------------------------------*/
+
+/* ============Section Name CSS End.============ */
+
+
+
+
+
+
+/*----------------------------------------*/
+/*  #. Footer CSS
+/*----------------------------------------*/
+footer.footer-area {
+    position: relative;
+    background-color: #1a3367;
+    padding: 80px 0px 0px;
+}
+
+.footer-widgets {
+    position: relative;
+}
+
+.fl-widgets {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+img.footer-logo {
+    position: relative;
+    margin: 5px auto 20px;
+}
+
+.fl-single-w {
+    position: relative;
+    margin: 10px auto 20px;
+}
+
+.fl-single-w p {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 16px;
+    color: #CFD1D9;
+    position: relative;
+    margin-bottom: 5px;
+}
+
+.fl-single-w h4 {
+    position: relative;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 24px;
+    color: rgba(255, 255, 255, .86);
+}
+
+.f-widgets {
+    position: relative;
+    margin: 10px auto;
+}
+
+.f-widgets h4 {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 24px;
+    letter-spacing: -0.02em;
+    color: #FFFFFF;
+    margin-bottom: 25px;
+}
+
+.fw-links {
+    position: relative;
+    margin: 30px auto;
+}
+
+.fw-links ul {
+    position: relative;
+    padding: 0px;
+    list-style-type: none;
+    display: inline-block;
+    margin-right: 35px;
+}
+
+.fw-links ul li {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.fw-links ul li a {
+    position: relative;
+    display: block;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 16px;
+    color: rgba(255, 255, 255, .86);
+    letter-spacing: 0px;
+}
+
+.fw-links ul li a:hover {
+    color: #fff;
+}
+
+.f-social {
+    position: relative;
+    text-align: center;
+    margin: 10px 0;
+}
+
+.f-social h4 {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 24px;
+    letter-spacing: -0.02em;
+    color: #FFFFFF;
+    margin-bottom: 15px;
+}
+
+.f-social ul {
+    position: relative;
+    padding: 0px;
+    list-style-type: none;
+}
+
+.f-social ul li {
+    position: relative;
+    display: inline-block;
+    margin-right: 7px;
+    margin-bottom: 0px;
+}
+
+.f-social ul li a {
+    position: relative;
+    display: block;
+    width: 32px;
+    height: auto;
+    font-size: 20px;
+    text-align: center;
+}
+
+.dtext p {
+    font-size: 12px;
+    font-weight: normal;
+    letter-spacing: 0;
+    line-height: initial;
+    margin-bottom: 9px;
+}
+
+.f-social ul li a i {
+    color: #bdbcbb;
+}
+
+.footer-bottom {
+    position: relative;
+    background: #001d5a;
+    padding: 20px 0;
+}
+
+.fbottom-links {
+    position: relative;
+    padding: 0px 0px 0px;
+    text-align: center;
+}
+
+.fbottom-links ul {
+    position: relative;
+    padding: 0px;
+    list-style-type: none;
+}
+
+.fbottom-links ul li {
+    position: relative;
+    display: inline-block;
+    margin: 5px auto;
+    padding: 0px 17px;
+}
+
+.fbottom-links ul li a {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 29px;
+    text-align: center;
+    color: #bdbcbb;
+    letter-spacing: 0px;
+    display: block;
+}
+
+.fbottom-links ul li:before {
+    position: absolute;
+    content: '';
+    height: 5px;
+    width: 5px;
+    background-color: #fff;
+    left: 0;
+    top: 13px;
+    border-radius: 50%;
+}
+
+.fbottom-links ul li:first-child:before {
+    display: none;
+}
+
+.fbottom-copyrights {
+    position: relative;
+    text-align: left;
+    margin: 10px 0;
+}
+
+.fbottom-copyrights p {
+    position: relative;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 29px;
+    color: #CFD1D9;
+}
+
+
+/* ============Footer CSS End.============ */
+
+
+
+
+
+
+
+
+
+/*----------------------------------------*/
+/*  #. Hero 2 CSS
+/*----------------------------------------*/
+img.hero2-bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-area.hero-2 {
+    padding: 150px 0px;
+}
+
+/* ============Hero 2 CSS End.============ */
+
+/*----------------------------------------*/
+/*  #. Innerpage Title CSS
+/*----------------------------------------*/
+
+.innerpage-title-area {
+    position: relative;
+    padding: 120px 0px;
+}
+
+img.ita-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    object-fit: cover;
+    object-position: left center;
+}
+
+.innerpage-title {
+    position: relative;
+}
+
+.innerpage-title h2 {
+    font-size: 60px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 78px;
+    /* 130% */
+    letter-spacing: -1.2px;
+    position: relative;
+    display: block;
+    color: #0E1941;
+}
+
+.breadcrumb-content {
+    position: relative;
+}
+
+.breadcrumb-content img {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.breadcrumb-content ul {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.breadcrumb-content ul li {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    color: #1c2954;
+}
+
+.breadcrumb-content ul li,
+.breadcrumb-content ul li a {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 32px;
+    letter-spacing: 0px;
+}
+
+.breadcrumb-content ul li a {
+    color: #3e4767;
+}
+
+img.inner-title-img {
+    position: absolute;
+    height: 100%;
+    width: auto;
+    bottom: 0;
+    right: 0;
+}
+
+/* ============Innerpage Title CSS End.============ */
+
+
+
+
+
+/*----------------------------------------*/
+/*  #. 404 CSS
+/*----------------------------------------*/
+.not-found-wrapper {
+    position: relative;
+    padding: 120px 0px;
+}
+
+.error-content {
+    position: relative;
+    max-width: 600px;
+    margin: 0px auto;
+    text-align: center;
+}
+
+.error-content img {}
+
+.error-content h2 {
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 62px;
+    letter-spacing: 0px;
+    margin: 20px auto;
+    color: #0E1941;
+}
+
+.error-content p {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 29px;
+    letter-spacing: 0px;
+    margin: 20px auto;
+    color: #3E4767;
+}
+
+/* ============404 CSS End.============ */
+
+
+
+
+
+
+
+/*----------------------------------------*/
+/*  #. Pricing CSS
+/*----------------------------------------*/
+.single-pricing-policy {
+    position: relative;
+    background-color: #fff;
+    border-radius: 12px;
+    border: 1px solid #E5EBF5;
+    padding: 30px;
+}
+
+.single-pricing-policy .spp-img {}
+
+.single-pricing-policy .ssp-name-price {
+    position: relative;
+    margin: 30px auto;
+    border-bottom: 1px solid #E5EBF5;
+    padding-bottom: 30px;
+}
+
+.single-pricing-policy .ssp-name-price p {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 20px;
+    /* 100% */
+    text-transform: uppercase;
+    color: #0E1941;
+    margin-bottom: 10px;
+}
+
+.single-pricing-policy .ssp-name-price h4 {
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 36px;
+    letter-spacing: 0px;
+    color: #1c2954;
+}
+
+.single-pricing-policy .spp-features {
+    position: relative;
+    margin: 30px auto;
+}
+
+.single-pricing-policy .spp-features ul {
+    position: relative;
+    padding: 0px;
+    list-style-type: none;
+}
+
+.single-pricing-policy .spp-features ul li {
+    margin: 10px auto;
+}
+
+.single-pricing-policy .spp-features ul li img {
+    vertical-align: middle;
+    max-width: 25px;
+    margin-right: 5px;
+}
+
+.single-pricing-policy .spp-features ul li span {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0px;
+    color: #323B4B;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.single-pricing-policy .spp-button-box {}
+
+.single-pricing-policy .spp-button-box {}
+
+a.spp-btn {
+    border-radius: 8px;
+    padding: 18px 24px;
+    background-color: #E5EBF5;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 16px;
+    letter-spacing: 0px;
+    display: block;
+    text-align: center;
+}
+
+a.spp-btn:hover {
+    color: #fff;
+    background-color: #1c2954;
+}
+
+/* ============Pricing CSS End.============ */
+
+
+/*----------------------------------------*/
+/*  #. Contact Page CSS
+/*----------------------------------------*/
+
+
+
+.contact-area {
+    position: relative;
+    background-color: #f3f6f9;
+    padding: 120px 0px;
+}
+
+.single-c-box {
+    position: relative;
+    background: #FFF;
+    border: 1px solid #E5EBF5;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 10px auto;
+}
+
+.single-c-box img {}
+
+.single-c-box h4 {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: 0px;
+    margin: 15px auto;
+    color: #0E1941;
+}
+
+.single-c-box p {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    color: #3E4767;
+    margin: 10px auto;
+}
+
+.single-c-box a {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: 0px;
+    position: relative;
+    display: inline-block;
+    color: #1c2954;
+}
+
+.contact-text {
+    position: relative;
+}
+
+.contact-text .section-head {
+    margin-bottom: 15px;
+}
+
+.contact-text .section-head p {
+    color: #1c2954;
+}
+
+.contact-form-map {
+    position: relative;
+    background-color: #E5EBF5;
+    border-radius: 12px;
+    padding: 30px;
+}
+
+.policy-form-group {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.policy-form-group label {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 29px;
+    color: #0E1941;
+    letter-spacing: 0px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.policy-form-group input {
+    border: 1px solid #E7E8EC;
+    background-color: #fff;
+    color: #000;
+    letter-spacing: 0px;
+    height: 55px;
+    width: 100%;
+    border-radius: 8px;
+    padding: 10px 15px;
+}
+
+.policy-form-group textarea {
+    border: 1px solid #E7E8EC;
+    background-color: #fff;
+    color: #000;
+    letter-spacing: 0px;
+    height: 140px;
+    width: 100%;
+    border-radius: 8px;
+    padding: 10px 15px;
+}
+
+.policy-form-group input[type="checkbox"] {
+    height: auto;
+    width: auto;
+    display: inline-block;
+    margin-right: 8px;
+}
+
+.policy-form-group.pfg-check {}
+
+.policy-form-group.pfg-check span {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 32px;
+    letter-spacing: 0px;
+    color: #475467;
+}
+
+.policy-form-group input[type="submit"] {
+    background-color: #1c2954;
+    font-size: 18px;
+    color: #fff;
+}
+
+.gmap-c {
+    position: relative;
+    margin-top: 20px;
+}
+
+.gmap-c iframe {
+    width: 100%;
+    height: 200px;
+}
+
+
+
+/* ============Contact CSS End.============ */
+
+
+
+/*----------------------------------------*/
+/*  #. Billing Page CSS
+/*----------------------------------------*/
+
+.payment-way-area {
+    position: relative;
+    padding: 120px 0px 0px;
+    background-color: #f3f6f9;
+}
+
+.payment-way-area .section-head {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.single-billing-box {
+    border-radius: 12px;
+    border: 1px solid #E5EBF5;
+    background: #FFF;
+    padding: 30px;
+}
+
+.single-billing-box h4 {
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 39px;
+    letter-spacing: -0.6px;
+    color: #0E1941;
+    margin: 12px auto;
+}
+
+.single-billing-box p {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 29px;
+    color: #3E4767;
+    margin-bottom: 20px;
+}
+
+.single-billing-box p a {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 29px;
+    letter-spacing: 0px;
+    color: #1c2954;
+}
+
+.single-billing-box a.bl-btn {
+    position: relative;
+    padding: 17px 24px;
+    background-color: #1c2954;
+    display: inline-block;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 16px;
+    letter-spacing: 0px;
+    color: #fff;
+    border-radius: 8px;
+}
+
+/* ============Billing Page CSS End============ */
