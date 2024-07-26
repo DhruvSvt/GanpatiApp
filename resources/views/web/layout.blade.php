@@ -177,8 +177,7 @@
                             <h4>Guruji IMF</h4>
                             <div class="fl-single-w">
                                 <p>Call Us</p>
-                                <h5><a href="tel:" style=" font-size: inherit;    color: #c5c7ce;">+91 85296
-                                        963852</a></h5>
+                                <h5><a href="tel:8791016844" style=" font-size: inherit;    color: #c5c7ce;">+91 8791016844</a></h5>
                             </div>
                             <div class="fl-single-w">
                                 <p>Email Us</p>
