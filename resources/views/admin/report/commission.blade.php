@@ -50,6 +50,7 @@
                                         <th>Commission</th>
                                         <th>TDS</th>
                                         <th>After TDS</th>
+                                        <th>PAN</th>
                                         <th>Type</th>
                                         <th>Name</th>
                                         <th>Role</th>
@@ -124,6 +125,10 @@
                         {
                             data: 'Final_amnt',
                             name: 'Final_amnt'
+                        },
+                        {
+                            data: 'PAN',
+                            name: 'PAN'
                         },
                         {
                             data: 'type',
