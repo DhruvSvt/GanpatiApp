@@ -128,7 +128,7 @@
                         },
                         {
                             data: 'PAN',
-                            name: 'PAN'
+                            name: 'users.PAN'
                         },
                         {
                             data: 'type',
