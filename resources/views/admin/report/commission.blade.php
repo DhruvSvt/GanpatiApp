@@ -146,7 +146,7 @@
                             name: 'id'
                         },
                         {
-                            data: 'societies.start_date',
+                            data: 'start_date',
                             name: 'id'
                         },
 
