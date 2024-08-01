@@ -109,8 +109,8 @@ class ReportController extends Controller
             $rid = auth()->user()->role_id;
             $uid = auth()->user()->id;
 
-            $data = Commission::select('commissions.type', 'commissions.Final_amnt', 'commissions.TDS', 'commissions.policy', 'commissions.amount', 'residents.name as policytype', 'users.user_id as code', 'users.name as uname', 'display_name', DB::raw("DATE_FORMAT(commissions.created_at, '%d-%M-%Y') as exp_date"))->join('societies', 'societies.id', '=', 'commissions.policy')->join('residents', 'residents.id', '=', 'societies.policy_type')->join('users', 'users.id', '=', 'commissions.user')->join('roles', 'roles.id', '=', 'users.role_id')->when(!empty($request->from_date), function ($query) use ($fd, $td) {
-                $query->whereBetween('commissions.created_at', array($fd, $td));
+            $data = Commission::select('commissions.type', 'commissions.Final_amnt', 'commissions.TDS', 'commissions.policy', 'commissions.amount', 'residents.name as policytype', 'users.user_id as code', 'users.name as uname', 'display_name', 'societies.start_date', DB::raw("DATE_FORMAT(commissions.created_at, '%d-%M-%Y') as exp_date"))->join('societies', 'societies.id', '=', 'commissions.policy')->join('residents', 'residents.id', '=', 'societies.policy_type')->join('users', 'users.id', '=', 'commissions.user')->join('roles', 'roles.id', '=', 'users.role_id')->when(!empty($request->from_date), function ($query) use ($fd, $td) {
+                $query->whereBetween('societies.start_date', array($fd, $td));
             })->when($rid != 1, function ($query) use ($uid) {
                 $query->where('commissions.user', $uid);
             });

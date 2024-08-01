@@ -1,4 +1,4 @@
-@extends('admin.layouts.app', ['title' => 'Renwal Report'])
+@extends('admin.layouts.app', ['title' => 'Commission Report'])
 @section('heads')
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap.min.css" />
@@ -146,7 +146,7 @@
                             name: 'id'
                         },
                         {
-                            data: 'exp_date',
+                            data: 'societies.start_date',
                             name: 'id'
                         },
 
