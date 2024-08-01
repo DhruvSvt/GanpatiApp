@@ -30,11 +30,11 @@ class ReportController extends Controller
 
     public function sale(Request $request)
     {
-            if ($request->ajax()) {
-                $fd = $request->from_date;
-                $td = $request->to_date;
-                $rid = auth()->user()->role_id;
-                $uid = auth()->user()->id;
+        if ($request->ajax()) {
+            $fd = $request->from_date;
+            $td = $request->to_date;
+            $rid = auth()->user()->role_id;
+            $uid = auth()->user()->id;
 
 
             $data = Society::select('societies.id', 'value', 'exp_date', 'proposer', 'residents.name as policy', DB::raw("DATE_FORMAT(exp_date, '%d-%M-%Y') as exp_date"), DB::raw("DATE_FORMAT(start_date, '%d-%M-%Y') as start_date"), 'a.user_id as auser_id', 't.user_id as tuser_id', 'd.user_id as duser_id')->join('residents', 'residents.id', '=', 'societies.policy_type')->leftJoin('users as a', 'a.id', '=', 'societies.agent')->leftJoin('users as d', 'd.id', '=', 'societies.director')->leftJoin('users as t', 't.id', '=', 'societies.tl')->when(!empty($request->from_date), function ($query) use ($fd, $td) {
@@ -48,11 +48,11 @@ class ReportController extends Controller
             });
 
 
-                return Datatables::of($data)
+            return Datatables::of($data)
                 ->addIndexColumn()
 
-                 ->addColumn('action', function($row){
-                    $actionBtn = '<a target="_blank" href="'.route("society.view", $row->id).'" class="btn btn-primary w-100 btn-sm ">View Policy</a>';
+                ->addColumn('action', function ($row) {
+                    $actionBtn = '<a target="_blank" href="' . route("society.view", $row->id) . '" class="btn btn-primary w-100 btn-sm ">View Policy</a>';
                     return $actionBtn;
                 })
                 ->editColumn('value', function ($row) {
@@ -60,7 +60,7 @@ class ReportController extends Controller
                 })
                 ->rawColumns(['action'])
                 ->make(true);
-            }
+        }
         return view('admin.report.sale');
     }
 
@@ -74,13 +74,13 @@ class ReportController extends Controller
             $uid = auth()->user()->id;
 
 
-                $data = Society::select('societies.id', 'amount',  'exp_date', 'proposer', 'residents.name as policy', DB::raw("DATE_FORMAT(exp_date, '%d-%M-%Y') as exp_date"), DB::raw("DATE_FORMAT(start_date, '%d-%M-%Y') as start_date"), 'a.user_id as auser_id', 't.user_id as tuser_id', 'd.user_id as duser_id')->join('residents', 'residents.id', '=', 'societies.policy_type')->join('renewals', 'renewals.policy', '=', 'societies.id')->leftJoin('users as a', 'a.id', '=', 'societies.agent')->leftJoin('users as d', 'd.id', '=', 'societies.director')->leftJoin('users as t', 't.id', '=', 'societies.tl')->when(!empty($request->from_date), function ($query) use ($fd, $td) {
+            $data = Society::select('societies.id', 'amount',  'exp_date', 'proposer', 'residents.name as policy', DB::raw("DATE_FORMAT(exp_date, '%d-%M-%Y') as exp_date"), DB::raw("DATE_FORMAT(start_date, '%d-%M-%Y') as start_date"), 'a.user_id as auser_id', 't.user_id as tuser_id', 'd.user_id as duser_id')->join('residents', 'residents.id', '=', 'societies.policy_type')->join('renewals', 'renewals.policy', '=', 'societies.id')->leftJoin('users as a', 'a.id', '=', 'societies.agent')->leftJoin('users as d', 'd.id', '=', 'societies.director')->leftJoin('users as t', 't.id', '=', 'societies.tl')->when(!empty($request->from_date), function ($query) use ($fd, $td) {
                 $query->whereBetween('societies.start_date', array($fd, $td));
             })->when($rid == 2, function ($query) use ($uid) {
                 $query->where('societies.tl', $uid);
             })->when($rid == 3, function ($query) use ($uid) {
                 $query->where('societies.agent', $uid);
-            })->when($rid == 5 , function ($query) use ($uid) {
+            })->when($rid == 5, function ($query) use ($uid) {
                 $query->where('societies.director', $uid);
             });
 
@@ -109,11 +109,11 @@ class ReportController extends Controller
             $rid = auth()->user()->role_id;
             $uid = auth()->user()->id;
 
-                $data = Commission::select('commissions.type', 'commissions.Final_amnt', 'commissions.TDS', 'commissions.policy', 'commissions.amount', 'residents.name as policytype', 'users.user_id as code', 'users.name as uname', 'display_name', DB::raw("DATE_FORMAT(commissions.created_at, '%d-%M-%Y') as exp_date"))->join('societies', 'societies.id', '=', 'commissions.policy')->join('residents', 'residents.id', '=', 'societies.policy_type')->join('users', 'users.id', '=', 'commissions.user')->join('roles', 'roles.id', '=', 'users.role_id')->when(!empty($request->from_date), function ($query) use ($fd, $td) {
-                    $query->whereBetween('commissions.created_at', array($fd, $td));
-                })->when($rid != 1, function ($query) use ($uid) {
-                    $query->where('commissions.user', $uid);
-                });
+            $data = Commission::select('commissions.type', 'commissions.Final_amnt', 'commissions.TDS', 'commissions.policy', 'commissions.amount', 'residents.name as policytype', 'users.user_id as code', 'users.name as uname', 'display_name', DB::raw("DATE_FORMAT(commissions.created_at, '%d-%M-%Y') as exp_date"))->join('societies', 'societies.id', '=', 'commissions.policy')->join('residents', 'residents.id', '=', 'societies.policy_type')->join('users', 'users.id', '=', 'commissions.user')->join('roles', 'roles.id', '=', 'users.role_id')->when(!empty($request->from_date), function ($query) use ($fd, $td) {
+                $query->whereBetween('commissions.created_at', array($fd, $td));
+            })->when($rid != 1, function ($query) use ($uid) {
+                $query->where('commissions.user', $uid);
+            });
 
 
             return Datatables::of($data)
@@ -124,7 +124,7 @@ class ReportController extends Controller
                     return $actionBtn;
                 })
                 ->editColumn('amount', function ($row) {
-                    return  '₹'.$row->amount;
+                    return  '₹' . $row->amount;
                 })
                 ->rawColumns(['action'])
                 ->make(true);
