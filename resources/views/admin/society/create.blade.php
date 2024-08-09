@@ -75,7 +75,8 @@
                                                 <option selected="" value="">-Director CODE-</option>
                                                 @foreach ($dr as $society)
                                                     <option value="{{ $society->id }}">{{ $society->user_id }}
-                                                        ({{ $society->name }})</option>
+                                                        ({{ $society->name }})
+                                                    </option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -91,7 +92,8 @@
                                                 <option selected="" value="">-TL CODE-</option>
                                                 @foreach ($tl as $society)
                                                     <option value="{{ $society->id }}">{{ $society->user_id }}
-                                                        ({{ $society->name }})</option>
+                                                        ({{ $society->name }})
+                                                    </option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -107,7 +109,8 @@
                                                 <option selected="" value="">-AGENT CODE-</option>
                                                 @foreach ($agents as $society)
                                                     <option value="{{ $society->id }}">{{ $society->user_id }}
-                                                        ({{ $society->name }})</option>
+                                                        ({{ $society->name }})
+                                                    </option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -553,95 +556,108 @@
                                     </div>
                                     <div class="col-md-12">
 
-  @foreach ($members as $rows)
-
-                                        <div class="mycard customsizes{{$loop->index}}">
-                                            <div class="form-group row ">
-                                                <div class="col-lg-6">
-                                                    <h4>Family Size</h4>
-                                                </div>
-                                                <div class="col-lg-6 text-end">
-                                                    @if ($loop->index>=1)
-                                                    <button type="button" id="{{$loop->index}}" class="btn btn-danger btn_remove_sizeset1"> X </button>
-
-                                                    @else
-                                                    <button class="btn btn-success btn-sm" id="addcustom_size_set"
-                                                        type="button">+ Add More</button>
+                                        @foreach ($members as $rows)
+                                            <div class="mycard customsizes{{ $loop->index }}">
+                                                <div class="form-group row ">
+                                                    <div class="col-lg-6">
+                                                        <h4>Family Size</h4>
+                                                    </div>
+                                                    <div class="col-lg-6 text-end">
+                                                        @if ($loop->index >= 1)
+                                                            <button type="button" id="{{ $loop->index }}"
+                                                                class="btn btn-danger btn_remove_sizeset1"> X </button>
+                                                        @else
+                                                            <button class="btn btn-success btn-sm" id="addcustom_size_set"
+                                                                type="button">+ Add More</button>
                                                         @endif
 
 
-                                                </div>
-                                                <div class="col-lg-12">
-                                                    <h5>Member Details </h5>
-                                                </div>
-                                                <div class="col-lg-4">
-                                                    <div class="mb-3">
-                                                        <label for="firstNameinput" class="form-label">Name Of Insured</label>
-                                                        <input type="text" value="{{$rows->f_name}}" class="form-control" name="f_name[]" required>
                                                     </div>
-                                                </div>
-                                                <div class="col-lg-4">
-                                                    <div class="mb-3">
-                                                        <label for="firstNameinput" class="form-label">Date Of Birth</label>
-                                                        <input type="date" class="form-control" value="{{$rows->f_dob}}" name="f_dob[]">
+                                                    <div class="col-lg-12">
+                                                        <h5>Member Details </h5>
                                                     </div>
-                                                </div>
+                                                    <div class="col-lg-4">
+                                                        <div class="mb-3">
+                                                            <label for="firstNameinput" class="form-label">Name Of
+                                                                Insured</label>
+                                                            <input type="text" value="{{ $rows->f_name }}"
+                                                                class="form-control" name="f_name[]" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <div class="mb-3">
+                                                            <label for="firstNameinput" class="form-label">Date Of
+                                                                Birth</label>
+                                                            <input type="date" class="form-control"
+                                                                value="{{ $rows->f_dob }}" name="f_dob[]">
+                                                        </div>
+                                                    </div>
 
 
-                                                <div class="col-lg-4">
-                                                    <div class="mb-3">
-                                                        <label for="firstNameinput" class="form-label">HT & WT</label>
-                                                        <input type="text" class="form-control" value="{{$rows->f_ht}}" name="f_ht[]">
+                                                    <div class="col-lg-4">
+                                                        <div class="mb-3">
+                                                            <label for="firstNameinput" class="form-label">HT & WT</label>
+                                                            <input type="text" class="form-control"
+                                                                value="{{ $rows->f_ht }}" name="f_ht[]">
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-lg-4">
-                                                    <div class="mb-3">
-                                                        <label for="firstNameinput" class="form-label">Ocuppation</label>
-                                                        <input type="text" class="form-control" value="{{$rows->f_ocuppation}}" name="f_ocuppation[]">
+                                                    <div class="col-lg-4">
+                                                        <div class="mb-3">
+                                                            <label for="firstNameinput" class="form-label">Ocuppation</label>
+                                                            <input type="text" class="form-control"
+                                                                value="{{ $rows->f_ocuppation }}" name="f_ocuppation[]">
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-lg-4">
-                                                    <div class="mb-3">
-                                                        <label for="firstNameinput" class="form-label">Relation With
-                                                            Proposer</label>
-                                                        <input type="text" class="form-control" value="{{$rows->f_relation}}" name="f_relation[]">
+                                                    <div class="col-lg-4">
+                                                        <div class="mb-3">
+                                                            <label for="firstNameinput" class="form-label">Relation With
+                                                                Proposer</label>
+                                                            <input type="text" class="form-control"
+                                                                value="{{ $rows->f_relation }}" name="f_relation[]">
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-lg-4">
-                                                    <div class="mb-3">
-                                                        <label for="firstNameinput" class="form-label">Nominee Name</label>
-                                                        <input type="text" class="form-control" value="{{$rows->f_nominee}}" name="f_nominee[]">
+                                                    <div class="col-lg-4">
+                                                        <div class="mb-3">
+                                                            <label for="firstNameinput" class="form-label">Nominee
+                                                                Name</label>
+                                                            <input type="text" class="form-control"
+                                                                value="{{ $rows->f_nominee }}" name="f_nominee[]">
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-lg-4">
-                                                    <div class="mb-3">
-                                                        <label for="firstNameinput" class="form-label">Nominee DOB</label>
-                                                        <input type="date" class="form-control" value="{{$rows->f_nomineeDOB}}" name="f_nomineeDOB[]">
+                                                    <div class="col-lg-4">
+                                                        <div class="mb-3">
+                                                            <label for="firstNameinput" class="form-label">Nominee DOB</label>
+                                                            <input type="date" class="form-control"
+                                                                value="{{ $rows->f_nomineeDOB }}" name="f_nomineeDOB[]">
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-lg-12">
-                                                    <h5>Health History:</h5>
-                                                </div>
-                                                <div class="col-lg-4">
-                                                    <div class="mb-3">
-                                                        <label for="firstNameinput" class="form-label">Diabetes</label>
-                                                        <input type="text" class="form-control" value="{{$rows->f_diabetes}}" name="f_diabetes[]">
+                                                    <div class="col-lg-12">
+                                                        <h5>Health History:</h5>
                                                     </div>
-                                                </div>
-                                                <div class="col-lg-4">
-                                                    <div class="mb-3">
-                                                        <label for="firstNameinput" class="form-label">B.P.</label>
-                                                        <input type="text" class="form-control" value="{{$rows->f_bp}}" name="f_bp[]">
+                                                    <div class="col-lg-4">
+                                                        <div class="mb-3">
+                                                            <label for="firstNameinput" class="form-label">Diabetes</label>
+                                                            <input type="text" class="form-control"
+                                                                value="{{ $rows->f_diabetes }}" name="f_diabetes[]">
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-lg-4">
-                                                    <div class="mb-3">
-                                                        <label for="firstNameinput" class="form-label">Any Pre Disease</label>
-                                                        <input type="text" class="form-control" value="{{$rows->f_predisease}}" name="f_predisease[]">
+                                                    <div class="col-lg-4">
+                                                        <div class="mb-3">
+                                                            <label for="firstNameinput" class="form-label">B.P.</label>
+                                                            <input type="text" class="form-control"
+                                                                value="{{ $rows->f_bp }}" name="f_bp[]">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <div class="mb-3">
+                                                            <label for="firstNameinput" class="form-label">Any Pre
+                                                                Disease</label>
+                                                            <input type="text" class="form-control"
+                                                                value="{{ $rows->f_predisease }}" name="f_predisease[]">
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
                                         @endforeach
                                         <div id="custom_sets_container"> </div>
                                     </div>

@@ -73,6 +73,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('report-sale', [ReportController::class, 'sale'])->name('report.sale');
     Route::get('report-renewal', [ReportController::class, 'renewal'])->name('report.renewal');
     Route::get('report-commission', [ReportController::class, 'commission'])->name('report.commission');
+    Route::post('pay_commission', [ReportController::class, 'pay_commission'])->name('pay_commission');
 
 
     Route::get('/change-password', [HomeController::class, 'changePassword'])->name('change-password');

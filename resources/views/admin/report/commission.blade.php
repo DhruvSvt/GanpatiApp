@@ -57,6 +57,7 @@
                                         <th>Emp Code</th>
                                         <th>Policy Type</th>
                                         <th>Date</th>
+                                        <th>Coupon</th>
                                         <th>View</th>
 
 
@@ -73,6 +74,43 @@
                 </div><!-- end card-body -->
             </div><!-- end card -->
         </div><!-- end col -->
+    </div>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Launch demo modal
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Pay Commission</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ route('pay_commission') }}" method="POST">
+                        @csrf
+
+
+
+                        <div class="mb-3">
+                            <label for="oldPasswordInput" class="form-label">Coupon / Code</label>
+                            <input name="coupon" type="text" class="form-control " id="oldPasswordInput"
+                                placeholder="Coupon">
+
+                        </div>
+                        <input name="id" type="hidden" class="form-control " id="data_id">
+
+
+                        <div class="card-footer">
+                            <button class="btn btn-success">Submit</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection
 @section('scripts')
@@ -154,6 +192,10 @@
                             data: 'start_date',
                             name: 'id'
                         },
+                        {
+                            data: 'coupon',
+                            name: 'coupon'
+                        },
 
                         {
                             data: 'action',
@@ -184,6 +226,12 @@
                 load_data();
             });
 
+        });
+
+
+        $(document).on("click", ".paynow", function() {
+            var idd = $(this).data("id");
+            $('#data_id').val(idd);
         });
     </script>
 @endsection

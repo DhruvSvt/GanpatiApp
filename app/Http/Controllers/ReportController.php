@@ -109,7 +109,7 @@ class ReportController extends Controller
             $rid = auth()->user()->role_id;
             $uid = auth()->user()->id;
 
-            $data = Commission::select('commissions.type', 'commissions.Final_amnt', 'commissions.TDS', 'commissions.policy', 'commissions.amount', 'residents.name as policytype', 'users.user_id as code', 'users.name as uname', 'users.PAN as PAN', 'display_name', 'societies.start_date', DB::raw("DATE_FORMAT(commissions.created_at, '%d-%M-%Y') as exp_date"))->join('societies', 'societies.id', '=', 'commissions.policy')->join('residents', 'residents.id', '=', 'societies.policy_type')->join('users', 'users.id', '=', 'commissions.user')->join('roles', 'roles.id', '=', 'users.role_id')->when(!empty($request->from_date), function ($query) use ($fd, $td) {
+            $data = Commission::select('commissions.type', 'commissions.id', 'commissions.paid', 'commissions.coupon', 'commissions.Final_amnt', 'commissions.TDS', 'commissions.policy', 'commissions.amount', 'residents.name as policytype', 'users.user_id as code', 'users.name as uname', 'users.PAN as PAN', 'display_name', 'societies.start_date', DB::raw("DATE_FORMAT(commissions.created_at, '%d-%M-%Y') as exp_date"))->join('societies', 'societies.id', '=', 'commissions.policy')->join('residents', 'residents.id', '=', 'societies.policy_type')->join('users', 'users.id', '=', 'commissions.user')->join('roles', 'roles.id', '=', 'users.role_id')->when(!empty($request->from_date), function ($query) use ($fd, $td) {
                 $query->whereBetween('societies.start_date', array($fd, $td));
             })->when($rid != 1, function ($query) use ($uid) {
                 $query->where('commissions.user', $uid);
@@ -121,6 +121,9 @@ class ReportController extends Controller
 
                 ->addColumn('action', function ($row) {
                     $actionBtn = '<a target="_blank" href="' . route("society.view", $row->policy) . '" class="btn btn-primary w-100 btn-sm ">View Policy</a>';
+                    if ($row->paid != 1) {
+                        $actionBtn .= '<a href="#exampleModal" class="btn btn-success w-100 btn-sm mt-1 paynow" data-id="' . $row->id . '" data-bs-toggle="modal" data-bs-target="#exampleModal">Pay Now</a>';
+                    }
                     return $actionBtn;
                 })
                 ->editColumn('amount', function ($row) {
@@ -130,5 +133,13 @@ class ReportController extends Controller
                 ->make(true);
         }
         return view('admin.report.commission');
+    }
+    public function pay_commission(Request $request)
+    {
+        $commission = Commission::find($request->id);
+        $commission->paid = 1;
+        $commission->coupon = $request->coupon;
+        $commission->save();
+        return redirect()->back()->with('success', 'Commission Paid Successfully');
     }
 }

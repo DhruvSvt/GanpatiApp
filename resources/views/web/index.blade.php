@@ -247,28 +247,36 @@ background-color: #f4f9ff;">
                         <ul class="client-lists">
                             <li><a href="#0" title="Bank">
                                     <div class="logo-icon icicipru"><img
-                                            src="{{ config('app.url') }}/web/assets/img/DFASFA.jpg" alt="Bank">
+                                            src="{{ config('app.url') }}/assets/images/a958c79fd4b39865097be6cbf8a302ca.jpg"
+                                            alt="Bank">
                                     </div>
                                 </a></li>
 
                             <li><a href="#0" title="Bank">
                                     <div class="logo-icon icicipru"><img
-                                            src="{{ config('app.url') }}/web/assets/img/download.png" alt="Bank">
+                                            src="{{ config('app.url') }}/web/assets/img/download.jpeg" alt="Bank">
                                     </div>
                                 </a></li>
                             <li><a href="#0" title="Bank">
                                     <div class="logo-icon icicipru"><img
-                                            src="{{ config('app.url') }}/web/assets/img/images-1.png" alt="Bank">
+                                            src="{{ config('app.url') }}/web/assets/img/1679939498-7188.avif"
+                                            alt="Bank">
                                     </div>
                                 </a></li>
                             <li><a href="#0" title="Bank">
                                     <div class="logo-icon icicipru"><img
-                                            src="{{ config('app.url') }}/web/assets/img/images-2.png" alt="Bank">
+                                            src="{{ config('app.url') }}/web/assets/img/download_care.png"
+                                            alt="Bank">
                                     </div>
                                 </a></li>
                             <li><a href="#0" title="Bank">
                                     <div class="logo-icon icicipru"><img
-                                            src="{{ config('app.url') }}/web/assets/img/images.png" alt="Bank">
+                                            src="{{ config('app.url') }}/web/assets/img/hi-logo-Niva.png" alt="Bank">
+                                    </div>
+                                </a></li>
+                            <li><a href="#0" title="Bank">
+                                    <div class="logo-icon icicipru"><img
+                                            src="{{ config('app.url') }}/web/assets/img/images (1).png" alt="Bank">
                                     </div>
                                 </a></li>
                             <li><a href="#0" title="Bank">
@@ -283,7 +291,29 @@ background-color: #f4f9ff;">
                                 </a></li>
                             <li><a href="#0" title="Bank">
                                     <div class="logo-icon icicipru"><img
-                                            src="{{ config('app.url') }}/web/assets/img/images-3.png" alt="Bank">
+                                            src="{{ config('app.url') }}/web/assets/img/downloaddfgh.png" alt="Bank">
+                                    </div>
+                                </a></li>
+                            <li><a href="#0" title="Bank">
+                                    <div class="logo-icon icicipru"><img
+                                            src="{{ config('app.url') }}/web/assets/img/download-ef.jpeg" alt="Bank">
+                                    </div>
+                                </a></li>
+                            <li><a href="#0" title="Bank">
+                                    <div class="logo-icon icicipru"><img
+                                            src="{{ config('app.url') }}/web/assets/img/download-iffco.png"
+                                            alt="Bank">
+                                    </div>
+                                </a></li>
+                            <li><a href="#0" title="Bank">
+                                    <div class="logo-icon icicipru"><img
+                                            src="{{ config('app.url') }}/web/assets/img/DFASFA.jpg" alt="Bank">
+                                    </div>
+                                </a></li>
+                            <li><a href="#0" title="Bank">
+                                    <div class="logo-icon icicipru"><img
+                                            src="{{ config('app.url') }}/web/assets/img/the-new-india-assurance-co-ltd-logo-E0B018F777-seeklogo.com.png"
+                                            alt="Bank">
                                     </div>
                                 </a></li>
                         </ul>
