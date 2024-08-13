@@ -247,6 +247,12 @@ background-color: #f4f9ff;">
                         <ul class="client-lists">
                             <li><a href="#0" title="Bank">
                                     <div class="logo-icon icicipru"><img
+                                            src="{{ config('app.url') }}/assets/img/Life_Insurance_Corporation_of_India_(logo).svg"
+                                            alt="Bank">
+                                    </div>
+                                </a></li>
+                            <li><a href="#0" title="Bank">
+                                    <div class="logo-icon icicipru"><img
                                             src="{{ config('app.url') }}/assets/images/a958c79fd4b39865097be6cbf8a302ca.jpg"
                                             alt="Bank">
                                     </div>
@@ -324,6 +330,12 @@ background-color: #f4f9ff;">
                             <li><a href="#0" title="Bank">
                                     <div class="logo-icon icicipru"><img
                                             src="{{ config('app.url') }}/web/assets/img/2023_3$largeimg17_Mar_2023_175740793.jpg"
+                                            alt="Bank">
+                                    </div>
+                                </a></li>
+                            <li><a href="#0" title="Bank">
+                                    <div class="logo-icon icicipru"><img
+                                            src="{{ config('app.url') }}/web/assets/img/ef37b6903c86b935681044838344ffe2.jpg"
                                             alt="Bank">
                                     </div>
                                 </a></li>
