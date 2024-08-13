@@ -316,6 +316,17 @@ background-color: #f4f9ff;">
                                             alt="Bank">
                                     </div>
                                 </a></li>
+                            <li><a href="#0" title="Bank">
+                                    <div class="logo-icon icicipru"><img
+                                            src="{{ config('app.url') }}/web/assets/images/images.png" alt="Bank">
+                                    </div>
+                                </a></li>
+                            <li><a href="#0" title="Bank">
+                                    <div class="logo-icon icicipru"><img
+                                            src="{{ config('app.url') }}/web/assets/img/2023_3$largeimg17_Mar_2023_175740793.jpg"
+                                            alt="Bank">
+                                    </div>
+                                </a></li>
                         </ul>
 
                     </div>
