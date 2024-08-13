@@ -247,7 +247,7 @@ background-color: #f4f9ff;">
                         <ul class="client-lists">
                             <li><a href="#0" title="Bank">
                                     <div class="logo-icon icicipru"><img
-                                            src="{{ config('app.url') }}web/assets/img/Life_Insurance_Corporation_of_India_(logo).svg"
+                                            src="{{ config('app.url') }}/web/assets/img/Life_Insurance_Corporation_of_India_(logo).svg"
                                             alt="Bank">
                                     </div>
                                 </a></li>
