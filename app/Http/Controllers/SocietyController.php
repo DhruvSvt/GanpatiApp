@@ -9,6 +9,7 @@ use App\Models\Commission;
 use App\Models\Renewal;
 use App\Models\Member;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Redirect;
@@ -396,9 +397,17 @@ class SocietyController extends Controller
         $edit = true;
         $residents = Resident::where(['status' => 1])->orderBy('name', 'ASC')->get();
 
+
+        $Commission = Commission::join('users', 'users.id', '=', 'commissions.user')
+                              ->select('commissions.*', 'users.name','users.user_id')
+                              ->where('commissions.policy', $id)
+                              ->orderBy('commissions.id', 'asc')
+                              ->get();
+                            //   echo'<pre>';
+                            //   print_r($Commission);die;
         $members = Member::where('policyID', $id)->get();
 
-        return view('admin.society.create', compact('edit', 'title', 'society', 'residents', 'members'));
+        return view('admin.society.create', compact('edit', 'title', 'society', 'residents', 'members','Commission'));
     }
     public function view($id)
     {
@@ -426,7 +435,13 @@ class SocietyController extends Controller
     {
         $user = Society::findOrFail($id);
 
+        $commissionper = $request->input('commissionper');
 
+        foreach($commissionper as $key => $index){
+            $commission = Commission::find($request->commissionid[$key]);
+            $commission->per = $index;
+            $commission->save();
+        }
         if($user->status != 0){
         if($user->agent!= null){
             $rows = Commission::where('policy',  $id)->where('user',  $user->agent)->first();

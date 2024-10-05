@@ -364,6 +364,8 @@
                                             <p class="text-danger">{{ $message }}</p>
                                         @enderror
                                     </div>
+
+
                                     <!--end col-->
                                     <div class="col-lg-12">
                                         <div class="text-end">
@@ -663,6 +665,32 @@
                                     </div>
 
                                 </div>
+                                @if ($Commission->isNotEmpty())
+                                <div class="col-md-12">
+
+                                     <div class="mb-3">
+
+                                        <table class="table">
+                                            <tr><th>User</th>
+                                                <th>Type</th>
+                                                <th>Date</th>
+                                                <th>Commission %</th></tr>
+                                                @foreach ($Commission as $row22)
+                                                <tr>
+                                                    <td>{{ $row22->name }} ({{ $row22->user_id }})</td>
+                                                    <td>{{$row22->type}}</td>
+                                                    <td>{{$row22->created_at->format('Y-m-d')}}</td>
+                                                    <td><input type="number" class="form-control"
+                                                        name="commissionper[]" placeholder="Commission %" min="0"
+                                                        max="100" value="{{$row22->per }}">
+                                                        <input type="hidden"
+                                                        name="commissionid[]" value="{{$row22->id }}"></td>
+                                                </tr>
+                                                @endforeach
+                                            </table>
+                                         </div>
+                                </div>
+                                @endif
                                 <div class="col-lg-12">
                                     <div class="text-end">
                                         <button type="submit" class="btn btn-primary">Submit</button>
