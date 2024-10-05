@@ -175,7 +175,7 @@ class SocietyController extends Controller
         $director = $society->director;
         if($agent!=''){
             $amnt = round(($request->agent* $society->value)/100);
-            $tdc =  round(($amnt*5)/100);
+            $tdc =  round(($amnt*2)/100);
             $Final_amnt = $amnt - $tdc;
             $user = new Commission();
             $user->user = $agent;
@@ -189,7 +189,7 @@ class SocietyController extends Controller
         }
         if ($tl != '') {
             $amnt = round(($request->tl * $society->value) / 100);
-            $tdc =  round(($amnt * 5) / 100);
+            $tdc =  round(($amnt * 2) / 100);
             $Final_amnt = $amnt - $tdc;
             $user = new Commission();
             $user->user = $tl;
@@ -203,7 +203,7 @@ class SocietyController extends Controller
         }
         if ($director != '') {
             $amnt = round(($request->director * $society->value) / 100);
-            $tdc =  round(($amnt * 5) / 100);
+            $tdc =  round(($amnt * 2) / 100);
             $Final_amnt = $amnt - $tdc;
             $user = new Commission();
             $user->user = $director;
@@ -235,7 +235,7 @@ class SocietyController extends Controller
         $director = $society->director;
         if ($agent != '') {
             $amnt = round(($request->agent * $request->amount) / 100);
-            $tdc =  round(($amnt * 5) / 100);
+            $tdc =  round(($amnt * 2) / 100);
             $Final_amnt = $amnt - $tdc;
             $user = new Commission();
             $user->user = $agent;
@@ -248,7 +248,7 @@ class SocietyController extends Controller
         }
         if ($tl != '') {
             $amnt = round(($request->tl * $request->amount) / 100);
-            $tdc =  round(($amnt * 5) / 100);
+            $tdc =  round(($amnt * 2) / 100);
             $Final_amnt = $amnt - $tdc;
             $user = new Commission();
             $user->user = $tl;
@@ -261,7 +261,7 @@ class SocietyController extends Controller
         }
         if ($director != '') {
             $amnt = round(($request->director * $request->amount) / 100);
-            $tdc =  round(($amnt * 5) / 100);
+            $tdc =  round(($amnt * 2) / 100);
             $Final_amnt = $amnt - $tdc;
             $user = new Commission();
             $user->user = $director;
@@ -433,7 +433,7 @@ class SocietyController extends Controller
             $per = $rows->per;
             $cid = $rows->id;
             $amnt = round(($per* $request->value)/100);
-            $tdc =  round(($amnt*5)/100);
+            $tdc =  round(($amnt*2)/100);
             $Final_amnt = $amnt - $tdc;
 
             Commission::where('id', $cid)
@@ -444,7 +444,7 @@ class SocietyController extends Controller
             $per = $rows->per;
             $cid = $rows->id;
             $amnt = round(($per * $request->value) / 100);
-            $tdc =  round(($amnt * 5) / 100);
+            $tdc =  round(($amnt * 2) / 100);
             $Final_amnt = $amnt - $tdc;
 
             Commission::where('id', $cid)
@@ -455,7 +455,7 @@ class SocietyController extends Controller
             $per = $rows->per;
             $cid = $rows->id;
             $amnt = round(($per * $request->value) / 100);
-            $tdc =  round(($amnt * 5) / 100);
+            $tdc =  round(($amnt * 2) / 100);
             $Final_amnt = $amnt - $tdc;
 
             Commission::where('id', $cid)
